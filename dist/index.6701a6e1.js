@@ -22922,9 +22922,9 @@ class MainView extends _reactDefault.default.Component {
                 },
                 {
                     _id: 3,
-                    Title: 'Gladiator',
-                    Description: 'desc3...',
-                    ImagePath: '...'
+                    Title: 'The Pirates of Silicon Valley',
+                    Description: 'This is a must watch movie for everyone who wants to know how personal computers came into the world. The biographical drama tells how Steve Jobs and Bill Gates came up with the idea of creating a computer that could be used by everyone and shows the methodologies they used. It also explores the impact that the rivalry between Jobs and Gates had on the development of the personal computer.',
+                    ImagePath: '../img/pirates_of_silicon_valley.jpeg'
                 }, 
             ],
             selectedMovie: null
@@ -22941,7 +22941,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 47
+                lineNumber: 48
             },
             __self: this,
             children: "The list is empty!"
@@ -22950,7 +22950,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 50
+                lineNumber: 51
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -22960,7 +22960,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 52
+                    lineNumber: 53
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -22970,7 +22970,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 60
+                        lineNumber: 61
                     },
                     __self: this
                 }, movie._id)
