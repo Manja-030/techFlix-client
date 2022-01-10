@@ -10,15 +10,18 @@ class MainView extends React.Component {
       movies: [
         {
           _id: 1,
-          Title: 'Inception',
-          Description: 'desc1...',
-          ImagePath: '...',
+          Title: 'Tron',
+          Description:
+            'Tron is a cult movie for programmers. Jeff Bridges plays the programmer and video game developer  Kevin Flynn who gets sucked into the virtual world of computers. He uses some amazing coding skills to find his way back into the normal world.',
+          ImagePath: '../img/tron_poster.jpeg',
         },
         {
           _id: 2,
-          Title: 'The Shawshank Redemption',
-          Description: 'desc2...',
-          ImagePath: '...',
+          Title: 'Hackers',
+          Description:
+            'This crime story is starring Angelina Jolie in her first leading role in a major film. It follows a group of high school students who use their programming skills for corporate extortion.',
+          ImagePath:
+            'https://upload.wikimedia.org/wikipedia/en/6/67/Hackersposter.jpg',
         },
         {
           _id: 3,
