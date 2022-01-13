@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export function loginView(props) {
+export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
