@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function loginView(props) {
+export function loginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -36,5 +36,3 @@ function loginView(props) {
     </form>
   );
 }
-
-export default loginView;
