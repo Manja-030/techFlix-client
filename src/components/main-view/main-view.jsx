@@ -33,6 +33,14 @@ class MainView extends React.Component {
     });
   }
 
+  /* When a user successfully logs in, this function updates the `user` property in state to that user*/
+
+  onLoggedIn(user) {
+    this.setState({
+      user,
+    });
+  }
+
   render() {
     const { movies, selectedMovie, user } = this.state;
 
