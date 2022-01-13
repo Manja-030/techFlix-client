@@ -38,7 +38,7 @@ class MainView extends React.Component {
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView*/
     if (!user)
-      return <loginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
 
     if (movies.length === 0) return <div className="main-view" />;
 
