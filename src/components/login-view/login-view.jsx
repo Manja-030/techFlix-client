@@ -27,7 +27,7 @@ function LoginView(props) {
         <input
           type="password"
           value={password}
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         ></input>
       </label>
       <button type="Submit" onClick={handleSubmit}>
