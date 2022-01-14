@@ -33,6 +33,9 @@ function LoginView(props) {
       <button type="Submit" onClick={handleSubmit}>
         Submit
       </button>
+      <p>
+        No account? No problem! Register <a href="">here</a>.
+      </p>
     </form>
   );
 }
