@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MovieCard extends React.Component {
   render() {
@@ -10,7 +11,8 @@ export class MovieCard extends React.Component {
           onMovieClick(movie);
         }}
       >
-        {movie.Title}
+        <div>{movie.Title}</div>
+        <div>{movie.ImagePath}</div>
       </div>
     );
   }
