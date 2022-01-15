@@ -40,4 +40,11 @@ function LoginView(props) {
   );
 }
 
+LoginView.propTypes = {
+  username: PropTypes.string.isRequired,
+  setUsername: PropTypes.func.isRequired,
+  password: PropTypes.string.isRequired,
+  setPassword: PropTypes.func.isRequired,
+};
+
 export default LoginView;
