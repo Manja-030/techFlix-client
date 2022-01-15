@@ -55,4 +55,11 @@ function RegistrationView(props) {
   );
 }
 
+RegistrationView.propTypes = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  birthday: PropTypes.date,
+};
+
 export default RegistrationView;
