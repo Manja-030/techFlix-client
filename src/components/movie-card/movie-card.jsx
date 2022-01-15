@@ -12,7 +12,7 @@ export class MovieCard extends React.Component {
         }}
       >
         <div>{movie.Title}</div>
-        <div>{movie.ImagePath}</div
+        <div>{movie.ImagePath}</div>
       </div>
     );
   }
