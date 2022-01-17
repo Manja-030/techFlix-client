@@ -33,7 +33,7 @@ function RegistrationView(props) {
               <Card.Body>
                 <Card.Title>Please Register</Card.Title>
                 <Form>
-                  <Form.Group>
+                  <Form.Group className="mb-3">
                     <Form.Label>Username</Form.Label>
                     <Form.Control
                       type="text"
@@ -43,7 +43,7 @@ function RegistrationView(props) {
                       placeholder="Enter a username"
                     />
                   </Form.Group>
-                  <Form.Group>
+                  <Form.Group className="mb-3">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control
                       type="password"
@@ -53,7 +53,7 @@ function RegistrationView(props) {
                       placeholder="Enter your password"
                     />
                   </Form.Group>
-                  <Form.Group>
+                  <Form.Group className="mb-3">
                     <Form.Label>Email:</Form.Label>
                     <Form.Control
                       type="email"
@@ -64,7 +64,7 @@ function RegistrationView(props) {
                     />
                   </Form.Group>
 
-                  <Form.Group>
+                  <Form.Group className="mb-3">
                     <Form.Label>Birthday:</Form.Label>
                     <Form.Control
                       type="date"
