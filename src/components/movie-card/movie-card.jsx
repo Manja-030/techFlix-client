@@ -17,8 +17,10 @@ export class MovieCard extends React.Component {
           crossOrigin="true"
         />
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description.slice(0, 100)}</Card.Text>
+          <Card.Title className="cardTitle">{movie.Title}</Card.Title>
+          <Card.Text className="cardText">
+            {movie.Description.slice(0, 120)}
+          </Card.Text>
           <Button
             id="cardButton"
             onClick={() => onMovieClick(movie)}

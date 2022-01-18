@@ -9,11 +9,18 @@ $red: #DA1212;
 .movieCard {
   background-color: $bg-color !important;
   color: $text-color;
-  border: 5px solid $red;
-  border-radius: 20px;
+  border: 2px solid $red !important;
   font-size: $text-size;
 }
+.movieCard-img{
+  max-height: 500px;
 
-#cardButton{
-  color: $red;
+}
+
+.cardTitle{
+  min-height: 50px;
+}
+
+.cardText{
+  min-height: 100px;
 }
