@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Row, Col, Navbar, Nav } from 'react-bootstrap';
 
 import { GiPopcorn } from 'react-icons/gi';
+import './main-view.scss';
 
 import LoginView from '../login-view/login-view';
 import RegistrationView from '../registration-view/registration-view';
@@ -66,25 +67,32 @@ class MainView extends React.Component {
       <div className="main-view justify-content-md-center">
         <Navbar
           className="mb-5"
+          id="techFlixNav"
           bg="dark"
           variant="dark"
           expand="lg"
           sticky="top"
         >
-          <Navbar.Brand href="#home">
+          <Navbar.Brand id="appName" href="#home">
             <GiPopcorn />
             techFlix
           </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Nav.Link href="">MyPage</Nav.Link>
-            <Nav.Link href="">Movies</Nav.Link>
-            <Nav.Link href="">Logout</Nav.Link>
+          <Navbar.Toggle className="toggle" />
+          <Navbar.Collapse className="justify-content-end toggle">
+            <Nav.Link id="link" href="">
+              MyPage
+            </Nav.Link>
+            <Nav.Link id="link" href="">
+              Movies
+            </Nav.Link>
+            <Nav.Link id="link" href="">
+              Logout
+            </Nav.Link>
           </Navbar.Collapse>
         </Navbar>
         <Row className="main-view justify-content-md-center">
           {selectedMovie ? (
-            <Col md={8}>
+            <Col md={9}>
               <MovieView
                 movie={selectedMovie}
                 onBackClick={(newSelectedMovie) => {

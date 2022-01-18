@@ -1,0 +1,30 @@
+$text-size: 18px;
+$title-size: 21px;
+$brand-size: 40px;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+#techFlixNav{
+  background-color: black !important;
+  color: #DA1212;
+}
+#appName{
+  color: $red;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+#link{
+  color: #DA1212 !important;
+  font-size: 18px;
+}
+
+.toggle{
+  color: #DA1212 !important;
+}
+
+.main-view{
+  background-color: #1E2127;
+}
