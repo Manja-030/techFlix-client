@@ -10,6 +10,8 @@ import {
   Row,
 } from 'react-bootstrap';
 
+import './login-view.scss';
+
 function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -23,14 +25,14 @@ function LoginView(props) {
   };
 
   return (
-    <Container>
+    <Container className="login-container">
       <Row>
         <Col>
           <CardGroup>
             <Card>
-              <Card.Body>
+              <Card.Body className="card-body">
                 <Card.Title>Please Login</Card.Title>
-                <Form>
+                <Form id="login-form">
                   <Form.Group className="mb-3" controlId="formUsername">
                     <Form.Label>Username:</Form.Label>
                     <Form.Control
@@ -40,7 +42,6 @@ function LoginView(props) {
                       required
                     />
                   </Form.Group>
-
                   <Form.Group className="mb-3" controlId="formPassword">
                     <Form.Label>Password:</Form.Label>
                     <Form.Control
@@ -52,18 +53,18 @@ function LoginView(props) {
                       required
                     />
                   </Form.Group>
-
                   <Button
+                    className="login-btn"
                     variant="primary"
                     type="submit"
                     onClick={handleSubmit}
                   >
                     Submit
                   </Button>
-
-                  <p>
-                    No account? No problem! Register <a href="">here</a>.
-                  </p>
+                  No account? No problem! Register{' '}
+                  <a className="link" href="">
+                    here
+                  </a>
                 </Form>
               </Card.Body>
             </Card>

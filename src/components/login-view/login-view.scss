@@ -1,0 +1,36 @@
+$text-size: 18px;
+$title-size: 21px;
+$brand-size: 40px;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+body{
+  background-color: $bg-color !important;
+}
+
+.card-body{
+  background-color: $bg-color !important;
+}
+.login-container{
+  color: $text-color;
+}
+
+#login-form{
+  background-color: $bg-color !important;
+  font-size: $text-size;
+  color: white;
+}
+
+.link{
+  color: red !important;
+}
+
+.login-btn{
+  font-size: $text-size;
+  background-color: $bg-color !important;
+  color: $red !important;
+  border: 1px solid $red !important;
+  margin-right: 20px;
+}
