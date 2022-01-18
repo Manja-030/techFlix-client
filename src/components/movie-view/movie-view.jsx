@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle, CardBody, Row, Col } from 'react-bootstrap';
 
 import './movie-view.scss';
+import { GiPopcorn } from 'react-icons/gi';
 
 export class MovieView extends React.Component {
   render() {
@@ -33,7 +34,9 @@ export class MovieView extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col className="add-fav">Add to Favorites</Col>
+          <Col className="add-fav">
+            Add to Favorites <GiPopcorn className="fav-icon" />
+          </Col>
           <Col>
             <button
               className="back-button"
