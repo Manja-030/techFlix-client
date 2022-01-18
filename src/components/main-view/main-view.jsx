@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Row, Col, Navbar, Nav } from 'react-bootstrap';
 
-import { GiPopcorn } from 'react-icons/fa';
+import { GiPopcorn } from 'react-icons/gi';
 
 import LoginView from '../login-view/login-view';
 import RegistrationView from '../registration-view/registration-view';
