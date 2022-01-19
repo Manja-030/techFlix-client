@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardTitle, CardBody, Row, Col } from 'react-bootstrap';
+import { Card, CardTitle, CardBody, Row, Col, Button } from 'react-bootstrap';
 
 import './movie-view.scss';
 import { GiPopcorn } from 'react-icons/gi';
@@ -38,14 +38,15 @@ export class MovieView extends React.Component {
             Add to Favorites <GiPopcorn className="fav-icon" />
           </Col>
           <Col>
-            <button
+            <Button
               className="back-button"
+              variant="outline-danger"
               onClick={() => {
                 onBackClick(null);
               }}
             >
-              BACK
-            </button>
+              Back
+            </Button>{' '}
           </Col>
         </Row>
       </>
