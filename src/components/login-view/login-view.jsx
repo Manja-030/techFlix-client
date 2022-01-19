@@ -54,13 +54,13 @@ function LoginView(props) {
                     />
                   </Form.Group>
                   <Button
-                    className="login-btn"
-                    variant="primary"
+                    className="login-button"
+                    variant="outline-danger"
+                    as="input"
                     type="submit"
+                    value="Submit"
                     onClick={handleSubmit}
-                  >
-                    Submit
-                  </Button>
+                  />{' '}
                   No account? No problem! Register{' '}
                   <a className="link" href="">
                     here
