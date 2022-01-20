@@ -22,7 +22,7 @@ function LoginView(props) {
     axios
       .post('https://tech-and-popcorn.herokuapp.com/login', {
         Username: username,
-        Password: password,
+        Password: password
       })
       .then((response) => {
         const data = response.data;
