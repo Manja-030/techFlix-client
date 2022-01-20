@@ -52,6 +52,21 @@ class MainView extends React.Component {
     });
   }
 
+  getMovies(token) {
+    axios.get('https://tech-and-popcorn.herokuapp.com/movies', {
+      headers: { Authorization:`Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   render() {
     const { movies, selectedMovie, user } = this.state;
     if (!user)
