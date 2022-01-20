@@ -22,9 +22,7 @@ class MainView extends React.Component {
 
   componentDidMount() {
     axios
-      .get('https://tech-and-popcorn.herokuapp.com/movies', {
-        headers: { Authorization: `Bearer${token}` },
-      })
+      .get('https://tech-and-popcorn.herokuapp.com/movies')
       .then((response) => {
         this.setState({ movies: response.data });
       })
@@ -42,14 +40,10 @@ class MainView extends React.Component {
 
   /* When a user successfully logs in, this function updates the `user` property in state to that user*/
 
-  onLoggedIn(authData) {
-    console.log(authData);
+  onLoggedIn(user) {
     this.setState({
-      user: authData.user.Username,
+      user,
     });
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.Username);
-    this.getMovies(authData.token);
   }
 
   onRegistered(user) {
