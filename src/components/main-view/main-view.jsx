@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Row, Col, Navbar, Nav } from 'react-bootstrap';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { GiPopcorn } from 'react-icons/gi';
 import './main-view.scss';
