@@ -45,6 +45,14 @@ class MainView extends React.Component {
     });
   }
 
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
+
   onRegistered(user) {
     this.setState({
       user
@@ -100,8 +108,12 @@ class MainView extends React.Component {
               Movies
             </Nav.Link>
             <Nav.Link id="link" href="">
-              Logout
+            <Button variant="outline-warning" onClick={() => this.onLoggedOut()}>
+              LogOut
+            </Button>
             </Nav.Link>
+
+            
           </Navbar.Collapse>
         </Navbar>
         <Row className="main-view justify-content-md-center">
