@@ -123,12 +123,29 @@ class MainView extends React.Component {
 							}}
 						/>
 						<Route
+							exact
 							path="/movies/:movieID"
 							render={({ match }) => {
 								return;
 								<Col md={8}>
 									<MovieView movie={movies.find((m) => m._id === match.params.movieID)} />
 								</Col>;
+							}}
+						/>
+						<Route
+							exact
+							path="movies/director/:name"
+							render={({ match }) => {
+								if (movies.length === 0) return <div className="main-view" />;
+								return (
+									<Col md={8}>
+										<DirectorView
+											director={
+												movies.find((m) => m.Director.Name === match.params.name).Director
+											}
+										/>
+									</Col>
+								);
 							}}
 						/>
 					</Row>
