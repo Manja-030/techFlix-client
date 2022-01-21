@@ -9,6 +9,7 @@ import {
   Col,
   Row,
 } from 'react-bootstrap';
+import axios from 'axios';
 
 function RegistrationView(props) {
   const [username, setUsername] = useState('');
@@ -16,12 +17,64 @@ function RegistrationView(props) {
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
 
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [birthdayError, setBirthdayError] = useState("");
+
+  const validate = () => {
+    let isReq = true;
+    if (!username){
+      setUsernameError("Username is required.");
+      isReq = false;
+    }
+    else if(username.length < 4){
+      setUsernameError("Username must be at least 4 characters long.")
+      isReq = false;
+    }
+    
+    if(!password){
+      setPasswordError("Password is required.");
+      isReq = false;
+    }
+    else if(password.length < 6){
+      setPasswordError("Password must be at least 6 characters long.");
+      isReq = false;
+    }
+    return isReq;
+
+    if(!email){
+      setEmailError("Email is required.");
+      isReq = false;
+    }
+    else if(email.indexOf("@") === -1){
+      setEmailError("Email is not valid.");
+      isReq = false;
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthday);
-    /* Send a request to the server for authentication */
-    /* then call props.onRegistered(username) */
-    props.onRegistered(username);
+    const isReq = validate();
+    if(isReq){
+      axios.post("https://tech-and-popcorn.herokuapp.com/users",{
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+      })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        alert("Registration successful. You can login now!");
+        window.open("/", "_self");
+      })
+      .catch(response => {
+        console.error(response);
+        alert("Unable to register.");
+      });
+    }
   };
 
   return (
@@ -42,6 +95,7 @@ function RegistrationView(props) {
                       required
                       placeholder="Enter a username"
                     />
+                    {usernameError && <p> usernameError</p>}
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Password:</Form.Label>
@@ -52,6 +106,7 @@ function RegistrationView(props) {
                       required
                       placeholder="Enter your password"
                     />
+                    {passwordError && <p> passwordError</p>}
                   </Form.Group>
                   <Form.Group className="mb-3">
                     <Form.Label>Email:</Form.Label>
@@ -62,6 +117,7 @@ function RegistrationView(props) {
                       required
                       placeholder="Enter your email address"
                     />
+                    {emailError && <p> emailError</p>}
                   </Form.Group>
 
                   <Form.Group className="mb-3">
@@ -90,8 +146,7 @@ RegistrationView.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    birthday: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired
   }).isRequired,
 };
 
