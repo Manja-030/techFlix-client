@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { GiPopcorn } from 'react-icons/gi';
 import './main-view.scss';
 
-import Navigation from '../navbar/navbar.jsx';
+import Navigation from '../navigation/navigation.jsx';
 import LoginView from '../login-view/login-view';
 import RegistrationView from '../registration-view/registration-view';
 import MovieCard from '../movie-card/movie-card';
