@@ -130,10 +130,13 @@ class MainView extends React.Component {
 						<Route
 							exact
 							path="/movies/:movieID"
-							render={({ match }) => {
+							render={({ match, history }) => {
 								return (
 									<Col md={8}>
-										<MovieView movie={movies.find((m) => m._id === match.params.movieID)} />
+										<MovieView
+											movie={movies.find((m) => m._id === match.params.movieID)}
+											onBackClick={() => history.goBack()}
+										/>
 									</Col>
 								);
 							}}
