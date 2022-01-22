@@ -8,8 +8,8 @@ import './main-view.scss';
 
 import LoginView from '../login-view/login-view';
 import RegistrationView from '../registration-view/registration-view';
-import { MovieCard } from '../movie-card/movie-card';
-import { MovieView } from '../movie-view/movie-view';
+import MovieCard from '../movie-card/movie-card';
+import MovieView from '../movie-view/movie-view';
 
 class MainView extends React.Component {
 	constructor() {
@@ -131,10 +131,11 @@ class MainView extends React.Component {
 							exact
 							path="/movies/:movieID"
 							render={({ match }) => {
-								return;
-								<Col md={8}>
-									<MovieView movie={movies.find((m) => m._id === match.params.movieID)} />
-								</Col>;
+								return (
+									<Col md={8}>
+										<MovieView movie={movies.find((m) => m._id === match.params.movieID)} />
+									</Col>
+								);
 							}}
 						/>
 						<Route
