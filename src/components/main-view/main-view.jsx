@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { Row, Col, Navbar, Nav, Button } from 'react-bootstrap';
+import { Container, Row, Col, Navbar, Nav, Button } from 'react-bootstrap';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { GiPopcorn } from 'react-icons/gi';
 import './main-view.scss';
 
+import Navigation from '../navbar/navbar.jsx';
 import LoginView from '../login-view/login-view';
 import RegistrationView from '../registration-view/registration-view';
 import MovieCard from '../movie-card/movie-card';
@@ -94,8 +95,9 @@ class MainView extends React.Component {
 
 		return (
 			<Router>
-				<div className="main-view justify-content-md-center">
-					<Navbar className="mb-5" id="techFlixNav" bg="dark" variant="dark" expand="lg" sticky="top">
+				<Navigation />
+				<Container>
+					{/*<Navbar className="mb-5" id="techFlixNav" bg="dark" variant="dark" expand="lg" sticky="top">
 						<Navbar.Brand id="appName" href="#home">
 							<GiPopcorn />
 							techFlix
@@ -114,7 +116,7 @@ class MainView extends React.Component {
 								</Button>
 							</Nav.Link>
 						</Navbar.Collapse>
-					</Navbar>
+					</Navbar>*/}
 					<Row className="main-view justify-content-md-center">
 						<Route
 							exact
@@ -174,7 +176,7 @@ class MainView extends React.Component {
 							}}
 						/>
 					</Row>
-				</div>
+				</Container>
 			</Router>
 		);
 	}

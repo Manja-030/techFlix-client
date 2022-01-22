@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 
 import { GiPopcorn } from 'react-icons/gi';
 
-function Navbar({ user }) {
+function Navigation({ user }) {
 	const OnLoggedOut = () => {
 		localStorage.clear();
 		window.open('/', '_self');
@@ -74,4 +74,4 @@ function Navbar({ user }) {
 	);
 }
 
-export default Navbar;
+export default Navigation;
