@@ -109,7 +109,7 @@ class MainView extends React.Component {
 								Movies
 							</Nav.Link>
 							<Nav.Link id="link" href="">
-								<Button variant="outline-warning" onClick={() => this.onLoggedOut()}>
+								<Button variant="outline-danger" onClick={() => this.onLoggedOut()}>
 									LogOut
 								</Button>
 							</Nav.Link>
