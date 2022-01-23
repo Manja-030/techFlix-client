@@ -90,7 +90,7 @@ function LoginView(props) {
 										onClick={handleSubmit}
 									/>{' '}
 									No account? No problem! Register{' '}
-									<a className="link" href="">
+									<a className="link" href={'/register'}>
 										here
 									</a>
 								</Form>
