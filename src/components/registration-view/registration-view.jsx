@@ -15,6 +15,7 @@ function RegistrationView(props) {
 
 	const validate = () => {
 		let isReq = true;
+
 		if (!username) {
 			setUsernameError('Username is required (at least 4 characters).');
 			isReq = false;
@@ -58,7 +59,7 @@ function RegistrationView(props) {
 					const data = response.data;
 					console.log(data);
 					alert('Registration successful. You can login now!');
-					window.open('/', '_self');
+					window.open('/', '_self'); //2nd argument "_self" is needed so that the page will open in the current tab
 				})
 				.catch((response) => {
 					console.error(response);
