@@ -6,17 +6,14 @@ $text-color: white;
 $bg-color: #1E2127;
 $red: #DA1212;
 
-#techFlixNav{
+.main-nav{
   color: #DA1212 !important;
-}
-
-#responsive-navbar-nav{
-  color: $red;
+  background-color: black !important;
 }
 
 #appName{
   color: $red;
-  font-size: 80px;
+  font-size: 40px;
   font-weight: 600;
 }
 

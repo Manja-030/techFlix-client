@@ -22,31 +22,31 @@ function Navigation({ user }) {
 	};
 
 	return (
-		<Navbar className="mb-5" id="techFlixNav" bg="dark" variant="dark" expand="lg" sticky="top">
-			<Container>
-				<Navbar.Brand className="appName" href="/">
-					<GiPopcorn />
-					techFlix
-				</Navbar.Brand>
+		<Navbar className="mb-5 main-nav" bg="dark" variant="dark" expand="lg" sticky="top">
+			{/*<Container>*/}
+			<Navbar.Brand className="appName" href="/">
+				<GiPopcorn />
+				techFlix
+			</Navbar.Brand>
 
-				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-				<Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
-					<Nav>
-						{isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
-						{isAuth() && (
-							<Button
-								variant="link"
-								onClick={() => {
-									this.onLoggedOut();
-								}}
-							>
-								LogOut
-							</Button>
-						)}
-						{!isAuth() && <Nav.Link href={`/`}>LogIn</Nav.Link>}
-						{!isAuth() && <Nav.Link href={`/register`}>Register</Nav.Link>}
+			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+			<Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
+				<Nav>
+					{isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+					{isAuth() && (
+						<Button
+							variant="link"
+							onClick={() => {
+								this.onLoggedOut();
+							}}
+						>
+							LogOut
+						</Button>
+					)}
+					{!isAuth() && <Nav.Link href={`/`}>LogIn</Nav.Link>}
+					{!isAuth() && <Nav.Link href={`/register`}>Register</Nav.Link>}
 
-						{/*
+					{/*
 
 
 						<Nav.Link id="link" href="">
@@ -68,9 +68,9 @@ function Navigation({ user }) {
 								LogOut
 							</Button>
 						</Nav.Link>*/}
-					</Nav>
-				</Navbar.Collapse>
-			</Container>
+				</Nav>
+			</Navbar.Collapse>
+			{/*</Container>*/}
 		</Navbar>
 	);
 }
