@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardBody, Row, Col, Button } from 'react-bootstrap';
 
+import DirectorView from '../director-view/director-view';
 import './movie-view.scss';
 import { GiPopcorn } from 'react-icons/gi';
 
@@ -24,9 +25,7 @@ class MovieView extends React.Component {
 					</Col>
 					<Col md={6} lg={4} className="detail-links">
 						<div>Director: </div>
-						<Link to={`/director/${movie.Director.Name}`}>
-							<Button variant="link">{director.Name}</Button>
-						</Link>
+						<DirectorView movie={movie} />
 
 						<div>Genre:</div>
 						<Link to={`/genres/${movie.Genre.name}`}>
