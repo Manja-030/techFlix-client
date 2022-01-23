@@ -83,15 +83,6 @@ class MainView extends React.Component {
 
 	render() {
 		const { movies, user } = this.state;
-		if (!user)
-			return (
-				<Row>
-					<Col>
-						<LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-					</Col>
-				</Row>
-			);
-		if (movies.length === 0) return <div className="main-view" />;
 
 		return (
 			<Router>
@@ -122,6 +113,15 @@ class MainView extends React.Component {
 							exact
 							path="/"
 							render={() => {
+								if (!user)
+									return (
+										<Col>
+											<LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+										</Col>
+									);
+
+								if (movies.length === 0) return <div className="main-view" />;
+
 								return movies.map((m) => (
 									<Col md={3} key={m._id}>
 										<MovieCard movie={m} />
@@ -130,9 +130,25 @@ class MainView extends React.Component {
 							}}
 						/>
 						<Route
+							path="/register"
+							render={() => {
+								return (
+									<Col>
+										<RegistrationView />
+									</Col>
+								);
+							}}
+						/>
+						<Route
 							exact
 							path="/movies/:movieID"
 							render={({ match, history }) => {
+								if (!user)
+									return (
+										<Col>
+											<LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+										</Col>
+									);
 								return (
 									<Col md={8}>
 										<MovieView
@@ -143,10 +159,17 @@ class MainView extends React.Component {
 								);
 							}}
 						/>
+
 						<Route
 							exact
 							path="director/:Name"
 							render={({ match }) => {
+								if (!user)
+									return (
+										<Col>
+											<LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+										</Col>
+									);
 								if (movies.length === 0) return <div className="main-view" />;
 								return (
 									<Col md={8}>
@@ -163,6 +186,12 @@ class MainView extends React.Component {
 							exact
 							path="genres/:Name"
 							render={({ match }) => {
+								if (!user)
+									return (
+										<Col>
+											<LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+										</Col>
+									);
 								if (movies.length === 0) return <div className="main-view" />;
 								return (
 									<Col md={8}>
