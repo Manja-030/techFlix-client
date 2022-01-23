@@ -22,9 +22,9 @@ function Navigation({ user }) {
 	};
 
 	return (
-		<Navbar className="mb-5 main-nav" bg="dark" variant="dark" expand="lg" sticky="top">
+		<Navbar id="main-nav" className="mb-5" bg="dark" variant="dark" expand="lg" sticky="top">
 			{/*<Container>*/}
-			<Navbar.Brand className="appName" href="/">
+			<Navbar.Brand id="appName" href="/">
 				<GiPopcorn />
 				techFlix
 			</Navbar.Brand>
@@ -43,8 +43,16 @@ function Navigation({ user }) {
 							LogOut
 						</Button>
 					)}
-					{!isAuth() && <Nav.Link href={`/`}>LogIn</Nav.Link>}
-					{!isAuth() && <Nav.Link href={`/register`}>Register</Nav.Link>}
+					{!isAuth() && (
+						<Nav.Link className="navbar-link" href={`/`}>
+							LogIn
+						</Nav.Link>
+					)}
+					{!isAuth() && (
+						<Nav.Link className="navbar-link" href={`/register`}>
+							Register
+						</Nav.Link>
+					)}
 
 					{/*
 

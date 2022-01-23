@@ -6,8 +6,8 @@ $text-color: white;
 $bg-color: #1E2127;
 $red: #DA1212;
 
-.main-nav{
-  color: #DA1212 !important;
+#main-nav{
+  color: $red !important;
   background-color: black !important;
 }
 
@@ -17,7 +17,7 @@ $red: #DA1212;
   font-weight: 600;
 }
 
-#link{
+.navbar-link{
   color: #DA1212 !important;
   font-size: 18px;
 }
@@ -26,6 +26,3 @@ $red: #DA1212;
   color: #DA1212 !important;
 }
 
-.main-view{
-  background-color: #1E2127;
-}
