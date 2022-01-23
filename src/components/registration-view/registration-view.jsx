@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Form, Button, Card, CardGroup, Container, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
+import './registration-view.scss';
+
 function RegistrationView(props) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
@@ -73,9 +75,9 @@ function RegistrationView(props) {
 			<Row>
 				<Col>
 					<CardGroup>
-						<Card>
+						<Card className="register-card">
 							<Card.Body>
-								<Card.Title>Please Register</Card.Title>
+								<Card.Title className="register-title">Please Register</Card.Title>
 								<Form>
 									<Form.Group className="mb-3">
 										<Form.Label>Username</Form.Label>
@@ -120,7 +122,12 @@ function RegistrationView(props) {
 										/>
 									</Form.Group>
 
-									<Button type="Submit" onClick={handleSubmit}>
+									<Button
+										type="Submit"
+										className="register-btn"
+										variant="outline-danger"
+										onClick={handleSubmit}
+									>
 										Submit
 									</Button>
 								</Form>
