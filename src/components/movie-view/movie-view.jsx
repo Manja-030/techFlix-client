@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle, CardBody, Row, Col, Button } from 'react-bootstrap';
 
 import DirectorView from '../director-view/director-view';
+import GenreView from '../genre-view/genre-view';
 import './movie-view.scss';
 import { GiPopcorn } from 'react-icons/gi';
 
@@ -28,9 +29,7 @@ class MovieView extends React.Component {
 						<DirectorView movie={movie} />
 
 						<div>Genre:</div>
-						<Link to={`/genres/${movie.Genre.name}`}>
-							<Button variant="link">{genre.Name}</Button>
-						</Link>
+						<GenreView />
 
 						<div>Released: {movie.ReleaseYear}</div>
 					</Col>
