@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Navbar, Nav, Button } from 'react-bootstrap';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect, Link } from 'react-router-dom';
 
 import { GiPopcorn } from 'react-icons/gi';
 import './main-view.scss';
@@ -108,6 +108,7 @@ class MainView extends React.Component {
 							</Nav.Link>
 						</Navbar.Collapse>
 					</Navbar>*/}
+					<Link to={`/users/${user}`}>{user}</Link>
 					<Row className="main-view justify-content-md-center">
 						<Route
 							exact
@@ -132,6 +133,7 @@ class MainView extends React.Component {
 						<Route
 							path="/register"
 							render={() => {
+								if (user) return <Redirect to="/" />;
 								return (
 									<Col>
 										<RegistrationView />
@@ -139,6 +141,18 @@ class MainView extends React.Component {
 								);
 							}}
 						/>
+						<Route
+							path={`/users/${user}`}
+							render={({ history }) => {
+								if (!user) return <Redirect to="/" />;
+								return (
+									<Col>
+										<ProfileView user={user} onBackClick={() => history.goBack()} />
+									</Col>
+								);
+							}}
+						/>
+
 						<Route
 							exact
 							path="/movies/:movieID"
