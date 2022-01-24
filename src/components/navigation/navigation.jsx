@@ -5,7 +5,7 @@ import './navigation.scss';
 import { GiPopcorn } from 'react-icons/gi';
 
 function Navigation({ user }) {
-	const OnLoggedOut = () => {
+	const onLoggedOut = () => {
 		localStorage.clear();
 		window.open('/', '_self');
 	};
@@ -32,12 +32,16 @@ function Navigation({ user }) {
 			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 			<Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
 				<Nav>
-					{isAuth() && <Nav.Link href={`/users/${user}`}>{user}</Nav.Link>}
+					{isAuth() && (
+						<Button variant="link" to={`/users/${user}`}>
+							MyPage
+						</Button>
+					)}
 					{isAuth() && (
 						<Button
 							variant="link"
 							onClick={() => {
-								this.onLoggedOut();
+								onLoggedOut();
 							}}
 						>
 							LogOut
