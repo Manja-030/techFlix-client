@@ -32,14 +32,11 @@ function Navigation({ user }) {
 			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 			<Navbar.Collapse className="justify-content-end" id="responsive-navbar-nav">
 				<Nav>
-					{isAuth() && (
-						<Button variant="link" to={`/users/${user}`}>
-							MyPage
-						</Button>
-					)}
+					{isAuth() && <Nav.Link href={`/users/${user}`}>MyPage{user}</Nav.Link>}
+
 					{isAuth() && (
 						<Button
-							variant="link"
+							variant="outline-danger"
 							onClick={() => {
 								onLoggedOut();
 							}}
@@ -47,7 +44,7 @@ function Navigation({ user }) {
 							LogOut
 						</Button>
 					)}
-					{!isAuth() && (
+					{/*{!isAuth() && (
 						<Nav.Link className="navbar-link" href={`/`}>
 							LogIn
 						</Nav.Link>
@@ -56,7 +53,7 @@ function Navigation({ user }) {
 						<Nav.Link className="navbar-link" href={`/register`}>
 							Register
 						</Nav.Link>
-					)}
+					)}*/}
 
 					{/*
 
