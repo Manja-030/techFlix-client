@@ -4,7 +4,9 @@ import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import './navigation.scss';
 import { GiPopcorn } from 'react-icons/gi';
 
-function Navigation({ user }) {
+function Navigation({ props }) {
+	const user = localStorage.getItem('user');
+
 	const onLoggedOut = () => {
 		localStorage.clear();
 		window.open('/', '_self');
