@@ -12,6 +12,8 @@ import RegistrationView from '../registration-view/registration-view';
 import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import ProfileView from '../profile-view/profile-view';
+import DirectorView from '../director-view/director-view';
+import GenreView from '../genre-view/genre-view';
 
 class MainView extends React.Component {
 	constructor() {
@@ -210,10 +212,8 @@ class MainView extends React.Component {
 								if (movies.length === 0) return <div className="main-view" />;
 								return (
 									<Col md={8}>
-										<DirectorView
-											director={
-												movies.find((m) => m.Director.Name === match.params.name).Director
-											}
+										<GenreView
+											genre={movies.find((m) => m.Director.Name === match.params.name).Director}
 										/>
 									</Col>
 								);
