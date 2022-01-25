@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle, CardBody, Row, Col, Button } from 'react-bootstrap';
 
 import DirectorView from '../director-view/director-view';
-import GenreView from '../genre-view/genre-view';
+//import GenreView from '../genre-view/genre-view';
 import './movie-view.scss';
 import { GiPopcorn } from 'react-icons/gi';
 
@@ -17,23 +17,27 @@ class MovieView extends React.Component {
 						<h2 className="movie-title mb-5">{movie.Title}</h2>
 					</Col>
 				</Row>
+
 				<Row className="mb-4">
 					<Col md={6} lg={4}>
 						<img className="movie-view" src={movie.ImagePath} alt={movie.Title} crossOrigin="true" />
 					</Col>
+
 					<Col md={6} lg={4} className="movie-details">
 						{movie.Description}
 					</Col>
+
 					<Col md={6} lg={4} className="detail-links">
 						<div>Director: </div>
 						<DirectorView movie={movie} />
 
-						<div>Genre:</div>
-						<GenreView />
+						{/*<div>Genre:</div>
+						<GenreView />*/}
 
 						<div>Released: {movie.ReleaseYear}</div>
 					</Col>
 				</Row>
+
 				<Row>
 					<Col className="add-fav">
 						Add to Favorites <GiPopcorn className="fav-icon" />
