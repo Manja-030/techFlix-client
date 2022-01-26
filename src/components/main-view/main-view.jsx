@@ -20,6 +20,7 @@ class MainView extends React.Component {
 		super();
 		this.state = {
 			movies: [],
+			genres: [],
 			user: null,
 		};
 	}
@@ -91,27 +92,6 @@ class MainView extends React.Component {
 			<Router>
 				<Navigation />
 				<Container>
-					{/*<Navbar className="mb-5" id="techFlixNav" bg="dark" variant="dark" expand="lg" sticky="top">
-						<Navbar.Brand id="appName" href="#home">
-							<GiPopcorn />
-							techFlix
-						</Navbar.Brand>
-						<Navbar.Toggle className="toggle" />
-						<Navbar.Collapse className="justify-content-end toggle">
-							<Nav.Link id="link" href="">
-								MyPage
-							</Nav.Link>
-							<Nav.Link id="link" href="">
-								Movies
-							</Nav.Link>
-							<Nav.Link id="link" href="">
-								<Button variant="outline-danger" onClick={() => this.onLoggedOut()}>
-									LogOut
-								</Button>
-							</Nav.Link>
-						</Navbar.Collapse>
-					</Navbar>*/}
-					<Link to={`/users/${user}`}>MyPage</Link>
 					<Row className="main-view justify-content-md-center">
 						<Route
 							exact
@@ -169,7 +149,7 @@ class MainView extends React.Component {
 								return (
 									<Col md={8}>
 										<MovieView
-											movie={movies.find((m) => m._id === match.params.movieID)}
+											movie={movies.find((movie) => movie._id === match.params.movieID)}
 											onBackClick={() => history.goBack()}
 										/>
 									</Col>
@@ -192,7 +172,8 @@ class MainView extends React.Component {
 									<Col md={8}>
 										<DirectorView
 											director={
-												movies.find((m) => m.Director.Name === match.params.name).Director
+												movies.find((movie) => movie.Director.Name === match.params.name)
+													.Director
 											}
 										/>
 									</Col>
@@ -213,7 +194,7 @@ class MainView extends React.Component {
 								return (
 									<Col md={8}>
 										<GenreView
-											genre={movies.find((m) => m.Director.Name === match.params.name).Director}
+											genre={genres.find((genre) => genre.Name === match.params.name).Name}
 										/>
 									</Col>
 								);
