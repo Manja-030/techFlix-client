@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { Card, CardTitle, CardBody, Row, Col, Button } from 'react-bootstrap';
 
 import DirectorView from '../director-view/director-view';
-//import GenreView from '../genre-view/genre-view';
+import GenreView from '../genre-view/genre-view';
 import './movie-view.scss';
 import { GiPopcorn } from 'react-icons/gi';
 
 class MovieView extends React.Component {
 	render() {
-		const { movie, onBackClick } = this.props;
+		const { genre, movie, onBackClick } = this.props;
+		console.log(movie.Title);
 		return (
 			<>
 				<Row>
@@ -31,8 +32,8 @@ class MovieView extends React.Component {
 						<div>Director: </div>
 						<DirectorView movie={movie} />
 
-						{/*<div>Genre:</div>
-						<GenreView />*/}
+						<div>Genre:</div>
+						<GenreView genre={genre} />
 
 						<div>Released: {movie.ReleaseYear}</div>
 					</Col>
