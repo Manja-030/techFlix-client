@@ -15,7 +15,7 @@ function DirectorView({ movie }) {
 	return (
 		<Accordion>
 			<Accordion.Item eventKey="0">
-				<Accordion.Header className="accordion-header" as={Button} variant="link" onClick={handleClick}>
+				<Accordion.Header className="accordion-header" variant="link" onClick={handleClick}>
 					{movie.Director.Name} {isCollapsed ? <BsFillArrowUpCircleFill /> : <BsFillArrowDownCircleFill />}
 				</Accordion.Header>
 				<Accordion.Body>{movie.Director.Bio}</Accordion.Body>

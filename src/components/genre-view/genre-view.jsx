@@ -15,7 +15,7 @@ function GenreView({ genre }) {
 	return (
 		<Accordion>
 			<Accordion.Item eventKey="0">
-				<Accordion.Header as={Button} variant="link" onClick={handleClick}>
+				<Accordion.Header variant="link" onClick={handleClick}>
 					{genre.Name} {isCollapsed ? <BsFillArrowUpCircleFill /> : <BsFillArrowDownCircleFill />}
 				</Accordion.Header>
 				<Accordion.Body>{genre.Description}</Accordion.Body>
