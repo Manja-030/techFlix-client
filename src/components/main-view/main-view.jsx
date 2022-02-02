@@ -182,7 +182,7 @@ class MainView extends React.Component {
 						/>
 						<Route
 							exact
-							path="genres/:Name"
+							path="genres/:id"
 							render={({ match }) => {
 								if (!user)
 									return (
@@ -194,7 +194,7 @@ class MainView extends React.Component {
 								return (
 									<Col md={8}>
 										<GenreView
-											genre={genres.find((genre) => genre.Name === match.params.name).Name}
+											genre={movies.find((movie) => movie.genre.includes(match.params.id)).genre}
 										/>
 									</Col>
 								);
