@@ -211,8 +211,8 @@ class MainView extends React.Component {
                     <GenreView
                       genre={
                         movies.find((movie) =>
-                          movie.genre.includes(match.params.id)
-                        ).genre
+                          movie.Genre.includes(match.params.id)
+                        ).Genre
                       }
                     />
                   </Col>
@@ -220,6 +220,7 @@ class MainView extends React.Component {
               }}
             />
           </Row>
+          console.log{genre};
         </Container>
       </Router>
     );
