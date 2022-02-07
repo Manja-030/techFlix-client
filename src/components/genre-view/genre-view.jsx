@@ -3,9 +3,10 @@ import './genre-view.scss';
 import { BsFillArrowDownCircleFill } from 'react-icons/bs';
 import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 
-import { Accordion, Button } from 'react-bootstrap';
+import { Accordion } from 'react-bootstrap';
 
 function GenreView({ genre }) {
+	console.log(genre);
 	const [isCollapsed, setIsCollapsed] = useState(false);
 
 	const handleClick = () => {
