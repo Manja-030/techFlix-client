@@ -144,7 +144,6 @@ class MainView extends React.Component {
                 );
               }}
             />
-
             <Route
               exact
               path="/movies/:movieID"
@@ -168,7 +167,6 @@ class MainView extends React.Component {
                 );
               }}
             />
-
             <Route
               exact
               path="director/:Name"
@@ -219,8 +217,8 @@ class MainView extends React.Component {
                 );
               }}
             />
+            console.log("result: ", genre);
           </Row>
-          console.log{genre};
         </Container>
       </Router>
     );
