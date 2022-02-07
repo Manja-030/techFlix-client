@@ -3,7 +3,7 @@ import './director-view.scss';
 import { BsFillArrowDownCircleFill } from 'react-icons/bs';
 import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 
-import { Accordion, Button } from 'react-bootstrap';
+import { Accordion } from 'react-bootstrap';
 
 function DirectorView({ movie }) {
 	const [isCollapsed, setIsCollapsed] = useState(false);
