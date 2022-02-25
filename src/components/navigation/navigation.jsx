@@ -44,10 +44,15 @@ function Navigation({ props }) {
         id="responsive-navbar-nav"
       >
         <Nav>
-          {isAuth() && <Nav.Link href={`/users/${user}`}>MyPage</Nav.Link>}
+          {isAuth() && (
+            <Nav.Link className="navbar-link" href={`/users/${user}`}>
+              MyPage
+            </Nav.Link>
+          )}
 
           {isAuth() && (
             <Button
+              className="navbar-button"
               variant="outline-danger"
               onClick={() => {
                 onLoggedOut();
