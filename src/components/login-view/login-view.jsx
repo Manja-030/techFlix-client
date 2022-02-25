@@ -64,47 +64,55 @@ function LoginView(props) {
     <Container className="login-container">
       <Row>
         <Col>
-          <Card>
-            <Card.Body className="card-body">
-              <Card.Title>Please Login</Card.Title>
-              <Form id="login-form">
-                <Form.Group className="mb-3" controlId="formUsername">
-                  <Form.Label>Username:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Enter username"
-                    required
-                  />
-                  {usernameError && <p>{usernameError}</p>}
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formPassword">
-                  <Form.Label>Password:</Form.Label>
-                  <Form.Control
-                    type="password"
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                    }}
-                    placeholder="Enter Password"
-                    required
-                  />
-                  {passwordError && <p>{passwordError}</p>}
-                </Form.Group>
-                <Button
-                  className="login-button"
-                  variant="outline-danger"
-                  as="input"
-                  type="submit"
-                  value="Submit"
-                  onClick={handleSubmit}
-                />{' '}
-                No account? No problem! Register{' '}
-                <a className="link" href={'/register'}>
-                  here
-                </a>
-              </Form>
-            </Card.Body>
-          </Card>
+          <h3 className="login-title">Done coding for today?</h3>
+
+          <p className="intro-text">
+            Grab a beer and some popcorn
+            <br /> and discover my selection
+            <br /> of tech-industry movies.
+          </p>
+        </Col>
+        <Col className="mt-1">
+          <h3 className="login-title">Please Login</h3>
+          <Form id="login-form">
+            <Form.Group className="mb-3" controlId="formUsername">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                type="text"
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter username"
+                required
+              />
+              {usernameError && <p>{usernameError}</p>}
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Password:</Form.Label>
+              <Form.Control
+                type="password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                placeholder="Enter Password"
+                required
+              />
+              {passwordError && <p>{passwordError}</p>}
+            </Form.Group>
+            <Button
+              className="submit-button"
+              variant="outline-danger"
+              as="input"
+              type="submit"
+              value="Submit"
+              onClick={handleSubmit}
+            />
+            &nbsp;
+            <span>
+              No&nbsp;account?&nbsp;No&nbsp;problem!&nbsp;
+              <a className="link" href={'/register'}>
+                Register&nbsp;here.
+              </a>
+            </span>
+          </Form>
         </Col>
       </Row>
     </Container>

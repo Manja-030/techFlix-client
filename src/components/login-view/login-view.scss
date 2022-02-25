@@ -1,7 +1,6 @@
 $text-size: 18px;
 $title-size: 21px;
 $brand-size: 40px;
-$font-style: 400;
 $text-color: white;
 $bg-color: #1E2127;
 $red: #DA1212;
@@ -10,9 +9,14 @@ body{
   background-color: $bg-color !important;
 }
 
-.card-body{
-  background-color: $bg-color !important;
+.login-title{
+  line-height: 2.5em;
 }
+
+.intro-text{
+  font-size: $text-size;
+}
+
 .login-container{
   color: $text-color;
 }
@@ -27,7 +31,8 @@ body{
   color: red !important;
 }
 
-.login-button{
+.submit-button{
   font-size: $text-size;
-  margin-right: 40px;
+  margin-right: 1em;
+  margin-bottom: 1em;
 }
