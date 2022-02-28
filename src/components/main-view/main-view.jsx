@@ -169,7 +169,7 @@ class MainView extends React.Component {
             />
             <Route
               exact
-              path="director/:Name"
+              path="/director/:Name"
               render={({ match }) => {
                 if (!user)
                   return (
@@ -194,7 +194,7 @@ class MainView extends React.Component {
             />
             <Route
               exact
-              path="genres/:id"
+              path="/genres/:id"
               render={({ match }) => {
                 if (!user)
                   return (
@@ -217,7 +217,6 @@ class MainView extends React.Component {
                 );
               }}
             />
-            console.log("result: ", genre);
           </Row>
         </Container>
       </Router>
