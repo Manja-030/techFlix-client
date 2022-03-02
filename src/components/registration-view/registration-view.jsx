@@ -86,7 +86,7 @@ function RegistrationView(props) {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col sm={12} md={6}>
           <Form className="register-form">
             <Form.Group className="mb-3">
               <Form.Label className="register-text">Username:</Form.Label>
