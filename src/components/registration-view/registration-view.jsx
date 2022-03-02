@@ -79,70 +79,74 @@ function RegistrationView(props) {
   };
 
   return (
-    <Container>
+    <Container className="fluid">
       <Row>
-        <h3 className="register-title">Please Register</h3>
+        <Col>
+          <h3 className="register-title">Please Register</h3>
+        </Col>
       </Row>
       <Row>
-        <Form>
-          <Form.Group className="mb-3">
-            <Form.Label className="register-text">Username</Form.Label>
-            <Form.Control
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              placeholder="Enter a username"
-            />
-            <div className="register-text">
-              {usernameError && <p> {usernameError}</p>}
-            </div>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label className="register-text">Password:</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="Enter your password"
-            />
-            <div className="register-text">
-              {passwordError && <p> {passwordError}</p>}
-            </div>
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label className="register-text">Email:</Form.Label>
-            <Form.Control
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Enter your email address"
-            />
-            <div className="register-text">
-              {emailError && <p> {emailError}</p>}
-            </div>
-          </Form.Group>
+        <Col>
+          <Form className="register-form">
+            <Form.Group className="mb-3">
+              <Form.Label className="register-text">Username:</Form.Label>
+              <Form.Control
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                placeholder="Enter a username"
+              />
+              <div className="register-text">
+                {usernameError && <p> {usernameError}</p>}
+              </div>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="register-text">Password:</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="Enter your password"
+              />
+              <div className="register-text">
+                {passwordError && <p> {passwordError}</p>}
+              </div>
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="register-text">Email:</Form.Label>
+              <Form.Control
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="Enter your email address"
+              />
+              <div className="register-text">
+                {emailError && <p> {emailError}</p>}
+              </div>
+            </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label className="register-text">Birthday:</Form.Label>
-            <Form.Control
-              type="date"
-              value={birthday}
-              onChange={(e) => setBirthday(e.target.value)}
-            />
-          </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="register-text">Birthday:</Form.Label>
+              <Form.Control
+                type="date"
+                value={birthday}
+                onChange={(e) => setBirthday(e.target.value)}
+              />
+            </Form.Group>
 
-          <Button
-            type="Submit"
-            className="register-btn"
-            variant="outline-danger"
-            onClick={handleSubmit}
-          >
-            Submit
-          </Button>
-        </Form>
+            <Button
+              type="Submit"
+              className="register-btn"
+              variant="outline-danger"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
+          </Form>
+        </Col>
       </Row>
     </Container>
   );
