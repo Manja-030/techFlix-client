@@ -37,6 +37,7 @@ class MainView extends React.Component {
         user: localStorage.getItem('user'),
       });
       this.getMovies(accessToken);
+      this.getGenres(accessToken);
     }
   }
 
@@ -58,6 +59,7 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
+    this.getGenres(authData.token);
   }
 
   onLoggedOut() {
@@ -83,6 +85,22 @@ class MainView extends React.Component {
         // Assign the result to the state
         this.setState({
           movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  getGenres(token) {
+    axios
+      .get('https://tech-and-popcorn.herokuapp.com/genres', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        // Assign the result to the state
+        this.setState({
+          genres: response.data,
         });
       })
       .catch(function (error) {
