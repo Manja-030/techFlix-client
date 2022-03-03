@@ -45,7 +45,7 @@ class MovieView extends React.Component {
 
             <div>Genre:</div>
 
-            {/*<GenreView genre={genre} />*/}
+            <GenreView genre={genre} />
 
             <div>Released: {movie.ReleaseYear}</div>
           </Col>
@@ -72,7 +72,7 @@ class MovieView extends React.Component {
 }
 
 MovieView.propTypes = {
-  movie: PropTypes.shape({
+  Movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
