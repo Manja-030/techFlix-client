@@ -1,3 +1,16 @@
-.welcome{
-  color: white !important;
+$text-size: 18px;
+$title-size: 23px;
+$brand-size: 35px;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+
+.profile-title{
+  color: $red !important;
+}
+
+.profile-text{
+  color: $text-color !important;
 }
