@@ -22,12 +22,18 @@ function GenreView({ genre }) {
 
   genre.forEach(function (genreId) {
     console.log(genreId);
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
     let url = 'https://tech-and-popcorn.herokuapp.com/genres/' + genreId;
-    axios.get(url).then((response) => {
-      console.log(response.data);
-      let genreObject = response.data;
-      return genreObject;
-    });
+    axios
+      .get(url, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+        let genreObject = response.data;
+        return genreObject;
+      });
   });
 
   return (

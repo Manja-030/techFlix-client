@@ -57,7 +57,7 @@ function ProfileView({ user, movies }) {
   /* converts Array of IDs into Object of movies */
   const getFavs = (favs) => {
     let favMovieList = [];
-    movie.forEach((movie) => {
+    movies.forEach((movie) => {
       favs.includes(movie._id) ? favMovieList.push(movie) : favMovieList;
     });
     setFavorites(favMovieList);
