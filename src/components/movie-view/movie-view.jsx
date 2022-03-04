@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Card, CardTitle, CardBody, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -12,6 +13,28 @@ class MovieView extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  handleAdd() {
+    const token = localStorage.getItem('token');
+    const user = localStorage.getItem('user');
+    axios
+      .post(
+        `https://tech-and-popcorn.herokuapp.com/users/${user}` +
+          '/favorites/' +
+          this.props.movie._id,
+        {},
+        { headers: { Authorization: `Bearer ${token}` } }
+      )
+      .then((response) => {
+        console.log(response);
+        alert(
+          this.props.movie.Title + ' has been added to your Favorites List.'
+        );
+        this.props.setUser(response.data);
+        alert('HELLO');
+      });
+  }
+
   render() {
     const { genre, movie, onBackClick } = this.props;
     console.log(movie);
@@ -40,12 +63,19 @@ class MovieView extends React.Component {
           </Col>
 
           <Col md={6} lg={4} className="detail-links">
-            <div>Director: </div>
-            <DirectorView movie={movie} />
+            <div>
+              <div>Director: </div>
+              <DirectorView movie={movie} />
+            </div>
+            <div>
+              <div>Genre:</div>
 
-            <div>Genre:</div>
-
-            <GenreView genre={genre} />
+              <div>
+                {genre.map((genre) => (
+                  <GenreView />
+                ))}
+              </div>
+            </div>
 
             <div>Released: {movie.ReleaseYear}</div>
           </Col>
@@ -53,8 +83,15 @@ class MovieView extends React.Component {
 
         <Row>
           <Col className="add-fav">
-            Add to Favorites <GiPopcorn className="fav-icon" />
+            <Button
+              type="button"
+              variant="outline-danger"
+              onClick={() => this.handleAdd(movie)}
+            >
+              Add to Favorites <GiPopcorn className="fav-icon" />
+            </Button>
           </Col>
+
           <Col>
             <Button
               variant="outline-danger"
@@ -71,7 +108,8 @@ class MovieView extends React.Component {
   }
 }
 
-MovieView.propTypes = {
+{
+  /*MovieView.propTypes = {
   Movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired,
@@ -86,6 +124,7 @@ MovieView.propTypes = {
     Genre: PropTypes.array.isRequired,
   }).isRequired,
   onBackClick: PropTypes.func.isRequired,
-};
+};*/
+}
 
 export default MovieView;
