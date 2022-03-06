@@ -6,6 +6,8 @@ import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 
 import { Accordion } from 'react-bootstrap';
 
+/*I guess I have to add a state to make it work?*/
+
 function GenreView({ genre }) {
   console.log(genre);
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -15,9 +17,9 @@ function GenreView({ genre }) {
   };
 
   /*
-	Ich nehme Genre Array
-	für jedes Element -genreID- in diesem Array
-	finde in response.data das Objekt mit der entsprechenden ID
+	I take the genre array. 
+  For every element in this array (every genreId) I find in response.data the object 
+  that has the matching Id.
 	*/
 
   genre.forEach(function (genreId) {
@@ -32,6 +34,7 @@ function GenreView({ genre }) {
       .then((response) => {
         console.log(response.data);
         let genreObject = response.data;
+        console.log(genreObject);
         return genreObject;
       });
   });
