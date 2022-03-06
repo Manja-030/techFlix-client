@@ -71,8 +71,8 @@ class MovieView extends React.Component {
               <div>Genre:</div>
 
               <div>
-                {genre.map((genre) => (
-                  <GenreView key="genre" />
+                {genre.map((genreId) => (
+                  <GenreView key={genreId} />
                 ))}
               </div>
             </div>
