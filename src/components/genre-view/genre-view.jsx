@@ -10,6 +10,9 @@ import { Accordion } from 'react-bootstrap';
 
 function GenreView({ genre }) {
   console.log(genre);
+
+  const [genreObject, setGenreObject] = useState({});
+
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const handleClick = () => {
@@ -22,22 +25,22 @@ function GenreView({ genre }) {
   that has the matching Id.
 	*/
 
-  genre.forEach(function (genreId) {
-    console.log(genreId);
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
-    let url = 'https://tech-and-popcorn.herokuapp.com/genres/' + genreId;
-    axios
-      .get(url, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        console.log(response.data);
-        let genreObject = response.data;
-        console.log(genreObject);
-        return genreObject;
-      });
-  });
+  useEffect(() => {
+    genre.forEach(function (genreId) {
+      console.log(genreId);
+      const token = localStorage.getItem('token');
+      let url = 'https://tech-and-popcorn.herokuapp.com/genres/' + genreId;
+      axios
+        .get(url, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          setGenreObject(response.data);
+          console.log(response.data);
+          console.log(genreObject);
+        });
+    });
+  }, []);
 
   return (
     <Accordion>
@@ -50,7 +53,9 @@ function GenreView({ genre }) {
             <BsFillArrowDownCircleFill />
           )}
         </Accordion.Header>
-        <Accordion.Body>{genreObject.Description}</Accordion.Body>
+        <Accordion.Body className="genre-text">
+          {genreObject.Description}
+        </Accordion.Body>
       </Accordion.Item>
     </Accordion>
   );
