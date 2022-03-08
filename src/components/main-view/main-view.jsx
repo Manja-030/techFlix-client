@@ -179,11 +179,6 @@ class MainView extends React.Component {
                       movie={movies.find(
                         (movie) => movie._id === match.params.movieID
                       )}
-                      genre={
-                        movies.find((movie) =>
-                          movie.Genre.includes(match.params.id)
-                        ).Genre
-                      }
                       onBackClick={() => history.goBack()}
                     />
                   </Col>

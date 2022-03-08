@@ -36,10 +36,9 @@ class MovieView extends React.Component {
   }
 
   render() {
-    const { genre, movie, onBackClick } = this.props;
+    const { movie, onBackClick } = this.props;
     console.log(movie);
     console.log(movie.Genre);
-    console.log(genre);
     return (
       <>
         <Row>
@@ -71,9 +70,7 @@ class MovieView extends React.Component {
               <div>Genre:</div>
 
               <div>
-                {genre.map((genreId) => (
-                  <GenreView key={genreId} />
-                ))}
+                <GenreView key={movie.Genre} />
               </div>
             </div>
 
