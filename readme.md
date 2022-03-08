@@ -71,7 +71,7 @@ npm start
 
 ## Build Process
 
-The build is done with [2.0.0-rc.0](https://www.npmjs.com/package/parcel/v/2.0.0-rc.0)
+The build is done with [Parcel version 2.0.0-rc.0](https://www.npmjs.com/package/parcel/v/2.0.0-rc.0)
 
 ## Live Demo
 
