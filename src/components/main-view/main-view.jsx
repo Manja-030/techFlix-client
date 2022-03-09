@@ -23,9 +23,10 @@ import GenreView from '../genre-view/genre-view';
 class MainView extends React.Component {
   constructor() {
     super();
+    //initial state is set to null/empty array
     this.state = {
       movies: [],
-      genres: [],
+      //genres: [], **I dont think I need this**
       user: null,
     };
   }
@@ -37,7 +38,7 @@ class MainView extends React.Component {
         user: localStorage.getItem('user'),
       });
       this.getMovies(accessToken);
-      this.getGenres(accessToken);
+      //  this.getGenres(accessToken);
     }
   }
 
@@ -59,7 +60,7 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-    this.getGenres(authData.token);
+    //this.getGenres(authData.token); ** I don't think I need this  **
   }
 
   onLoggedOut() {
@@ -91,8 +92,8 @@ class MainView extends React.Component {
         console.log(error);
       });
   }
-
-  getGenres(token) {
+  // ** I don't think I need this piece of code: **
+  /* getGenres(token) {
     axios
       .get('https://tech-and-popcorn.herokuapp.com/genres', {
         headers: { Authorization: `Bearer ${token}` },
@@ -106,7 +107,7 @@ class MainView extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
+  }*/
 
   render() {
     const { movies, user } = this.state;
@@ -164,7 +165,7 @@ class MainView extends React.Component {
             />
             <Route
               exact
-              path="/movies/:movieID"
+              path="/movies/:movieId"
               render={({ match, history }) => {
                 if (!user)
                   return (
@@ -177,7 +178,7 @@ class MainView extends React.Component {
                   <Col md={8}>
                     <MovieView
                       movie={movies.find(
-                        (movie) => movie._id === match.params.movieID
+                        (movie) => movie._id === match.params.movieId
                       )}
                       onBackClick={() => history.goBack()}
                     />
