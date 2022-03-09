@@ -29,7 +29,7 @@ function LoginView(props) {
       isReq = false;
     }
     if (!password) {
-      setUsernameError('Password is required.');
+      setPasswordError('Password is required.');
       isReq = false;
     } else if (password.length < 6) {
       setPasswordError('Password must be at least 6 characters long.');
@@ -102,7 +102,7 @@ function LoginView(props) {
               variant="outline-danger"
               as="input"
               type="submit"
-              value="Submit"
+              value="Login"
               onClick={handleSubmit}
             />
             &nbsp;
