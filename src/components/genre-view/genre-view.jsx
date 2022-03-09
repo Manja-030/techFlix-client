@@ -26,6 +26,8 @@ function GenreView({ genre }) {
 	*/
 
   useEffect(() => {
+    console.log('Test', genre);
+    setGenreObject({});
     genre.forEach(function (genreId) {
       console.log(genreId);
       const token = localStorage.getItem('token');
@@ -35,9 +37,9 @@ function GenreView({ genre }) {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
+          console.log('Response Data:', response.data);
           setGenreObject(response.data);
-          console.log(response.data);
-          console.log(genreObject);
+          console.log('genreObject:', genreObject);
         });
     });
   }, []);
