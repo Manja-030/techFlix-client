@@ -23,6 +23,7 @@ class MovieView extends React.Component {
     let accessToken = localStorage.getItem('token');
     this.getMovie(accessToken);
   }
+
   /*
   handleAdd() {
     const token = localStorage.getItem('token');
