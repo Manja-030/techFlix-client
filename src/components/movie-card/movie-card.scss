@@ -6,10 +6,10 @@ $red: #DA1212;
   background-color: $bg-color !important;
   color: $text-color;
   border: 2px solid $red !important;
+  
 }
 .movieCard-img{
-  max-height: 500px;
-
+  max-height: 350px;
 }
 
 .cardTitle{
@@ -18,8 +18,32 @@ $red: #DA1212;
 
 .cardText{
   min-height: 100px;
+  margin: 0;
+  padding-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.movieCard-body{
+  margin-bottom: 0;
+  padding-bottom: 0 !important;
+}
+
+.movieCard-footer{
+  margin: 0 auto;
+}
+
+#button-link{
+  display: block;
+  margin: auto;
+  //text-align: bottom;
 }
 
 #card-button{
   color: $red !important;
+  vertical-align: bottom;
+  text-align: center;
+  margin: auto;
 }
