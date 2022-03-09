@@ -13,7 +13,7 @@ class MovieView extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  /*
   handleAdd() {
     const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
@@ -34,6 +34,7 @@ class MovieView extends React.Component {
         alert('HELLO');
       });
   }
+  */
 
   render() {
     const { movie, onBackClick } = this.props;
