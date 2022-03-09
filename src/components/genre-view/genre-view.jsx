@@ -27,7 +27,6 @@ function GenreView({ genre }) {
 
   useEffect(() => {
     console.log('Test', genre);
-    setGenreObject({});
     genre.forEach(function (genreId) {
       console.log(genreId);
       const token = localStorage.getItem('token');
