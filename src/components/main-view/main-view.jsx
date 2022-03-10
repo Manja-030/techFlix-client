@@ -163,6 +163,8 @@ class MainView extends React.Component {
                   <Col>
                     <ProfileView
                       user={user}
+                      movies={movies}
+                      logOut={() => this.onLoggedOut()}
                       onBackClick={() => history.goBack()}
                     />
                   </Col>
