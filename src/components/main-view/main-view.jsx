@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Navbar, Nav, Button } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import {
   BrowserRouter as Router,
   Route,
@@ -8,7 +8,6 @@ import {
   Link,
 } from 'react-router-dom';
 
-import { GiPopcorn } from 'react-icons/gi';
 import './main-view.scss';
 
 import Navigation from '../navigation/navigation.jsx';
@@ -188,6 +187,7 @@ class MainView extends React.Component {
                       movie={movies.find(
                         (movie) => movie._id === match.params.movieId
                       )}
+                      user={user}
                       onBackClick={() => history.goBack()}
                     />
                   </Col>
