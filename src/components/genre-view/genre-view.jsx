@@ -6,8 +6,6 @@ import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 
 import { Accordion } from 'react-bootstrap';
 
-/*I guess I have to add a state to make it work?*/
-
 function GenreView({ genre }) {
   console.log('Prop that is passed from MainView:', genre);
 
@@ -21,8 +19,8 @@ function GenreView({ genre }) {
 
   /*
 	I take the genre array. 
-  For every element in this array (every genreId) I find in response.data the object 
-  that has the matching Id.
+  For every element in this array (every genreId) I find in response.data the objects 
+  that have the matching Id and create an array of genre objects.
 	*/
 
   useEffect(() => {
