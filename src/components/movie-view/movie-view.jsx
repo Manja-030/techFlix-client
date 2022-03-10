@@ -13,33 +13,16 @@ class MovieView extends React.Component {
   constructor(props) {
     super(props);
   }
-  /*
+
+  // add movieID to user's FavMovies array:
+  // this is the endpoint in my backend: '/users/:Username/movies/:MovieID'
   handleAdd() {
-    const token = localStorage.getItem('token');
-    const user = localStorage.getItem('user');
-    axios
-      .post(
-        `https://tech-and-popcorn.herokuapp.com/users/${user}` +
-          '/favorites/' +
-          this.props.movie._id,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
-      )
-      .then((response) => {
-        console.log(response);
-        alert(
-          this.props.movie.Title + ' has been added to your Favorites List.'
-        );
-        this.props.setUser(response.data);
-        alert('HELLO');
-      });
+    alert('I will add this function in Task 3.8.');
   }
-  */
 
   render() {
     const { movie, onBackClick } = this.props;
-    console.log(movie);
-    console.log(movie.Genre);
+
     return (
       <>
         <Row>
@@ -107,22 +90,22 @@ class MovieView extends React.Component {
 }
 
 {
-  /*MovieView.propTypes = {
-  Movie: PropTypes.shape({
-    Title: PropTypes.string.isRequired,
-    ImagePath: PropTypes.string.isRequired,
-    Description: PropTypes.string.isRequired,
-    ReleaseYear: PropTypes.string.isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired,
-      Bio: PropTypes.string.isRequired,
-      Birth: PropTypes.string,
-      Death: PropTypes.string,
+  MovieView.propTypes = {
+    Movie: PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      ReleaseYear: PropTypes.string.isRequired,
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired,
+        Birth: PropTypes.string,
+        Death: PropTypes.string,
+      }).isRequired,
+      Genre: PropTypes.array.isRequired,
     }).isRequired,
-    Genre: PropTypes.array.isRequired,
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
-};*/
+    onBackClick: PropTypes.func.isRequired,
+  };
 }
 
 export default MovieView;
