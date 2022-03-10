@@ -9,9 +9,9 @@ import { Accordion } from 'react-bootstrap';
 /*I guess I have to add a state to make it work?*/
 
 function GenreView({ genre }) {
-  console.log(genre);
+  console.log('Prop that is passed from MainView:', genre);
 
-  const [genreObject, setGenreObject] = useState({});
+  const [genreObject, setGenreObject] = useState([]);
 
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -26,18 +26,20 @@ function GenreView({ genre }) {
 	*/
 
   useEffect(() => {
-    console.log('Test', genre);
-    genre.forEach(function (genreId) {
-      console.log(genreId);
+    console.log('Prop that is passed from Mainview:', genre);
+    console.log('Array of GenreObjects should be empty:', genreObject);
+    genre.map(function (genreId) {
+      console.log('Item of the genre-array:', genreId);
       const token = localStorage.getItem('token');
       let url = 'https://tech-and-popcorn.herokuapp.com/genres/' + genreId;
+      console.log('URL:', url);
       axios
         .get(url, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
           console.log('Response Data:', response.data);
-          setGenreObject(response.data);
+          setGenreObject((genreObject) => [...genreObject, response.data]);
           console.log('genreObject:', genreObject);
         });
     });
