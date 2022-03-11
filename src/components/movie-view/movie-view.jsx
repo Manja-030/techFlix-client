@@ -103,7 +103,7 @@ class MovieView extends React.Component {
         Death: PropTypes.string,
       }).isRequired,
       Genre: PropTypes.array.isRequired,
-    }).isRequired,
+    }),
     onBackClick: PropTypes.func.isRequired,
   };
 }
