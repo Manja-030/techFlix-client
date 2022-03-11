@@ -6,22 +6,33 @@ import { BsFillArrowUpCircleFill } from 'react-icons/bs';
 import { Accordion } from 'react-bootstrap';
 
 function DirectorView({ movie }) {
-	const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-	const handleClick = () => {
-		setIsCollapsed(!isCollapsed);
-	};
+  const handleClick = () => {
+    setIsCollapsed(!isCollapsed);
+  };
 
-	return (
-		<Accordion>
-			<Accordion.Item eventKey="0">
-				<Accordion.Header className="accordion-header" variant="link" onClick={handleClick}>
-					{movie.Director.Name} {isCollapsed ? <BsFillArrowUpCircleFill /> : <BsFillArrowDownCircleFill />}
-				</Accordion.Header>
-				<Accordion.Body>{movie.Director.Bio}</Accordion.Body>
-			</Accordion.Item>
-		</Accordion>
-	);
+  return (
+    <Accordion className="accordion">
+      <Accordion.Item eventKey="0">
+        <Accordion.Header
+          className="accordion-header"
+          variant="link"
+          onClick={handleClick}
+        >
+          {movie.Director.Name}{' '}
+          {isCollapsed ? (
+            <BsFillArrowUpCircleFill />
+          ) : (
+            <BsFillArrowDownCircleFill />
+          )}
+        </Accordion.Header>
+        <Accordion.Body className="accordion-body">
+          {movie.Director.Bio}
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
+  );
 }
 
 export default DirectorView;

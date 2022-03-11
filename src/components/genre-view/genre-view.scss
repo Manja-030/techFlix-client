@@ -10,3 +10,16 @@ $red: #DA1212;
 .genre-text{
   color: $text-color !important;
 }
+
+.accordion-header{
+  font-size: $text-size !important;
+
+}
+
+.accordion-button{
+  background-color: $bg-color;
+ color: $text-color;
+ width: 100%;
+ border: none;
+text-align: left;
+}

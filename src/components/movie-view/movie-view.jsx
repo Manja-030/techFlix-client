@@ -24,67 +24,70 @@ class MovieView extends React.Component {
     const { movie, onBackClick } = this.props;
 
     return (
-      <>
-        <Row>
-          <Col>
-            <h2 className="movie-title mb-5">{movie.Title}</h2>
-          </Col>
-        </Row>
+      <Card className="movieView-card">
+        <Card.Body>
+          <Row>
+            <Col>
+              <h2 className="movie-title mb-5">{movie.Title}</h2>
+            </Col>
+          </Row>
 
-        <Row className="mb-4">
-          <Col md={6} lg={4}>
-            <img
-              className="movie-view"
-              src={movie.ImagePath}
-              alt={movie.Title}
-              crossOrigin="true"
-            />
-          </Col>
+          <Row className="mb-4">
+            <Col md={6} lg={4}>
+              <img
+                className="movie-image"
+                src={movie.ImagePath}
+                alt={movie.Title}
+                crossOrigin="true"
+              />
+            </Col>
 
-          <Col md={6} lg={4} className="movie-details">
-            {movie.Description}
-          </Col>
+            <Col md={6} lg={4} className="movie-details">
+              {movie.Description}
+            </Col>
 
-          <Col md={6} lg={4} className="detail-links">
-            <div>
-              <div>Director: </div>
-              <DirectorView movie={movie} />
-            </div>
-            <div>
-              <div>Genre:</div>
-
+            <Col md={6} lg={4} className="detail-links">
               <div>
-                <GenreView genre={movie.Genre} />
+                <div>Director: </div>
+                <DirectorView movie={movie} />
               </div>
-            </div>
+              <div>
+                <div>Genre:</div>
 
-            <div>Released: {movie.ReleaseYear}</div>
-          </Col>
-        </Row>
+                <div>
+                  <GenreView genre={movie.Genre} />
+                </div>
+              </div>
 
-        <Row>
-          <Col className="add-fav">
-            <Button
-              type="button"
-              variant="outline-danger"
-              onClick={() => this.handleAdd(movie)}
-            >
-              Add to Favorites <GiPopcorn className="fav-icon" />
-            </Button>
-          </Col>
+              <div>Released: {movie.ReleaseYear}</div>
+            </Col>
+          </Row>
 
-          <Col>
-            <Button
-              variant="outline-danger"
-              onClick={() => {
-                onBackClick(null);
-              }}
-            >
-              Back
-            </Button>{' '}
-          </Col>
-        </Row>
-      </>
+          <Row>
+            <Col className="add-fav">
+              <Button
+                type="button"
+                variant="outline-danger"
+                onClick={() => this.handleAdd(movie)}
+              >
+                Add to Favorites <GiPopcorn className="fav-icon" />
+              </Button>
+            </Col>
+
+            <Col>
+              <Button
+                variant="outline-danger"
+                onClick={() => {
+                  onBackClick(null);
+                }}
+              >
+                Back
+              </Button>{' '}
+            </Col>
+            <Col></Col>
+          </Row>
+        </Card.Body>
+      </Card>
     );
   }
 }
