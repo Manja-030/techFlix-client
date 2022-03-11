@@ -44,7 +44,7 @@ class MovieView extends React.Component {
   // add movieID to user's FavMovies array:
   handleAdd() {
     let token = localStorage.getItem('token');
-    // I'm not sure why I need the first {} (before the headers). but without those empty brackets all my requests returned unauthorized
+
     axios
       .post(
         `https://tech-and-popcorn.herokuapp.com/users/${this.props.user}/movies/${this.props.movie._id}`,
