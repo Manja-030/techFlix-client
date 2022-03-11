@@ -9,8 +9,10 @@ import MovieCard from '../movie-card/movie-card';
 import './profile-view.scss';
 import axios from 'axios';
 
-function ProfileView({ movies, logOut }) {
+function ProfileView({ movies, logOut, user }) {
   console.log('movies prop that is imported from MainView:', movies);
+  //console.log('user prop that is imported from MainView:', user);
+  //console.log('Andyman FavMovies:', user.FavMovies);
 
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
@@ -27,7 +29,6 @@ function ProfileView({ movies, logOut }) {
   const [birthdayError, setBirthdayError] = useState('');
 
   const [favorites, setFavorites] = useState([]); //array of movie objects
-  const [favIds, setFavIds] = useState([]); //array of movie IDs that where added to FavoriteMovies
 
   //When component renders for the first time, this fetches user data
   useEffect(() => {
@@ -41,13 +42,40 @@ function ProfileView({ movies, logOut }) {
         setEmail(response.data.Email);
         setPassword(response.data.Password);
         setBirthday(response.data.Birthday);
-        setFavIds(response.data.FavMovies);
+        filterMovies(movies, response.data.FavMovies);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
 
+  console.log('Username:', username);
+  console.log('Favorite Movies Objects', favorites);
+
+  const filterMovies = (movies, favMovieIds) => {
+    let filteredMovies = [];
+    movies.forEach((movie) => {
+      favMovieIds.includes(movie._id) ? filteredMovies.push(movie) : null;
+    });
+    setFavorites(filteredMovies);
+  };
+  {
+    /*
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    axios
+      .get(`https://tech-and-popcorn.herokuapp.com/movies`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        filterMovies(response.data, { user }.FavMovies);
+      });
+  }, []);*/
+  }
+
+  /// NEW PIECE OF CODE ENDS HERE
+
+  /*  
   //convert array of IDs into array of movie objects
   const getFavs = (favs) => {
     let favMovieObjectList = [];
@@ -63,9 +91,10 @@ function ProfileView({ movies, logOut }) {
     favIds ? getFavs(favIds) : setFavorites({});
     console.log('favs in favIds: ' + favIds);
   }, [favIds]);
-
+*/
   // Event handler for updating user profile
   const handleUpdateProfile = (e) => {
+    console.log('handleUpdateProfile');
     e.preventDefault();
     console.log(
       'username, password, email, birthday:',
@@ -78,7 +107,7 @@ function ProfileView({ movies, logOut }) {
     if (isValid) {
       axios
         .put(
-          'https://tech-and-popcorn.herokuapp.com/users/${username}',
+          `https://tech-and-popcorn.herokuapp.com/users/${username}`,
           {
             Username: username,
             Password: password,
@@ -101,6 +130,7 @@ function ProfileView({ movies, logOut }) {
   };
   //delete favorite from list of favorites:
   const deleteFav = (favId) => {
+    console.log('deleteFav');
     axios
       .delete(
         `https://tech-and-popcorn.herokuapp.com/users/${username}/movies/${favId._id}`,
@@ -115,13 +145,14 @@ function ProfileView({ movies, logOut }) {
   };
 
   // event handler to delete user profile
-  const handleProfileDelete = () => {
+  const handleProfileDelete = (e) => {
+    e.preventDefault();
+    console.log('handleProfileDelete');
     axios
-      .delete('https://tech-and-popcorn.herokuapp.com/users/${username}', {
+      .delete(`https://tech-and-popcorn.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => {
-        console.log('Response after Delete', response.data);
+      .then(() => {
         alert('Profile deleted.');
         logOut();
       })
@@ -236,28 +267,34 @@ function ProfileView({ movies, logOut }) {
           <h3 className="profile-title"> My Favorite Movies:</h3>
 
           <Row>
-            {favorites.map((fav) => {
-              return (
-                <Col
-                  xs={12}
-                  sm={12}
-                  md={6}
-                  lg={6}
-                  xl={6}
-                  className="p-3"
-                  key={favorites._id}
-                >
-                  <MovieCard className="profile-moviecard" movie={fav} />;
-                  <Button
-                    type="submit"
-                    variant="outline-danger"
-                    onClick={deleteFav}
+            <div>
+              {' '}
+              {favorites &&
+                favorites.map((favorites) => (
+                  <Col
+                    xs={12}
+                    sm={12}
+                    md={6}
+                    lg={6}
+                    xl={6}
+                    className="p-3"
+                    key={favorites._id}
                   >
-                    Remove
-                  </Button>
-                </Col>
-              );
-            })}
+                    <MovieCard
+                      className="profile-moviecard"
+                      movie={favorites}
+                    />
+                    ;
+                    <Button
+                      type="submit"
+                      variant="outline-danger"
+                      onClick={deleteFav}
+                    >
+                      Remove
+                    </Button>
+                  </Col>
+                ))}
+            </div>
           </Row>
         </Col>
       </Row>
