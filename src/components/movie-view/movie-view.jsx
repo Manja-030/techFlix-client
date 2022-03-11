@@ -12,12 +12,54 @@ import { GiPopcorn } from 'react-icons/gi';
 class MovieView extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      FavMovies: [],
+      userDetails: [],
+    };
+  }
+
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    this.getUserDetails(accessToken);
+  }
+
+  getUserDetails(token) {
+    axios
+      .get(`https://tech-and-popcorn.herokuapp.com/users/${this.props.user}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        // Use the response to set the user details in the state variables
+        this.setState({
+          userDetails: response.data,
+          FavMovies: response.data.FavMovies,
+        });
+        console.log('Response.Data userDetails:', response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   // add movieID to user's FavMovies array:
-  // this is the endpoint in my backend: '/users/:Username/movies/:MovieID'
   handleAdd() {
-    alert('I will add this function in Task 3.8.');
+    let token = localStorage.getItem('token');
+    // I'm not sure why I need the first {} (before the headers). but without those empty brackets all my requests returned unauthorized
+    axios
+      .post(
+        `https://tech-and-popcorn.herokuapp.com/users/${this.props.user}/movies/${this.props.movie._id}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
+      .then((response) => {
+        alert('Movie as been added to Favorites.');
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
