@@ -23,43 +23,48 @@ function GenreView({ genre }) {
   that have the matching Id and create an array of genre objects.
 	*/
 
-  useEffect(() => {
-    console.log('Prop that is passed from Mainview:', genre);
-    console.log('Array of GenreObjects should be empty:', genreObject);
-    genre.map(function (genreId) {
-      console.log('Item of the genre-array:', genreId);
-      const token = localStorage.getItem('token');
-      let url = 'https://tech-and-popcorn.herokuapp.com/genres/' + genreId;
-      console.log('URL:', url);
-      axios
-        .get(url, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((response) => {
-          console.log('Response Data:', response.data);
-          setGenreObject((genreObject) => [...genreObject, response.data]);
-          console.log('genreObject:', genreObject);
-        });
+  const filterGenres = (genres, genreIds) => {
+    let filteredGenres = [];
+    genres.forEach((genre) => {
+      genreIds.includes(genre._id) ? filteredGenres.push(genre) : null;
     });
+    setGenreObject(filteredGenres);
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    axios
+      .get(`https://tech-and-popcorn.herokuapp.com/genres`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        filterGenres(response.data, genre);
+      });
   }, []);
 
   return (
-    <Accordion>
-      <Accordion.Item eventKey="0">
-        <Accordion.Header variant="link" onClick={handleClick}>
-          {genreObject.Name}{' '}
-          {isCollapsed ? (
-            <BsFillArrowUpCircleFill />
-          ) : (
-            <BsFillArrowDownCircleFill />
-          )}
-        </Accordion.Header>
-        <Accordion.Body className="genre-text">
-          {genreObject.Description}
-        </Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
+    <div>
+      {genreObject && genreObject.map(genreObject=>
+        <Accordion key={genreObject._id}>
+          <Accordion.Item eventKey="0">
+            <Accordion.Header variant="link" onClick={handleClick}>
+              {genreObject.Name}{' '}
+              {isCollapsed ? (
+                <BsFillArrowUpCircleFill />
+              ) : (
+                <BsFillArrowDownCircleFill />
+              )}
+            </Accordion.Header>
+            <Accordion.Body className="genre-text">
+              {genreObject.Description}
+            </Accordion.Body>
+          </Accordion.Item>
+        </Accordion>
+      )}
+    </div>
   );
 }
+
+export default GenreView;
 
 export default GenreView;
