@@ -107,7 +107,7 @@ function ProfileView({ movies, logOut, user }) {
     if (isValid) {
       axios
         .put(
-          `https://tech-and-popcorn.herokuapp.com/users/${username}`,
+          `https://tech-and-popcorn.herokuapp.com/users/${localUsername}`,
           {
             Username: username,
             Password: password,
@@ -211,9 +211,9 @@ function ProfileView({ movies, logOut, user }) {
               <Form.Label className="profile-text">Password:</Form.Label>
               <Form.Control
                 type="password"
-                value={password}
+                value={''}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                placeholder="Enter new password"
               />
               <div className="profile-text">
                 {passwordError && <p> {passwordError}</p>}
