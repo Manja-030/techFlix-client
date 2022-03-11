@@ -4,12 +4,14 @@ import PropTypes from 'prop-types';
 
 import { Row, Col, Card, Button, Container } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import MovieCard from '../movie-card/movie-card';
 
 import './profile-view.scss';
 import axios from 'axios';
 
 function ProfileView({ movies, logOut }) {
   console.log('movies prop that is imported from MainView:', movies);
+
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
 
@@ -24,17 +26,8 @@ function ProfileView({ movies, logOut }) {
   const [emailError, setEmailError] = useState('');
   const [birthdayError, setBirthdayError] = useState('');
 
-  const [favorites, setFavorites] = useState([]); //array of movie objects that where added to the FavoriteMovies array
+  const [favorites, setFavorites] = useState([]); //array of movie objects
   const [favIds, setFavIds] = useState([]); //array of movie IDs that where added to FavoriteMovies
-
-  //convert array of IDs into array of movie objects
-  const getFavs = (favs) => {
-    let favoriteMovieList = [];
-    movies.forEach((movie) => {
-      favs.includes(movie._id) ? favoriteMovieList.push(movie) : null;
-    });
-    setFavorites(favoriteMovieList);
-  };
 
   //When component renders for the first time, this fetches user data
   useEffect(() => {
@@ -55,7 +48,17 @@ function ProfileView({ movies, logOut }) {
       });
   }, []);
 
-  // When favIds exist, then convert to array of movie objects
+  //convert array of IDs into array of movie objects
+  const getFavs = (favs) => {
+    let favMovieObjectList = [];
+    movies.forEach((movie) => {
+      favs.includes(movie._id) ? favMovieObjectList.push(movie) : null;
+    });
+    setFavorites(favMovieObjectList);
+    console.log('Favorites:', favorites);
+  };
+
+  // If favIds exist, then convert to array of movie objects
   useEffect(() => {
     favIds ? getFavs(favIds) : setFavorites({});
     console.log('favs in favIds: ' + favIds);
@@ -100,7 +103,7 @@ function ProfileView({ movies, logOut }) {
   const deleteFav = (favId) => {
     axios
       .delete(
-        `https://tech-and-popcorn.herokuapp.com/users/${username}/movies/${favId}`,
+        `https://tech-and-popcorn.herokuapp.com/users/${username}/movies/${favId._id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
@@ -157,15 +160,9 @@ function ProfileView({ movies, logOut }) {
   return (
     <Container>
       <Row>
-        <Col>
-          <h3 className="profile-title">Update Your Profile:</h3>
-        </Col>
-        <Col>
-          <h3 className="profile-title">Favorite Movies:</h3>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
+        <Col xs={12} sm={8} md={5} lg={4} className="p-3 m-2">
+          <h3 className="profile-title"> Update My Profile:</h3>
+
           <Form className="profile-form">
             <Form.Group className="mb-3">
               <Form.Label className="profile-text">Username:</Form.Label>
@@ -235,16 +232,33 @@ function ProfileView({ movies, logOut }) {
             </Button>
           </Form>
         </Col>
+        <Col xs={12} sm={8} md={6} lg={6} xl={6} className="p-3 m-2">
+          <h3 className="profile-title"> My Favorite Movies:</h3>
 
-        <Col>
-          {' '}
-          {/* This returns in error in console: favorites.map is not a function: {favorites.map((fav) => {
-            return (
-              <div key={fav._id}>
-                <MovieCard movie={fav} />;<Button>Remove</Button>
-              </div>
-            );
-          })}*/}
+          <Row>
+            {favorites.map((fav) => {
+              return (
+                <Col
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={6}
+                  xl={6}
+                  className="p-3"
+                  key={favorites._id}
+                >
+                  <MovieCard className="profile-moviecard" movie={fav} />;
+                  <Button
+                    type="submit"
+                    variant="outline-danger"
+                    onClick={deleteFav}
+                  >
+                    Remove
+                  </Button>
+                </Col>
+              );
+            })}
+          </Row>
         </Col>
       </Row>
     </Container>
