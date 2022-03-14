@@ -5,3 +5,15 @@ $font-style: 400;
 $text-color: white;
 $bg-color: #1E2127;
 $red: #DA1212;
+
+// Buttons
+
+.btn-outline-danger{
+  color: $red !important;
+  border-color: $red !important;
+}
+
+.btn-outline-danger:hover, btn-outline-danger:focus, btn-outline-danger:active{
+  color: $text-color !important;
+  background-color: $red !important;
+}
