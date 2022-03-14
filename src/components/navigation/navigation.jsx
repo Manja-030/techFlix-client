@@ -4,7 +4,7 @@ import { Navbar, Container, Nav, Button } from 'react-bootstrap';
 import './navigation.scss';
 import { GiPopcorn } from 'react-icons/gi';
 
-function Navigation({ props }) {
+function Navigation({ logOut }) {
   const user = localStorage.getItem('user');
 
   const onLoggedOut = () => {
@@ -13,9 +13,9 @@ function Navigation({ props }) {
   };
 
   const isAuth = () => {
-    if (typeof window == 'undefined') {
-      return false;
-    }
+    //if (typeof window == 'undefined') {
+    //  return false;
+    // }
     if (localStorage.getItem('token')) {
       return localStorage.getItem('token');
     } else {
@@ -54,9 +54,7 @@ function Navigation({ props }) {
             <Button
               className="navbar-button"
               variant="outline-danger"
-              onClick={() => {
-                onLoggedOut();
-              }}
+              onClick={logOut}
             >
               LogOut
             </Button>
