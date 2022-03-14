@@ -68,6 +68,7 @@ class MainView extends React.Component {
     this.setState({
       user: null,
     });
+    window.open('/', '_self');
   }
 
   onRegistered(user) {
@@ -78,7 +79,7 @@ class MainView extends React.Component {
 
   getMovies(token) {
     axios
-      .get('https://tech-and-popcorn.herokuapp.com/movies', {
+      .get(`https://tech-and-popcorn.herokuapp.com/movies`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
@@ -113,7 +114,7 @@ class MainView extends React.Component {
 
     return (
       <Router>
-        <Navigation />
+        <Navigation logOut={() => this.onLoggedOut()} />
         <Container>
           <Row className="main-view justify-content-md-center">
             <Route
