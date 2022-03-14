@@ -14,3 +14,30 @@ $red: #DA1212;
 .profile-text{
   color: $text-color !important;
 }
+
+.fav-movie{
+  margin-bottom: 5px;
+  
+  figure{
+  
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    
+    img{
+      height: 300px;
+      display: block;
+      margin: auto;
+    }
+  }
+
+}
+
+.profile-btn{
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  
+}

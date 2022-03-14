@@ -2,18 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Row, Col, Card, Button, Container } from 'react-bootstrap';
+import { Row, Col, Card, Button, Container, Figure } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-import MovieCard from '../movie-card/movie-card';
 
 import './profile-view.scss';
 import axios from 'axios';
 
-function ProfileView({ movies, logOut, user }) {
-  console.log('movies prop that is imported from MainView:', movies);
-  //console.log('user prop that is imported from MainView:', user);
-  //console.log('Andyman FavMovies:', user.FavMovies);
-
+function ProfileView({ movies, logOut }) {
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
 
@@ -28,6 +23,7 @@ function ProfileView({ movies, logOut, user }) {
   const [emailError, setEmailError] = useState('');
   const [birthdayError, setBirthdayError] = useState('');
 
+  const [favMovies, setFavMovies] = useState([]);
   const [favorites, setFavorites] = useState([]); //array of movie objects
 
   //When component renders for the first time, this fetches user data
@@ -41,13 +37,22 @@ function ProfileView({ movies, logOut, user }) {
         setUsername(response.data.Username);
         setEmail(response.data.Email);
         setPassword(response.data.Password);
-        setBirthday(response.data.Birthday);
-        filterMovies(movies, response.data.FavMovies);
+        setBirthday(response.data.Birthday.substring(0, 10));
+        console.log('favMovies in UseEffect:', favMovies);
+        setFavMovies(response.data.FavMovies);
+        //filterMovies(movies, response.data.FavMovies);
+        //console.log('favorites in useEffect:', favorites);
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
+
+  useEffect(() => {
+    filterMovies(movies, favMovies);
+  }, [favMovies]);
+
+  console.log('Favorite Movies after 2nd UseEffect', favorites);
 
   console.log('Username:', username);
   console.log('Favorite Movies Objects', favorites);
@@ -59,6 +64,7 @@ function ProfileView({ movies, logOut, user }) {
     });
     setFavorites(filteredMovies);
   };
+
   {
     /*
   useEffect(() => {
@@ -85,13 +91,9 @@ function ProfileView({ movies, logOut, user }) {
     setFavorites(favMovieObjectList);
     console.log('Favorites:', favorites);
   };
-
-  // If favIds exist, then convert to array of movie objects
-  useEffect(() => {
-    favIds ? getFavs(favIds) : setFavorites({});
-    console.log('favs in favIds: ' + favIds);
-  }, [favIds]);
 */
+  // If favIds exist, then convert to array of movie objects
+
   // Event handler for updating user profile
   const handleUpdateProfile = (e) => {
     console.log('handleUpdateProfile');
@@ -129,15 +131,26 @@ function ProfileView({ movies, logOut, user }) {
     }
   };
   //delete favorite from list of favorites:
-  const deleteFav = (favId) => {
+  const deleteFav = (movieId) => {
+    //e.preventDefault();
+    console.log('movieId', movieId);
     console.log('deleteFav');
+    console.log('Favorites:', favorites);
+    console.log('favorites._id', favorites._id);
+    console.log('Movies:', movies);
+
+    let token = localStorage.getItem('token');
+
     axios
       .delete(
-        `https://tech-and-popcorn.herokuapp.com/users/${username}/movies/${favId._id}`,
+        `https://tech-and-popcorn.herokuapp.com/users/${username}/movies/${movieId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
-        setFavIds(response.data.FavMovies);
+        console.log(response.data);
+        setFavMovies(response.data.FavMovies);
+        //alert('Movie has been removed from Favorites.');
+        //filterMovies(movies, response.data.FavMovies);
       })
       .catch((error) => {
         console.log(error);
@@ -191,6 +204,7 @@ function ProfileView({ movies, logOut, user }) {
   return (
     <Container>
       <Row>
+        {/* This Col contains profile form and Save/Delete buttons: */}
         <Col xs={12} sm={8} md={5} lg={4} className="p-3 m-2">
           <h3 className="profile-title"> Update My Profile:</h3>
 
@@ -236,65 +250,76 @@ function ProfileView({ movies, logOut, user }) {
               <Form.Control
                 type="text"
                 value={birthday}
-                placeholder="yyyy-mm-dd"
+                placeholder="dd-mm-yyyy"
                 onChange={(e) => setBirthday(e.target.value)}
               />
               <div className="profile-text">
                 {birthdayError && <p> {birthdayError}</p>}
               </div>
             </Form.Group>{' '}
-            <Link to="/profile">
-              <Button
-                type="submit"
-                className="profile-btn"
-                variant="outline-danger"
-                onClick={handleUpdateProfile}
-              >
-                Save Changes
-              </Button>
-            </Link>
-            <Button
-              type="Submit"
-              className="profile-btn"
-              variant="outline-danger"
-              onClick={handleProfileDelete}
-            >
-              Delete Account
-            </Button>
+            <Row>
+              <Col>
+                <Link to="/profile">
+                  <Button
+                    type="submit"
+                    className="profile-btn"
+                    variant="outline-danger"
+                    onClick={handleUpdateProfile}
+                  >
+                    Save Changes
+                  </Button>{' '}
+                </Link>
+              </Col>
+              <Col>
+                <Button
+                  type="Submit"
+                  className="profile-btn"
+                  variant="outline-danger"
+                  onClick={handleProfileDelete}
+                >
+                  Delete Account
+                </Button>
+              </Col>
+            </Row>
           </Form>
         </Col>
+        {/* This Col contains the Favorite Movies: */}
         <Col xs={12} sm={8} md={6} lg={6} xl={6} className="p-3 m-2">
           <h3 className="profile-title"> My Favorite Movies:</h3>
 
           <Row>
-            <div>
-              {' '}
-              {favorites &&
-                favorites.map((favorites) => (
-                  <Col
-                    xs={12}
-                    sm={12}
-                    md={6}
-                    lg={6}
-                    xl={6}
-                    className="p-3"
-                    key={favorites._id}
+            {' '}
+            {favorites.map((favorites) => (
+              <Col
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                xl={6}
+                className="p-3 fav-movie"
+                key={favorites._id}
+              >
+                <Figure className="mb-2">
+                  <Figure.Image
+                    className="favMovie-card"
+                    variant="top"
+                    src={favorites.ImagePath}
+                    alt={favorites.Title}
+                    crossOrigin="true"
+                  />
+                </Figure>
+                <div>
+                  <Button
+                    type="submit"
+                    variant="outline-danger"
+                    className="profile-btn"
+                    onClick={() => deleteFav(favorites._id)}
                   >
-                    <MovieCard
-                      className="profile-moviecard"
-                      movie={favorites}
-                    />
-                    ;
-                    <Button
-                      type="submit"
-                      variant="outline-danger"
-                      onClick={deleteFav}
-                    >
-                      Remove
-                    </Button>
-                  </Col>
-                ))}
-            </div>
+                    Remove
+                  </Button>
+                </div>
+              </Col>
+            ))}
           </Row>
         </Col>
       </Row>
