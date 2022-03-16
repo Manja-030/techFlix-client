@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+
 import { Container, Row, Col } from 'react-bootstrap';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -8,12 +11,14 @@ import {
   Link,
 } from 'react-router-dom';
 
+import { setMovies } from '../../actions/actions';
+
 import './main-view.scss';
 
+import MoviesList from '../movies-list/movies-list';
 import Navigation from '../navigation/navigation.jsx';
 import LoginView from '../login-view/login-view';
 import RegistrationView from '../registration-view/registration-view';
-import MovieCard from '../movie-card/movie-card';
 import MovieView from '../movie-view/movie-view';
 import ProfileView from '../profile-view/profile-view';
 import DirectorView from '../director-view/director-view';
@@ -22,10 +27,8 @@ import GenreView from '../genre-view/genre-view';
 class MainView extends React.Component {
   constructor() {
     super();
-    //initial state is set to null/empty array
+    //initial state is set to null
     this.state = {
-      movies: [],
-      //genres: [], **I dont think I need this**
       user: null,
     };
   }
@@ -39,13 +42,6 @@ class MainView extends React.Component {
       this.getMovies(accessToken);
       //  this.getGenres(accessToken);
     }
-  }
-
-  /*When a movie is clicked, this function is called and updates the state of the `selectedMovie` property to that movie*/
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie,
-    });
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that user*/
@@ -83,10 +79,7 @@ class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data,
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -110,7 +103,8 @@ class MainView extends React.Component {
   }*/
 
   render() {
-    const { movies, user } = this.state;
+    let { movies } = this.props;
+    let { user } = this.state;
 
     return (
       <Router>
@@ -131,17 +125,7 @@ class MainView extends React.Component {
 
                 if (movies.length === 0) return <div className="main-view" />;
 
-                return movies.map((m) => (
-                  <Col
-                    sm={12}
-                    md={6}
-                    lg={3}
-                    key={m._id}
-                    className="movie-cards"
-                  >
-                    <MovieCard movie={m} />
-                  </Col>
-                ));
+                return <MoviesList movies={movies} />;
               }}
             />
             <Route
@@ -252,4 +236,8 @@ class MainView extends React.Component {
   }
 }
 
-export default MainView;
+let mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
+
+export default connect(mapStateToProps, { setMovies })(MainView);
