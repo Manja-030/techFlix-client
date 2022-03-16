@@ -66,7 +66,7 @@ class MovieView extends React.Component {
   }
 >>>>>>> Stashed changes
 
-export class MovieView extends React.Component {
+
   render() {
     const { movie, onBackClick } = this.props;
     return (
