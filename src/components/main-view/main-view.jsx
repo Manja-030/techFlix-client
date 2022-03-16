@@ -33,19 +33,14 @@ class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get('https://tech-and-popcorn.herokuapp.com/movies')
-      .then((response) => {
-        this.setState({ movies: response.data });
-      })
-      .catch((error) => {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user'),
       });
       this.getMovies(accessToken);
     }
   }
-
-
 
   /* When a user successfully logs in, this function updates the `user` property in state to that user*/
 
@@ -58,7 +53,6 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-    
   }
 
   onLoggedOut() {
@@ -216,9 +210,9 @@ class MainView extends React.Component {
                 );
               }}
             />
-          ))
-        )}
-      </div>
+          </Row>
+        </Container>
+      </Router>
     );
   }
 }
