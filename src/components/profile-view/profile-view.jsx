@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { setUser } from '../../actions/actions';
+import { connect } from 'react-redux';
 
 import { Row, Col, Card, Button, Container, Figure } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
-
 import './profile-view.scss';
-import axios from 'axios';
 
-function ProfileView({ movies, logOut }) {
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
-
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [birthday, setBirthday] = useState('');
 
   //objects that include error messages as a result of validateChanges
   const [usernameError, setUsernameError] = useState('');
@@ -23,7 +25,6 @@ function ProfileView({ movies, logOut }) {
   const [emailError, setEmailError] = useState('');
   const [birthdayError, setBirthdayError] = useState('');
 
-  const [favMovies, setFavMovies] = useState([]);
   const [favorites, setFavorites] = useState([]); //array of movie objects
 
   //When component renders for the first time, this fetches user data
@@ -34,12 +35,14 @@ function ProfileView({ movies, logOut }) {
       })
       .then((response) => {
         console.log('response.data:', response.data);
-        setUsername(response.data.Username);
-        setEmail(response.data.Email);
-        setPassword(response.data.Password);
-        setBirthday(response.data.Birthday.substring(0, 10));
+        const userData = {
+          ...response.data,
+          Birthday: response.data.substring(0, 10),
+        };
+        setUser(userData);
+
         console.log('favMovies in UseEffect:', favMovies);
-        setFavMovies(response.data.FavMovies);
+
         //filterMovies(movies, response.data.FavMovies);
         //console.log('favorites in useEffect:', favorites);
       })
@@ -342,4 +345,4 @@ function ProfileView({ movies, logOut }) {
     logOut: PropTypes.func.isRequired,
   };
 }
-export default ProfileView;
+export default connect(mapStateToProps, { setUser })(ProfileView);
