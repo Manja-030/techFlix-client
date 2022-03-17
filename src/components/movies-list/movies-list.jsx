@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import MovieCard from '../movie-card/movie-card';
+import './movies-list.scss';
 
 const mapStateToProps = (state) => {
   const { visibilityFilter } = state;
@@ -23,16 +24,19 @@ function MoviesList(props) {
   if (!movies) return <div className="main-view" />;
 
   return (
-    <Container>
-      <Col md={12} style={{ margin: '1em' }}>
-        <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-      </Col>
+    <>
+      <Container>
+        <Col className="search-bar">
+          <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+        </Col>
+      </Container>
+
       {filteredMovies.map((movie) => (
-        <Col md={3} key={movie._id}>
+        <Col xs={12} sm={12} md={6} lg={3} key={movie._id}>
           <MovieCard movie={movie} />
         </Col>
       ))}
-    </Container>
+    </>
   );
 }
 

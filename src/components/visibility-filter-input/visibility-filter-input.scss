@@ -1,0 +1,38 @@
+$text-size: 1em;
+$title-size: 1.3em;
+$brand-size: 2em;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+.form-label {
+  font-size: $title-size !important;
+  
+}
+.search-bar-input{
+  background-color: $bg-color !important;
+  border-color: $red !important;
+  font-size: $title-size !important;
+  color: $text-color !important;
+  
+  }
+
+
+.form-control:focus{
+  box-shadow: none !important;
+}
+
+ // ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  //  color: $text-color !important;
+  //  opacity: 1; /* Firefox */
+ // }
+  
+ // :-ms-input-placeholder { /* Internet Explorer 10-11 */
+ //   color: $text-color !important;
+ // }
+  
+ // ::-ms-input-placeholder { /* Microsoft Edge */
+ //   color: $text-color !important;
+ // }
+  
