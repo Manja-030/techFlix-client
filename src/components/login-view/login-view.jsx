@@ -7,6 +7,7 @@ import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
 
 import './login-view.scss';
+import { propTypes } from 'react-bootstrap/esm/Image';
 
 const mapStateToProps = (state) => {
   return {
@@ -125,6 +126,9 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
 }
 
 LoginView.propTypes = {
+  onLoggedIn: PropTypes.func,
+  validateInput: PropTypes.func,
+  setUser: PropTypes.func,
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
