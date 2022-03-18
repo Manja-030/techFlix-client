@@ -12,21 +12,21 @@ import './profile-view.scss';
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    movies: state.movies,
   };
 };
 
-function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
+function ProfileView({ user, movies, logOut, setUser }) {
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
 
-  //objects that include error messages as a result of validateChanges
+  //objects that include error messages as a result of validateChanges:
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [birthdayError, setBirthdayError] = useState('');
-
-  const [favMovies, setFavMovies] = useState([]);
-  const [favorites, setFavorites] = useState([]); //array of movie objects
+  //array of movie objects of user's favorite movies:
+  const [favorites, setFavorites] = useState([]);
 
   //When component renders for the first time, this fetches user data
   useEffect(() => {
@@ -40,13 +40,6 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
           Birthday: response.data.Birthday.substring(0, 10),
         };
         setUser(userData);
-        console.log('userData:', userData);
-        console.log(userData.FavMovies);
-        console.log('Birthday:', user.Birthday);
-        console.log('favMovies in UseEffect:', user.FavMovies);
-
-        //filterMovies(movies, response.data.FavMovies);
-        //console.log('favorites in useEffect:', favorites);
       })
       .catch((e) => {
         console.log(e);
@@ -54,48 +47,18 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
   }, []);
 
   useEffect(() => {
-    filterMovies(movies, user.FavMovies);
-  }, [user.FavMovies]);
+    filterMovies(user.FavMovies);
+  }, []);
 
-  console.log('Favorite Movies after 2nd UseEffect', favorites);
-  console.log('Favorite Movies Objects', favorites);
-
-  const filterMovies = (movies, favMovieIds) => {
+  const filterMovies = (favMovieIds) => {
     let filteredMovies = [];
     movies.forEach((movie) => {
-      favMovieIds.includes(movie._id) ? filteredMovies.push(movie) : null;
+      favMovieIds.includes(movie._id)
+        ? filteredMovies.push(movie)
+        : filteredMovies;
     });
     setFavorites(filteredMovies);
   };
-
-  {
-    /*
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    axios
-      .get(`https://tech-and-popcorn.herokuapp.com/movies`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        filterMovies(response.data, { user }.FavMovies);
-      });
-  }, []);*/
-  }
-
-  /// NEW PIECE OF CODE ENDS HERE
-
-  /*  
-  //convert array of IDs into array of movie objects
-  const getFavs = (favs) => {
-    let favMovieObjectList = [];
-    movies.forEach((movie) => {
-      favs.includes(movie._id) ? favMovieObjectList.push(movie) : null;
-    });
-    setFavorites(favMovieObjectList);
-    console.log('Favorites:', favorites);
-  };
-*/
-  // If favIds exist, then convert to array of movie objects
 
   // Event handler for updating user profile
   const handleUpdateProfile = (e) => {
@@ -106,7 +69,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
     if (isValid) {
       axios
         .put(
-          `https://tech-and-popcorn.herokuapp.com/users/${localUsername}`,
+          `https://tech-and-popcorn.herokuapp.com/users/${user.Username}`,
           {
             Username: user.Username,
             Password: user.Password,
@@ -121,34 +84,20 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
           alert('Update of profile successful.');
         })
         .catch((error) => {
-          console.error('updating profile not successful:' + error);
+          console.log('updating profile not successful:' + error);
           alert('Update of profile not successful.');
         });
     }
   };
   //delete favorite from list of favorites:
   const deleteFav = (movieId) => {
-    //e.preventDefault();
-    console.log('movieId', movieId);
-    console.log('deleteFav');
-    console.log('Favorites:', favorites);
-    console.log('favorites._id', favorites._id);
-    console.log('Movies:', movies);
-
-    let token = localStorage.getItem('token');
-
     axios
       .delete(
         `https://tech-and-popcorn.herokuapp.com/users/${localUsername}/movies/${movieId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
-        console.log(response.data);
-        setUser(response.data);
-        FavMovies: response.data.FavMovies;
-        alert('FavMovie removed');
-        //alert('Movie has been removed from Favorites.');
-        //filterMovies(movies, response.data.FavMovies);
+        filterMovies(response.data.FavMovies);
       })
       .catch((error) => {
         console.log(error);
@@ -211,9 +160,9 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
               <Form.Label className="profile-text">Username:</Form.Label>
               <Form.Control
                 type="text"
-                defaultValue={user.Username}
-                onChange={(e) => setUser(e.target.value)}
                 placeholder="Enter username"
+                defaultValue={user.Username}
+                onChange={(e) => validateChanges(e.target.value, 'Username')}
               />
               <div className="profile-text">
                 {usernameError && <p> {usernameError}</p>}
@@ -224,7 +173,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
               <Form.Control
                 type="password"
                 value={''}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => validateChanges(e.target.value)}
                 placeholder="Enter new password"
               />
               <div className="profile-text">
@@ -236,7 +185,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
               <Form.Control
                 type="email"
                 defaultValue={user.Email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => validateChanges(e.target.value)}
                 placeholder="Enter email address"
               />
               <div className="profile-text">
@@ -249,7 +198,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
                 type="text"
                 defaultValue={user.Birthday}
                 placeholder="dd-mm-yyyy"
-                onChange={(e) => setBirthday(e.target.value)}
+                onChange={(e) => validateChanges(e.target.value)}
               />
               <div className="profile-text">
                 {birthdayError && <p> {birthdayError}</p>}
