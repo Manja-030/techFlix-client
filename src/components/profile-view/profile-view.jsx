@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { setUser } from '../../actions/actions';
+import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
 
 import { Row, Col, Card, Button, Container, Figure } from 'react-bootstrap';
@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-function ProfileView({ user, movies, logOut, setUser }) {
+function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
 
@@ -162,7 +162,7 @@ function ProfileView({ user, movies, logOut, setUser }) {
                 type="text"
                 placeholder="Enter username"
                 defaultValue={user.Username}
-                onChange={(e) => validateChanges(e.target.value, 'Username')}
+                onChange={(e) => validateInput(e.target.value, 'Username')}
               />
               <div className="profile-text">
                 {usernameError && <p> {usernameError}</p>}
@@ -172,9 +172,9 @@ function ProfileView({ user, movies, logOut, setUser }) {
               <Form.Label className="profile-text">Password:</Form.Label>
               <Form.Control
                 type="password"
-                value={''}
-                onChange={(e) => validateChanges(e.target.value)}
                 placeholder="Enter new password"
+                value={''}
+                onChange={(e) => validateInput(e.target.value, 'Password')}
               />
               <div className="profile-text">
                 {passwordError && <p> {passwordError}</p>}
@@ -185,7 +185,7 @@ function ProfileView({ user, movies, logOut, setUser }) {
               <Form.Control
                 type="email"
                 defaultValue={user.Email}
-                onChange={(e) => validateChanges(e.target.value)}
+                onChange={(e) => validateInput(e.target.value, 'Email')}
                 placeholder="Enter email address"
               />
               <div className="profile-text">
@@ -198,7 +198,7 @@ function ProfileView({ user, movies, logOut, setUser }) {
                 type="text"
                 defaultValue={user.Birthday}
                 placeholder="dd-mm-yyyy"
-                onChange={(e) => validateChanges(e.target.value)}
+                onChange={(e) => validateInput(e.target.value, 'Birthday')}
               />
               <div className="profile-text">
                 {birthdayError && <p> {birthdayError}</p>}
@@ -289,4 +289,6 @@ function ProfileView({ user, movies, logOut, setUser }) {
     logOut: PropTypes.func.isRequired,
   };
 }
-export default connect(mapStateToProps, { setUser })(ProfileView);
+export default connect(mapStateToProps, { setUser, validateInput })(
+  ProfileView
+);

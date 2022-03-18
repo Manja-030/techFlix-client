@@ -1,4 +1,9 @@
-import { SET_MOVIES, SET_FILTER, SET_USER } from '../actions/actions';
+import {
+  SET_MOVIES,
+  SET_FILTER,
+  SET_USER,
+  VALIDATE_INPUT,
+} from '../actions/actions';
 import { combineReducers } from 'redux';
 
 /* Movies */
@@ -33,9 +38,17 @@ function user(
   },
   action
 ) {
+  const { field, value } = action;
   switch (action.type) {
     case SET_USER:
-      return action.value;
+      return value;
+
+    case VALIDATE_INPUT:
+      return {
+        ...state,
+        [field]: value,
+      };
+
     default:
       return state;
   }
