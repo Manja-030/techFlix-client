@@ -11,9 +11,18 @@ import {
   Row,
 } from 'react-bootstrap';
 
+import { setUser } from '../../actions/actions';
+import { connect } from 'react-redux';
+
 import './login-view.scss';
 
-function LoginView(props) {
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
+
+function LoginView({ setUser, onLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -49,7 +58,7 @@ function LoginView(props) {
         })
         .then((response) => {
           const data = response.data;
-          props.onLoggedIn(data);
+          onLoggedIn(data);
         })
         .catch((e) => {
           console.log('no such user');
@@ -121,8 +130,8 @@ function LoginView(props) {
 
 LoginView.propTypes = {
   user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
   }),
 };
-export default LoginView;
+export default connect(mapStateToProps, { setUser })(LoginView);
