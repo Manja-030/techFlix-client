@@ -4,12 +4,7 @@ import { connect } from 'react-redux';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Link,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { setMovies } from '../../actions/actions';
 
@@ -27,7 +22,6 @@ import GenreView from '../genre-view/genre-view';
 class MainView extends React.Component {
   constructor() {
     super();
-    //initial state is set to null
     this.state = {
       user: null,
     };
@@ -40,12 +34,10 @@ class MainView extends React.Component {
         user: localStorage.getItem('user'),
       });
       this.getMovies(accessToken);
-      //  this.getGenres(accessToken);
     }
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that user*/
-
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
@@ -55,7 +47,6 @@ class MainView extends React.Component {
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
-    //this.getGenres(authData.token); ** I don't think I need this  **
   }
 
   onLoggedOut() {
@@ -85,22 +76,6 @@ class MainView extends React.Component {
         console.log(error);
       });
   }
-  // ** I don't think I need this piece of code: **
-  /* getGenres(token) {
-    axios
-      .get('https://tech-and-popcorn.herokuapp.com/genres', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        // Assign the result to the state
-        this.setState({
-          genres: response.data,
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }*/
 
   render() {
     let { movies } = this.props;
