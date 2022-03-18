@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import {
-  Form,
-  Button,
-  Card,
-  CardGroup,
-  Container,
-  Col,
-  Row,
-} from 'react-bootstrap';
+import { Form, Button, Container, Col, Row } from 'react-bootstrap';
 
-import { setUser } from '../../actions/actions';
+import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
 
 import './login-view.scss';
@@ -22,45 +14,49 @@ const mapStateToProps = (state) => {
   };
 };
 
-function LoginView({ setUser, onLoggedIn }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+function LoginView({ user, setUser, validateInput, onLoggedIn }) {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loginError, setLoginError] = useState('');
 
-  const validate = () => {
-    let isReq = true;
-    if (!username) {
+  useEffect(() => {
+    setUser({ Username: '', Password: '' });
+  }, []);
+
+  const validate = (statusCode = 200) => {
+    let isValid = true;
+    if (!user.Username) {
       setUsernameError('Username is required.');
-      isReq = false;
-    } else if (username.length < 4) {
-      setUsernameError('Username must be at least 4 characters long.');
-      isReq = false;
+      isValid = false;
     }
-    if (!password) {
+    if (!user.Password) {
       setPasswordError('Password is required.');
-      isReq = false;
-    } else if (password.length < 6) {
-      setPasswordError('Password must be at least 6 characters long.');
-      isReq = false;
+      isValid = false;
     }
-    return isReq;
+
+    if (statusCode === 400) {
+      //setLoginError('Wrong username or password.');
+      isValid = false;
+    }
+
+    return isValid;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isReq = validate();
-    if (isReq) {
+    const isValid = validate();
+    if (isValid) {
       axios
         .post('https://tech-and-popcorn.herokuapp.com/login', {
-          Username: username,
-          Password: password,
+          Username: user.Username,
+          Password: user.Password,
         })
         .then((response) => {
           const data = response.data;
           onLoggedIn(data);
         })
-        .catch(() => {
+        .catch((e) => {
+          validate(e.response.status);
           console.log('no such user');
           alert(
             'Wrong Username or Password. If you are new here, please register first.'
@@ -88,8 +84,8 @@ function LoginView({ setUser, onLoggedIn }) {
               <Form.Label>Username:</Form.Label>
               <Form.Control
                 type="text"
-                onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter username"
+                onChange={(e) => validateInput(e.target.value, 'Username')}
                 required
               />
               {usernameError && <p>{usernameError}</p>}
@@ -98,10 +94,10 @@ function LoginView({ setUser, onLoggedIn }) {
               <Form.Label>Password:</Form.Label>
               <Form.Control
                 type="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
                 placeholder="Enter Password"
+                onChange={(e) => {
+                  validateInput(e.target.value, 'Password');
+                }}
                 required
               />
               {passwordError && <p>{passwordError}</p>}
@@ -134,4 +130,4 @@ LoginView.propTypes = {
     Password: PropTypes.string.isRequired,
   }),
 };
-export default connect(mapStateToProps, { setUser })(LoginView);
+export default connect(mapStateToProps, { setUser, validateInput })(LoginView);
