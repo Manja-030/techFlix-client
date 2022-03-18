@@ -17,12 +17,6 @@ function GenreView({ genre }) {
     setIsCollapsed(!isCollapsed);
   };
 
-  /*
-	I take the genre array. 
-  For every element in this array (every genreId) I find in response.data the objects 
-  that have the matching Id and create an array of genre objects.
-	*/
-
   const filterGenres = (genres, genreIds) => {
     let filteredGenres = [];
     genres.forEach((genre) => {
@@ -44,27 +38,26 @@ function GenreView({ genre }) {
 
   return (
     <div>
-      {genreObject && genreObject.map(genreObject=>
-        <Accordion key={genreObject._id}>
-          <Accordion.Item eventKey="0">
-            <Accordion.Header variant="link" onClick={handleClick}>
-              {genreObject.Name}{' '}
-              {isCollapsed ? (
-                <BsFillArrowUpCircleFill />
-              ) : (
-                <BsFillArrowDownCircleFill />
-              )}
-            </Accordion.Header>
-            <Accordion.Body className="genre-text">
-              {genreObject.Description}
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-      )}
+      {genreObject &&
+        genreObject.map((genreObject) => (
+          <Accordion key={genreObject._id}>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header variant="link" onClick={handleClick}>
+                {genreObject.Name}{' '}
+                {isCollapsed ? (
+                  <BsFillArrowUpCircleFill />
+                ) : (
+                  <BsFillArrowDownCircleFill />
+                )}
+              </Accordion.Header>
+              <Accordion.Body className="genre-text">
+                {genreObject.Description}
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+        ))}
     </div>
   );
 }
-
-export default GenreView;
 
 export default GenreView;
