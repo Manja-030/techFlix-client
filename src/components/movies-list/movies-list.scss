@@ -10,4 +10,10 @@ $red: #DA1212;
 .search-bar{
   margin-bottom: 1em;
   color: $text-color !important;
+  padding-right:0;
+}
+
+.movie-cards{
+  display: flex;
+  align-items: stretch;
 }
