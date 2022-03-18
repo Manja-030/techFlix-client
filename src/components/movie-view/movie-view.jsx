@@ -55,7 +55,6 @@ class MovieView extends React.Component {
       )
       .then((response) => {
         alert('Movie as been added to Favorites.');
-        console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);
