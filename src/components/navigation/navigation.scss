@@ -17,15 +17,18 @@ $red: #DA1212;
   font-weight: 600;
 }
 
+#appName:hover{
+  color: rgb(223, 70, 70) !important;
+}
+
 .navbar-link{
   color: #DA1212 !important;
   font-size: 18px;
-}
-
-.navbar-button{
   margin-left: 1em;
-  color: $red !important;
-  border-color: $red !important;
+  margin-right: 1em;
+}
+.navbar-link:hover{
+  color: rgb(223, 70, 70) !important;
 }
 
 .toggle{

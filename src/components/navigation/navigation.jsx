@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './navigation.scss';
 import { GiPopcorn } from 'react-icons/gi';
@@ -45,19 +46,27 @@ function Navigation({ logOut }) {
       >
         <Nav>
           {isAuth() && (
-            <Nav.Link className="navbar-link" href={`/users/${user}`}>
-              MyPage
-            </Nav.Link>
+            <Nav.Item>
+              <Link
+                to={`/users/${user}`}
+                className="navbar-link text-decoration-none"
+                as="div"
+              >
+                MyPage
+              </Link>
+            </Nav.Item>
           )}
-
           {isAuth() && (
-            <Button
-              className="navbar-button"
-              variant="outline-danger"
-              onClick={logOut}
-            >
-              LogOut
-            </Button>
+            <Nav.Item>
+              <Link
+                to="/"
+                className="navbar-link text-decoration-none"
+                as="div"
+                onClick={logOut}
+              >
+                LogOut
+              </Link>
+            </Nav.Item>
           )}
           {/*{!isAuth() && (
 						<Nav.Link className="navbar-link" href={`/`}>
@@ -69,7 +78,6 @@ function Navigation({ logOut }) {
 							Register
 						</Nav.Link>
 					)}*/}
-
           {/*
 
 
