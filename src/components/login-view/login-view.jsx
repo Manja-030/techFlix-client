@@ -60,7 +60,7 @@ function LoginView({ setUser, onLoggedIn }) {
           const data = response.data;
           onLoggedIn(data);
         })
-        .catch((e) => {
+        .catch(() => {
           console.log('no such user');
           alert(
             'Wrong Username or Password. If you are new here, please register first.'
