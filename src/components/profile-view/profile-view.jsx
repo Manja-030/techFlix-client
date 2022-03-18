@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
 
-import { Row, Col, Card, Button, Container, Figure } from 'react-bootstrap';
+import { Row, Col, Button, Container, Figure } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './profile-view.scss';
 
