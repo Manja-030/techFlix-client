@@ -25,6 +25,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
   const [emailError, setEmailError] = useState('');
   const [birthdayError, setBirthdayError] = useState('');
 
+  const [favMovies, setFavMovies] = useState([]);
   const [favorites, setFavorites] = useState([]); //array of movie objects
 
   //When component renders for the first time, this fetches user data
@@ -34,14 +35,15 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log('response.data:', response.data);
-        const userData = {
+        let userData = {
           ...response.data,
-          Birthday: response.data.substring(0, 10),
+          Birthday: response.data.Birthday.substring(0, 10),
         };
         setUser(userData);
-
-        console.log('favMovies in UseEffect:', favMovies);
+        console.log('userData:', userData);
+        console.log(userData.FavMovies);
+        console.log('Birthday:', user.Birthday);
+        console.log('favMovies in UseEffect:', user.FavMovies);
 
         //filterMovies(movies, response.data.FavMovies);
         //console.log('favorites in useEffect:', favorites);
@@ -52,12 +54,10 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
   }, []);
 
   useEffect(() => {
-    filterMovies(movies, favMovies);
-  }, [favMovies]);
+    filterMovies(movies, user.FavMovies);
+  }, [user.FavMovies]);
 
   console.log('Favorite Movies after 2nd UseEffect', favorites);
-
-  console.log('Username:', username);
   console.log('Favorite Movies Objects', favorites);
 
   const filterMovies = (movies, favMovieIds) => {
@@ -101,33 +101,26 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
   const handleUpdateProfile = (e) => {
     console.log('handleUpdateProfile');
     e.preventDefault();
-    console.log(
-      'username, password, email, birthday:',
-      username,
-      password,
-      email,
-      birthday
-    );
+
     let isValid = validateChanges();
     if (isValid) {
       axios
         .put(
           `https://tech-and-popcorn.herokuapp.com/users/${localUsername}`,
           {
-            Username: username,
-            Password: password,
-            Email: email,
-            Birthday: birthday,
+            Username: user.Username,
+            Password: user.Password,
+            Email: user.Email,
+            Birthday: user.Birthday,
           },
           { headers: { Authorization: `Bearer ${token}` } }
         )
         .then((response) => {
           console.log('response.data:', response.data);
-          console.log('Username:', username);
+          console.log('Username:', user.Username);
           alert('Update of profile successful.');
         })
         .catch((error) => {
-          console.log(username);
           console.error('updating profile not successful:' + error);
           alert('Update of profile not successful.');
         });
@@ -146,12 +139,14 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
 
     axios
       .delete(
-        `https://tech-and-popcorn.herokuapp.com/users/${username}/movies/${movieId}`,
+        `https://tech-and-popcorn.herokuapp.com/users/${localUsername}/movies/${movieId}`,
         { headers: { Authorization: `Bearer ${token}` } }
       )
       .then((response) => {
         console.log(response.data);
-        setFavMovies(response.data.FavMovies);
+        setUser(response.data);
+        FavMovies: response.data.FavMovies;
+        alert('FavMovie removed');
         //alert('Movie has been removed from Favorites.');
         //filterMovies(movies, response.data.FavMovies);
       })
@@ -165,7 +160,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
     e.preventDefault();
     console.log('handleProfileDelete');
     axios
-      .delete(`https://tech-and-popcorn.herokuapp.com/users/${username}`, {
+      .delete(`https://tech-and-popcorn.herokuapp.com/users/${user.Username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -181,22 +176,22 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
   const validateChanges = () => {
     let isValid = true;
 
-    if (username.length < 4) {
+    if (user.Username.length < 4) {
       setUsernameError('Username must have at least 4 characters.');
       isValid = false;
     }
 
-    if (password.length < 6) {
+    if (user.Password.length < 6) {
       setPasswordError('Password must have at least 6 characters.');
       isValid = false;
     }
 
-    if (email.indexOf('@') === -1) {
+    if (user.Email.indexOf('@') === -1) {
       setEmailError('Email is not valid.');
       isValid = false;
     }
 
-    if (!birthday) {
+    if (!user.Birthday) {
       setBirthdayError('Please enter your birthday.');
       isValid = false;
     }
@@ -216,8 +211,8 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
               <Form.Label className="profile-text">Username:</Form.Label>
               <Form.Control
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                defaultValue={user.Username}
+                onChange={(e) => setUser(e.target.value)}
                 placeholder="Enter username"
               />
               <div className="profile-text">
@@ -240,7 +235,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
               <Form.Label className="profile-text">Email:</Form.Label>
               <Form.Control
                 type="email"
-                value={email}
+                defaultValue={user.Email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter email address"
               />
@@ -252,7 +247,7 @@ function ProfileView({ user, movies, logOut, onBackClick, setUser }) {
               <Form.Label className="profile-text">Birthday:</Form.Label>
               <Form.Control
                 type="text"
-                value={birthday}
+                defaultValue={user.Birthday}
                 placeholder="dd-mm-yyyy"
                 onChange={(e) => setBirthday(e.target.value)}
               />
