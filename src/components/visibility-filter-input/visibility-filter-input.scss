@@ -10,29 +10,14 @@ $red: #DA1212;
   font-size: $title-size !important;
   
 }
-.search-bar-input{
-  background-color: $bg-color !important;
-  border-color: $red !important;
-  font-size: $title-size !important;
-  color: $text-color !important;
-  
-  }
 
-
-.form-control:focus{
-  box-shadow: none !important;
+.search-bar-container{
+  padding:0 !important;
 }
 
- // ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  //  color: $text-color !important;
-  //  opacity: 1; /* Firefox */
- // }
-  
- // :-ms-input-placeholder { /* Internet Explorer 10-11 */
- //   color: $text-color !important;
- // }
-  
- // ::-ms-input-placeholder { /* Microsoft Edge */
- //   color: $text-color !important;
- // }
-  
+.search-bar-input:focus{
+  box-shadow: none !important;
+  border-color: $red !important;
+ 
+
+}
