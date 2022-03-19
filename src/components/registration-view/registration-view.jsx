@@ -1,73 +1,91 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Form, Button, Container, Col, Row } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import { connect } from 'react-redux';
+import { setUser, validateInput } from '../../actions/actions';
+
+import PropTypes from 'prop-types';
+
+import { Form, Button, Container, Col, Row } from 'react-bootstrap';
 import './registration-view.scss';
 
-function RegistrationView(props) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthday, setBirthday] = useState('');
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
+function RegistrationView({ user, setUser, validateInput }) {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [birthdayError, setBirthdayError] = useState('');
+
+  useEffect(() => {
+    setUser({
+      Username: '',
+      Password: '',
+      Email: '',
+      Birthday: '',
+      FavoriteMovies: [],
+    });
+  }, []);
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let isReq = validate();
+    if (isReq) {
+      axios
+        .post(`https://tech-and-popcorn.herokuapp.com/users`, {
+          Username: user.Username,
+          Password: user.Password,
+          Email: user.Email,
+          Birthday: user.Birthday,
+        })
+        .then(() => {
+          alert('Registration successful. You can login now!');
+          window.open('/', '_self'); //2nd argument "_self" is needed so that the page will open in the current tab
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('Unable to register.');
+        });
+    }
+  };
 
   const validate = () => {
     let isReq = true;
 
-    if (!username) {
+    if (!user.Username) {
       setUsernameError('Username is required (at least 4 characters).');
       isReq = false;
-    } else if (username.length < 4) {
+    } else if (user.Username.length < 4) {
       setUsernameError('Username must be at least 4 characters long.');
       isReq = false;
     }
 
-    if (!password) {
+    if (!user.Password) {
       setPasswordError('Password is required (at least 6 characters).');
       isReq = false;
-    } else if (password.length < 6) {
+    } else if (user.Password.length < 6) {
       setPasswordError('Password must be at least 6 characters long.');
       isReq = false;
     }
 
-    if (!email) {
+    if (!user.Email) {
       setEmailError('Email is required.');
       isReq = false;
-    } else if (email.indexOf('@') === -1) {
+    } else if (user.Email.indexOf('@') === -1) {
       setEmailError('Email is not valid.');
       isReq = false;
     }
 
-    return isReq;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(username, password, email, birthday);
-    const isReq = validate();
-    if (isReq) {
-      axios
-        .post('https://tech-and-popcorn.herokuapp.com/users', {
-          Username: username,
-          Password: password,
-          Email: email,
-          Birthday: birthday,
-        })
-        .then((response) => {
-          const data = response.data;
-          console.log(data);
-          alert('Registration successful. You can login now!');
-          window.open('/', '_self'); //2nd argument "_self" is needed so that the page will open in the current tab
-        })
-        .catch((response) => {
-          console.error(response);
-          alert('Unable to register.');
-        });
+    if (!user.Birthday) {
+      setBirthdayError('Please enter your Birthday.');
+      isReq = false;
     }
+
+    return isReq;
   };
 
   return (
@@ -84,9 +102,7 @@ function RegistrationView(props) {
               <Form.Label className="register-text">Username:</Form.Label>
               <Form.Control
                 type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
+                onChange={(e) => validateInput(e.target.value, 'Username')}
                 placeholder="Enter a username"
               />
               <div className="register-text">
@@ -97,9 +113,7 @@ function RegistrationView(props) {
               <Form.Label className="register-text">Password:</Form.Label>
               <Form.Control
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
+                onChange={(e) => validateInput(e.target.value, 'Password')}
                 placeholder="Enter your password"
               />
               <div className="register-text">
@@ -110,9 +124,7 @@ function RegistrationView(props) {
               <Form.Label className="register-text">Email:</Form.Label>
               <Form.Control
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
+                onChange={(e) => validateInput(e.target.value, 'Email')}
                 placeholder="Enter your email address"
               />
               <div className="register-text">
@@ -124,9 +136,11 @@ function RegistrationView(props) {
               <Form.Label className="register-text">Birthday:</Form.Label>
               <Form.Control
                 type="date"
-                value={birthday}
-                onChange={(e) => setBirthday(e.target.value)}
+                onChange={(e) => validateInput(e.target.value, 'Birthday')}
               />
+              <div className="register-text">
+                {birthdayError && <p> {birthdayError}</p>}
+              </div>
             </Form.Group>
 
             <Button
@@ -155,4 +169,6 @@ RegistrationView.propTypes = {
   validateInput: PropTypes.func,
 };
 
-export default RegistrationView;
+export default connect(mapStateToProps, { setUser, validateInput })(
+  RegistrationView
+);
