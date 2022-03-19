@@ -18,7 +18,6 @@ const mapStateToProps = (state) => {
 function LoginView({ user, setUser, validateInput, onLoggedIn }) {
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [loginError, setLoginError] = useState('');
 
   useEffect(() => {
     setUser({ Username: '', Password: '' });
@@ -36,7 +35,6 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
     }
 
     if (statusCode === 400) {
-      //setLoginError('Wrong username or password.');
       isValid = false;
     }
 
@@ -48,17 +46,15 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
     const isValid = validate();
     if (isValid) {
       axios
-        .post('https://tech-and-popcorn.herokuapp.com/login', {
-          Username: user.Username,
-          Password: user.Password,
-        })
+        .post(
+          `https://tech-and-popcorn.herokuapp.com/login?Username=${user.Username}&Password=${user.Password}`
+        )
+
         .then((response) => {
-          const data = response.data;
-          onLoggedIn(data);
+          onLoggedIn(response.data);
         })
         .catch((e) => {
           validate(e.response.status);
-          console.log('no such user');
           alert(
             'Wrong Username or Password. If you are new here, please register first.'
           );
