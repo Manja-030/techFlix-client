@@ -69,7 +69,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
     if (isValid) {
       axios
         .put(
-          `https://tech-and-popcorn.herokuapp.com/users/${user.Username}`,
+          `https://tech-and-popcorn.herokuapp.com/users/${localUsername}`,
           {
             Username: user.Username,
             Password: user.Password,
@@ -291,7 +291,7 @@ ProfileView.propTypes = {
   user: PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
+    Password: PropTypes.string,
     Birthday: PropTypes.string.isRequired,
     FavMovies: PropTypes.array.isRequired,
   }).isRequired,
