@@ -45,6 +45,7 @@ MovieCard.propTypes = {
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
     }),
+    _id: PropTypes.string.isRequired,
   }).isRequired,
 };
 
