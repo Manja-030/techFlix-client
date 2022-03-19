@@ -40,6 +40,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           Birthday: response.data.Birthday.substring(0, 10),
         };
         setUser(userData);
+        console.log('Userdata:', userData);
       })
       .catch((e) => {
         console.log(e);
@@ -49,6 +50,8 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   useEffect(() => {
     filterMovies(user.FavMovies);
   }, []);
+
+  console.log('Filtered Movies - favorites:', favorites);
 
   const filterMovies = (favMovieIds) => {
     let filteredMovies = [];
@@ -272,23 +275,35 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
       </Row>
     </Container>
   );
-
-  ProfileView.propTypes = {
-    movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        ImagePath: PropTypes.string,
-        Title: PropTypes.string.isRequired,
-        Description: PropTypes.string.isRequired,
-        Genre: PropTypes.array,
-        Director: PropTypes.shape({
-          Name: PropTypes.string,
-          Bio: PropTypes.string,
-        }),
-      })
-    ),
-    logOut: PropTypes.func.isRequired,
-  };
 }
+/*
+ProfileView.propTypes = {
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      Title: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequired,
+      Director: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Bio: PropTypes.string.isRequired,
+        Birth: PropTypes.string,
+      }).isRequired,
+      ReleaseYear: PropTypes.string.isRequired,
+      Genre: PropTypes.array.isRequired,
+      _id: PropTypes.string.isRequired,
+      ImagePath: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Birthday: PropTypes.string.isRequired,
+    FavMovies: PropTypes.array.isRequired,
+  }).isRequired,
+  logOut: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired,
+  validateInput: PropTypes.func.isRequired,
+};*/
 export default connect(mapStateToProps, { setUser, validateInput })(
   ProfileView
 );
