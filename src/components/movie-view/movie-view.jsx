@@ -10,7 +10,6 @@ import DirectorView from '../director-view/director-view';
 import GenreView from '../genre-view/genre-view';
 import './movie-view.scss';
 import { GiPopcorn } from 'react-icons/gi';
-import { render } from 'react-dom';
 
 const mapStateToProps = (state) => {
   return {
@@ -19,15 +18,13 @@ const mapStateToProps = (state) => {
 };
 
 function MovieView({ user, movie, onBackClick, changeFavorites }) {
+  const token = localStorage.getItem('token');
+  const localUser = localStorage.getItem('user');
   const handleFavorites = () => {
-    let token = localStorage.getItem('token');
-    let localUser = localStorage.getItem('user');
-
     user.FavMovies.includes(movie._id)
       ? axios
           .delete(
             `https://tech-and-popcorn.herokuapp.com/users/${localUser}/movies/${movie._id}`,
-            {},
             { headers: { Authorization: `Bearer ${token}` } }
           )
           .then((response) => {
@@ -45,7 +42,6 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
             }
           )
           .then((response) => {
-            alert('Movie as been added to Favorites.');
             changeFavorites(response.data.FavMovies);
           })
           .catch(function (error) {
@@ -58,26 +54,25 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
       <Card.Body>
         <Row>
           <Col>
-            <h2 className="movie-title mb-5">{movie.Title}</h2>
+            <h2 className="movie-title mb-3">{movie.Title}</h2>
           </Col>
         </Row>
 
         <Row className="mb-4">
-          <Col md={6} lg={4}>
-            <img
-              className="movie-image"
-              src={movie.ImagePath}
-              alt={movie.Title}
-              crossOrigin="true"
-            />
+          <Col>
+            <Row>
+              <img
+                className="movie-image"
+                src={movie.ImagePath}
+                alt={movie.Title}
+                crossOrigin="true"
+              />
+            </Row>
           </Col>
 
-          <Col md={6} lg={4} className="movie-details">
-            {movie.Description}
-          </Col>
-
-          <Col md={6} lg={4} className="detail-links">
-            <div>
+          <Col className="detail-links">
+            <div className="mb-4">Released: {movie.ReleaseYear}</div>
+            <div className="mb-4">
               <div>Director: </div>
               <DirectorView movie={movie} />
             </div>
@@ -88,29 +83,39 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
                 <GenreView genre={movie.Genre} />
               </div>
             </div>
-
-            <div>Released: {movie.ReleaseYear}</div>
           </Col>
+        </Row>
+        <Row className="mb-3">
+          <Col className="movie-details">{movie.Description}</Col>
         </Row>
 
         <Row>
-          <Col className="add-fav">
-            <Button variant="outline-danger" onClick={handleFavorites}>
+          <Col className="add-fav text-left">
+            {' '}
+            <div>
               {user.FavMovies.includes(movie._id) ? (
                 <>
-                  <GiPopcorn className="fav-icon" />
-                  <span className="d-inline-block"> Remove from Favorites</span>
+                  <Button
+                    onClick={handleFavorites}
+                    variant="outline-danger"
+                    className="text-left"
+                  >
+                    <GiPopcorn className="fav-icon-button" />
+                    <span className="button-text"> Remove from List</span>
+                  </Button>
                 </>
               ) : (
                 <>
-                  <GiPopcorn className="fav-icon" />
-                  <span> Add to Favorites</span>
+                  <Button onClick={handleFavorites} variant="outline-danger">
+                    <GiPopcorn className="fav-icon-button" />
+                    <span> Add to Favorites</span>
+                  </Button>
                 </>
               )}
-            </Button>
+            </div>
           </Col>
 
-          <Col>
+          <Col className="text-right">
             <Button
               variant="outline-danger"
               onClick={() => {
@@ -120,13 +125,12 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
               Back
             </Button>{' '}
           </Col>
-          <Col></Col>
         </Row>
       </Card.Body>
     </Card>
   );
 }
-/*
+
 {
   MovieView.propTypes = {
     Movie: PropTypes.shape({
@@ -145,6 +149,6 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
     }),
     onBackClick: PropTypes.func.isRequired,
   };
-}*/
+}
 
 export default connect(mapStateToProps, { changeFavorites })(MovieView);

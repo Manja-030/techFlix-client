@@ -15,12 +15,7 @@ $red: #DA1212;
 .movie-title{
   font-size: $brand-size;
   font-weight: 400;
-  //text-align: center;
   color: $text-color !important;
-}
-
-.movie-image{
-  width: 100%;
 }
 
 .movie-details {
@@ -39,14 +34,16 @@ $red: #DA1212;
 .add-fav{
   color: $red !important;
 }
-.fav-icon{
-  font-size: 30px;
-  margin-left: 10px;
+.fav-icon-button{
+  font-size: 2em;
 }
 
 .link{
   color: $red !important;
 }
+
+
+
 .back-button{
 font-size: $text-size;
 }
