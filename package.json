@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
-    "parcel": "^2.3.2",
     "prop-type": "^0.0.1",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
@@ -23,6 +22,6 @@
     "redux-devtools-extension": "^2.13.9"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "^2.0.0-rc.0"
+    
   }
 }
