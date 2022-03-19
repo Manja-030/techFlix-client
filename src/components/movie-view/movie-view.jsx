@@ -1,138 +1,132 @@
 import React from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { changeFavorites } from '../../actions/actions';
 import PropTypes from 'prop-types';
-import { Card, CardTitle, CardBody, Row, Col, Button } from 'react-bootstrap';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import DirectorView from '../director-view/director-view';
 import GenreView from '../genre-view/genre-view';
 import './movie-view.scss';
 import { GiPopcorn } from 'react-icons/gi';
+import { render } from 'react-dom';
 
-class MovieView extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      FavMovies: [],
-      userDetails: [],
-    };
-  }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
-  componentDidMount() {
-    let accessToken = localStorage.getItem('token');
-    this.getUserDetails(accessToken);
-  }
-
-  getUserDetails(token) {
-    axios
-      .get(`https://tech-and-popcorn.herokuapp.com/users/${this.props.user}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        // Use the response to set the user details in the state variables
-        this.setState({
-          userDetails: response.data,
-          FavMovies: response.data.FavMovies,
-        });
-        console.log('Response.Data userDetails:', response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
-
-  // add movieID to user's FavMovies array:
-  handleAdd() {
+function MovieView({ user, movie, onBackClick, changeFavorites }) {
+  const handleFavorites = () => {
     let token = localStorage.getItem('token');
+    let localUser = localStorage.getItem('user');
 
-    axios
-      .post(
-        `https://tech-and-popcorn.herokuapp.com/users/${this.props.user}/movies/${this.props.movie._id}`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      )
-      .then((response) => {
-        alert('Movie as been added to Favorites.');
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }
+    user.FavMovies.includes(movie._id)
+      ? axios
+          .delete(
+            `https://tech-and-popcorn.herokuapp.com/users/${localUser}/movies/${movie._id}`,
+            {},
+            { headers: { Authorization: `Bearer ${token}` } }
+          )
+          .then((response) => {
+            changeFavorites(response.data.FavMovies);
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+      : axios
+          .post(
+            `https://tech-and-popcorn.herokuapp.com/users/${localUser}/movies/${movie._id}`,
+            {},
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          )
+          .then((response) => {
+            alert('Movie as been added to Favorites.');
+            changeFavorites(response.data.FavMovies);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+  };
 
-  render() {
-    const { movie, onBackClick } = this.props;
+  return (
+    <Card className="movieView-card">
+      <Card.Body>
+        <Row>
+          <Col>
+            <h2 className="movie-title mb-5">{movie.Title}</h2>
+          </Col>
+        </Row>
 
-    return (
-      <Card className="movieView-card">
-        <Card.Body>
-          <Row>
-            <Col>
-              <h2 className="movie-title mb-5">{movie.Title}</h2>
-            </Col>
-          </Row>
+        <Row className="mb-4">
+          <Col md={6} lg={4}>
+            <img
+              className="movie-image"
+              src={movie.ImagePath}
+              alt={movie.Title}
+              crossOrigin="true"
+            />
+          </Col>
 
-          <Row className="mb-4">
-            <Col md={6} lg={4}>
-              <img
-                className="movie-image"
-                src={movie.ImagePath}
-                alt={movie.Title}
-                crossOrigin="true"
-              />
-            </Col>
+          <Col md={6} lg={4} className="movie-details">
+            {movie.Description}
+          </Col>
 
-            <Col md={6} lg={4} className="movie-details">
-              {movie.Description}
-            </Col>
+          <Col md={6} lg={4} className="detail-links">
+            <div>
+              <div>Director: </div>
+              <DirectorView movie={movie} />
+            </div>
+            <div>
+              <div>Genre:</div>
 
-            <Col md={6} lg={4} className="detail-links">
               <div>
-                <div>Director: </div>
-                <DirectorView movie={movie} />
+                <GenreView genre={movie.Genre} />
               </div>
-              <div>
-                <div>Genre:</div>
+            </div>
 
-                <div>
-                  <GenreView genre={movie.Genre} />
-                </div>
-              </div>
+            <div>Released: {movie.ReleaseYear}</div>
+          </Col>
+        </Row>
 
-              <div>Released: {movie.ReleaseYear}</div>
-            </Col>
-          </Row>
+        <Row>
+          <Col className="add-fav">
+            <Button variant="outline-danger" onClick={handleFavorites}>
+              {user.FavMovies.includes(movie._id) ? (
+                <>
+                  <GiPopcorn className="fav-icon" />
+                  <span className="d-inline-block"> Remove from Favorites</span>
+                </>
+              ) : (
+                <>
+                  <GiPopcorn className="fav-icon" />
+                  <span> Add to Favorites</span>
+                </>
+              )}
+            </Button>
+          </Col>
 
-          <Row>
-            <Col className="add-fav">
-              <Button
-                type="button"
-                variant="outline-danger"
-                onClick={() => this.handleAdd(movie)}
-              >
-                Add to Favorites <GiPopcorn className="fav-icon" />
-              </Button>
-            </Col>
-
-            <Col>
-              <Button
-                variant="outline-danger"
-                onClick={() => {
-                  onBackClick(null);
-                }}
-              >
-                Back
-              </Button>{' '}
-            </Col>
-            <Col></Col>
-          </Row>
-        </Card.Body>
-      </Card>
-    );
-  }
+          <Col>
+            <Button
+              variant="outline-danger"
+              onClick={() => {
+                onBackClick(null);
+              }}
+            >
+              Back
+            </Button>{' '}
+          </Col>
+          <Col></Col>
+        </Row>
+      </Card.Body>
+    </Card>
+  );
 }
-
+/*
 {
   MovieView.propTypes = {
     Movie: PropTypes.shape({
@@ -147,9 +141,10 @@ class MovieView extends React.Component {
         Death: PropTypes.string,
       }).isRequired,
       Genre: PropTypes.array.isRequired,
+      _id: PropTypes.string.isRequired,
     }),
     onBackClick: PropTypes.func.isRequired,
   };
-}
+}*/
 
-export default MovieView;
+export default connect(mapStateToProps, { changeFavorites })(MovieView);

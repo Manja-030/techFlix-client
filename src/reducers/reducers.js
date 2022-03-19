@@ -3,6 +3,7 @@ import {
   SET_FILTER,
   SET_USER,
   VALIDATE_INPUT,
+  CHANGE_FAVORITES,
 } from '../actions/actions';
 import { combineReducers } from 'redux';
 
@@ -47,6 +48,12 @@ function user(
       return {
         ...state,
         [field]: value,
+      };
+
+    case CHANGE_FAVORITES:
+      return {
+        ...state,
+        [field]: [...value],
       };
 
     default:
