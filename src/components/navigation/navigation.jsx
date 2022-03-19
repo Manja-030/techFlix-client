@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Container, Nav, Button } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import './navigation.scss';
@@ -14,9 +14,6 @@ function Navigation({ logOut }) {
   };
 
   const isAuth = () => {
-    //if (typeof window == 'undefined') {
-    //  return false;
-    // }
     if (localStorage.getItem('token')) {
       return localStorage.getItem('token');
     } else {
@@ -33,7 +30,6 @@ function Navigation({ logOut }) {
       expand="lg"
       sticky="top"
     >
-      {/*<Container>*/}
       <Navbar.Brand id="appName" href="/">
         <GiPopcorn />
         techFlix
@@ -68,41 +64,8 @@ function Navigation({ logOut }) {
               </Link>
             </Nav.Item>
           )}
-          {/*{!isAuth() && (
-						<Nav.Link className="navbar-link" href={`/`}>
-							LogIn
-						</Nav.Link>
-					)}
-					{!isAuth() && (
-						<Nav.Link className="navbar-link" href={`/register`}>
-							Register
-						</Nav.Link>
-					)}*/}
-          {/*
-
-
-						<Nav.Link id="link" href="">
-							MyPage
-						</Nav.Link>
-						
-            <Nav.Link id="link" href="">
-							Movies
-						</Nav.Link>
-					
-          	<Nav.Link id="link" href="">
-							<Button variant="outline-danger" onClick={() => this.onLoggedIn()}>
-								LogIn
-							</Button>
-						</Nav.Link>
-						
-            <Nav.Link id="link" href="">
-							<Button variant="outline-danger" onClick={() => this.onLoggedOut()}>
-								LogOut
-							</Button>
-						</Nav.Link>*/}
         </Nav>
       </Navbar.Collapse>
-      {/*</Container>*/}
     </Navbar>
   );
 }
