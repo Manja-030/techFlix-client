@@ -40,7 +40,6 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           Birthday: response.data.Birthday.substring(0, 10),
         };
         setUser(userData);
-        console.log('Userdata:', userData);
       })
       .catch((e) => {
         console.log(e);
@@ -50,8 +49,6 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   useEffect(() => {
     filterMovies(user.FavMovies);
   }, []);
-
-  console.log('Filtered Movies - favorites:', favorites);
 
   const filterMovies = (favMovieIds) => {
     let filteredMovies = [];
@@ -81,9 +78,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           },
           { headers: { Authorization: `Bearer ${token}` } }
         )
-        .then((response) => {
-          console.log('response.data:', response.data);
-          console.log('Username:', user.Username);
+        .then(() => {
           alert('Update of profile successful.');
         })
         .catch((error) => {
@@ -276,7 +271,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
     </Container>
   );
 }
-/*
+
 ProfileView.propTypes = {
   movies: PropTypes.arrayOf(
     PropTypes.shape({
@@ -303,7 +298,8 @@ ProfileView.propTypes = {
   logOut: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   validateInput: PropTypes.func.isRequired,
-};*/
+};
+
 export default connect(mapStateToProps, { setUser, validateInput })(
   ProfileView
 );
