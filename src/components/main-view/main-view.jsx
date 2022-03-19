@@ -1,17 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
-
-import { Container, Row, Col } from 'react-bootstrap';
-
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
+import { connect } from 'react-redux';
 import { setMovies, setUser } from '../../actions/actions';
 
+import { Container, Row, Col } from 'react-bootstrap';
 import './main-view.scss';
 
 import MoviesList from '../movies-list/movies-list';
-import Navigation from '../navigation/navigation.jsx';
+import Navigation from '../navigation/navigation';
 import LoginView from '../login-view/login-view';
 import RegistrationView from '../registration-view/registration-view';
 import MovieView from '../movie-view/movie-view';
@@ -33,7 +31,7 @@ class MainView extends React.Component {
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
+    if (accessToken) {
       this.setState({
         user: localStorage.getItem('user'),
       });
@@ -152,7 +150,6 @@ class MainView extends React.Component {
                       movie={movies.find(
                         (movie) => movie._id === match.params.movieId
                       )}
-                      user={user}
                       onBackClick={() => history.goBack()}
                     />
                   </Col>
