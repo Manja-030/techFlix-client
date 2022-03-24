@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
+    "parcel-bundler": "^1.12.5",
     "prop-type": "^0.0.1",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
