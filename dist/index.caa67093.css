@@ -1,0 +1,273 @@
+.btn-outline-danger {
+  color: #DA1212 !important;
+  border-color: #DA1212 !important;
+}
+
+.btn-outline-danger:hover, btn-outline-danger:focus, btn-outline-danger:active {
+  color: white !important;
+  background-color: #DA1212 !important;
+}
+.accordion-header {
+  font-size: 1em !important;
+}
+
+.accordion-button {
+  background-color: #1E2127;
+  color: white;
+  width: 100%;
+  border: none;
+  text-align: left;
+}
+
+/*
+.link{
+  color: $red !important;
+}
+.back-button{
+font-size: $text-size;
+}*/
+.genre-text {
+  color: white !important;
+}
+
+.accordion-header {
+  font-size: 18px !important;
+}
+
+.accordion-button {
+  background-color: #1E2127;
+  color: white;
+  width: 100%;
+  border: none;
+  text-align: left;
+}
+.movieView-card {
+  background: #1E2127 !important;
+  border-color: #DA1212 !important;
+  border-width: 1px !important;
+}
+
+.movie-image {
+  width: 100%;
+}
+
+.movie-title {
+  font-size: 2em;
+  font-weight: 400;
+  color: white !important;
+}
+
+.movie-details {
+  background: #1E2127;
+  color: white !important;
+  font-size: 1em;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.detail-links {
+  font-size: 1em;
+  color: white !important;
+}
+
+.add-fav {
+  color: #DA1212 !important;
+}
+
+.fav-icon-button {
+  font-size: 2em;
+}
+
+.link {
+  color: #DA1212 !important;
+}
+
+.back-button {
+  font-size: 1em;
+}
+#appName {
+  color: #DA1212;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+#link {
+  color: #DA1212 !important;
+  font-size: 18px;
+}
+
+.toggle {
+  color: #DA1212 !important;
+}
+
+.main-view {
+  background-color: #1E2127;
+}
+
+.movie-cards {
+  display: flex;
+  align-items: stretch;
+}
+body {
+  background-color: #1E2127 !important;
+}
+
+.login-title {
+  line-height: 2.5em;
+}
+
+.intro-text {
+  font-size: 18px;
+}
+
+.login-container {
+  color: white;
+}
+
+#login-form {
+  background-color: #1E2127 !important;
+  font-size: 18px;
+  color: white;
+}
+
+.link {
+  color: red !important;
+}
+
+.submit-button {
+  font-size: 18px;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+.register-title {
+  color: #DA1212 !important;
+}
+
+.register-text {
+  color: white !important;
+}
+.profile-title {
+  color: #DA1212 !important;
+}
+
+.profile-text {
+  color: white !important;
+}
+
+.fav-movie {
+  margin-bottom: 5px;
+}
+.fav-movie figure {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: auto;
+  align-items: center;
+}
+.fav-movie figure img {
+  height: 300px;
+  display: block;
+  margin: auto;
+}
+
+.profile-btn {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.movieCard {
+  background-color: #1E2127 !important;
+  color: white;
+  border: 2px solid #DA1212 !important;
+}
+
+.movieCard-img {
+  max-height: 350px;
+}
+
+.cardTitle {
+  min-height: 50px;
+}
+
+.cardText {
+  min-height: 100px;
+  margin: 0;
+  padding-bottom: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movieCard-body {
+  margin-bottom: 0;
+  padding-bottom: 0 !important;
+}
+
+.movieCard-footer {
+  margin: 0 auto;
+}
+
+#button-link {
+  display: block;
+  margin: auto;
+}
+
+#card-button {
+  color: #DA1212 !important;
+  vertical-align: bottom;
+  text-align: center;
+  margin: auto;
+}
+.form-label {
+  font-size: 1.3em !important;
+}
+
+.search-bar-container {
+  padding: 0 !important;
+}
+
+.search-bar-input:focus {
+  box-shadow: none !important;
+  border-color: #DA1212 !important;
+}
+.search-bar {
+  margin-bottom: 1em;
+  color: white !important;
+  padding-right: 0;
+}
+
+.movie-cards {
+  display: flex;
+  align-items: stretch;
+}
+#main-nav {
+  color: #DA1212 !important;
+  background-color: #13171F !important;
+}
+
+#appName {
+  color: #DA1212;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+#appName:hover {
+  color: #df4646 !important;
+}
+
+.navbar-link {
+  color: #DA1212 !important;
+  font-size: 18px;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.navbar-link:hover {
+  color: #df4646 !important;
+}
+
+.toggle {
+  color: #DA1212 !important;
+}
+/*# sourceMappingURL=index.caa67093.css.map */
