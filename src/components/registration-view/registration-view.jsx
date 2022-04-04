@@ -31,7 +31,7 @@ function RegistrationView({ user, setUser, validateInput }) {
     });
   }, []);
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     let isReq = validate();
     if (isReq) {
