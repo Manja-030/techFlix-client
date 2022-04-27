@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
@@ -21,6 +21,12 @@ function MoviesList(props) {
     );
   }
 
+  const [visible, setVisible] = useState(4);
+
+  const showMoreItems = () => {
+    setVisible((prevValue) => prevValue + 4);
+  };
+
   if (!movies) return <div className="main-view" />;
 
   return (
@@ -31,7 +37,7 @@ function MoviesList(props) {
         </Col>
       </Container>
 
-      {filteredMovies.map((movie) => (
+      {filteredMovies.slice(0, visible).map((movie) => (
         <Col
           xs={12}
           sm={12}
@@ -43,6 +49,7 @@ function MoviesList(props) {
           <MovieCard movie={movie} />
         </Col>
       ))}
+      <button onClick={showMoreItems}>Load more movies</button>
     </>
   );
 }
