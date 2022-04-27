@@ -90,10 +90,10 @@ class MainView extends React.Component {
       <Router>
         <Navigation logOut={() => this.onLoggedOut()} />
         <Container>
-          <div className="background-wrapper">
-            <img src={backgroundImage} />
-          </div>
           <Row className="main-view justify-content-md-center">
+            <div className="background-wrapper">
+              <img src={backgroundImage} />
+            </div>
             <Route
               exact
               path="/"
