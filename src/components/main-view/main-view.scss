@@ -24,9 +24,19 @@ $red: #DA1212;
 
 .main-view{
   /*background-color: #1E2127;*/
+}
+.background-wrapper{
   background-image: url("./assets/background-image.jpg");
   background-size: cover;
+  display: block;
+  height: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
 }
+
 
 .movie-cards{
   display: flex;
