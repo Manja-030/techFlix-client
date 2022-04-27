@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Col, Container } from 'react-bootstrap';
+import { Col, Container, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
@@ -49,7 +49,9 @@ function MoviesList(props) {
           <MovieCard movie={movie} />
         </Col>
       ))}
-      <button onClick={showMoreItems}>Load more movies</button>
+      <Button id="load-button" variant="outline-danger" onClick={showMoreItems}>
+        Load more movies
+      </Button>
     </>
   );
 }
