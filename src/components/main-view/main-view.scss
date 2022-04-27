@@ -23,7 +23,9 @@ $red: #DA1212;
 }
 
 .main-view{
-  background-color: #1E2127;
+  /*background-color: #1E2127;*/
+  background-image: url("./assets/background-image.jpg");
+  background-size: cover;
 }
 
 .movie-cards{
