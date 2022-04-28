@@ -7,7 +7,7 @@ $red: #DA1212;
 
 body{
   background-color: $bg-color !important;
-  background-image: linear-gradient(to-right, rgba(218, 18, 18, 0.3), rgba(30, 33, 39, 0.3), rgba(218, 18, 18, 0.3)), url('../../assets/background-image.jpg');
+  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   
