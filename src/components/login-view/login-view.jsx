@@ -74,6 +74,8 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
             <br /> of tech-industry movies.
           </p>
         </Col>
+      </Row>
+      <Row>
         <Col className="mt-1">
           <h3 className="login-title">Please Login</h3>
           <Form id="login-form">

@@ -30,12 +30,18 @@ body{
 
 .login-container{
   color: $text-color;
+  background-color: $bg-color;
+  padding: 15px;
+  margin: auto;
+  border-radius: .50;
+  border: 2px solid $red;
+
 }
 
 #login-form{
-  background-color: $bg-color !important;
+  /*background-color: $bg-color !important;*/
   font-size: $text-size;
-  color: white;
+  color: $text-color;
 }
 
 .link{
