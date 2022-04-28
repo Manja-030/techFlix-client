@@ -233,7 +233,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           </Form>
         </Col>
         {/* This Col contains the Favorite Movies: */}
-        <Col xs={12} sm={12} md={6} lg={3} xl={3} className="p-3 m-2">
+        <Col className="p-3 m-2">
           <h3 className="profile-title"> My Favorite Movies:</h3>
 
           <Row>

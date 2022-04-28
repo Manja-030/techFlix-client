@@ -66,7 +66,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
   };
 
   return (
-    <Container className="login-container">
+    <Container className="login-container xs={12} sm={12} md={8} lg={8} xl={6}">
       <Row>
         <Col>
           <h3 className="login-title">Done coding for today?</h3>
