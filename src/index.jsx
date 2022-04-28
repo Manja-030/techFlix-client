@@ -19,7 +19,7 @@ class TechFlixApplication extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <Container>
+        <Container fluid>
           <MainView />
         </Container>
       </Provider>
