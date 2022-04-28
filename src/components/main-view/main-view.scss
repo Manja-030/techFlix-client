@@ -6,6 +6,12 @@ $text-color: white;
 $bg-color: #1E2127;
 $red: #DA1212;
 
+body{
+  background-color: $bg-color !important;
+  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 #appName{
   color: $red;
@@ -24,10 +30,7 @@ $red: #DA1212;
 
 .main-view{
   
-  background-color: $bg-color !important;
-  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
+
     
     
     /*display: block;
