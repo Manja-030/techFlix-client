@@ -9,6 +9,8 @@ $red: #DA1212;
 #main-nav{
   color: $red !important;
   background-color: #13171F !important;
+  border-radius: 5px;
+  box-shadow: 0 0 0.6em #13171F;
 }
 
 #appName{

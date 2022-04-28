@@ -50,7 +50,7 @@ function MoviesList(props) {
           key={movie._id}
           className="movie-cards"
         >
-          <MovieCard movie={movie} />
+          <MovieCard className="mb-3" movie={movie} />
         </Col>
       ))}
       <Button id="load-button" variant="outline-danger" onClick={showMoreItems}>
