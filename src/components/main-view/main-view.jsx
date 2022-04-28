@@ -8,7 +8,7 @@ import { setMovies, setUser } from '../../actions/actions';
 import { Container, Row, Col } from 'react-bootstrap';
 import './main-view.scss';
 
-import backgroundImage from 'assets/background-image.jpg';
+import backgroundImage from '../../assets/background-image.jpg';
 
 import MoviesList from '../movies-list/movies-list';
 import Navigation from '../navigation/navigation';
