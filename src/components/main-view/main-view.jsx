@@ -89,7 +89,7 @@ class MainView extends React.Component {
     return (
       <Router>
         <Navigation logOut={() => this.onLoggedOut()} />
-        <Container className="mainview-container container-fluid">
+        <Container>
           <Row className="main-view justify-content-center">
             <Route
               exact
