@@ -20,6 +20,10 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
 
+  useEffect(() => {
+    document.body.className = 'background-color';
+  }, []);
+
   //objects that include error messages as a result of validateChanges:
   const [usernameError, setUsernameError] = useState('');
   const [passwordError, setPasswordError] = useState('');

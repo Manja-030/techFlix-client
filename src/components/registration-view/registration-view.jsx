@@ -22,6 +22,10 @@ function RegistrationView({ user, setUser, validateInput }) {
   const [birthdayError, setBirthdayError] = useState('');
 
   useEffect(() => {
+    document.body.className = 'background-image';
+  }, []);
+
+  useEffect(() => {
     setUser({
       Username: '',
       Password: '',

@@ -6,6 +6,9 @@ $text-color: white;
 $bg-color: #1E2127;
 $red: #DA1212;
 
+.background-color{
+  background-color: $bg-color;
+}
 
 .profile-title{
   color: $red !important;
