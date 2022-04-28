@@ -8,8 +8,6 @@ import { setMovies, setUser } from '../../actions/actions';
 import { Container, Row, Col } from 'react-bootstrap';
 import './main-view.scss';
 
-import backgroundImage from '../../assets/background-image.jpg';
-
 import MoviesList from '../movies-list/movies-list';
 import Navigation from '../navigation/navigation';
 import LoginView from '../login-view/login-view';
@@ -97,14 +95,10 @@ class MainView extends React.Component {
               render={() => {
                 if (!localUser)
                   return (
-                    <div className="background-image">
-                      <Col>
-                        <LoginView
-                          onLoggedIn={(user) => this.onLoggedIn(user)}
-                        />
-                        ;
-                      </Col>
-                    </div>
+                    <Col>
+                      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
+                      ;
+                    </Col>
                   );
 
                 if (movies.length === 0) return <div className="main-view" />;
