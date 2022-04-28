@@ -7,7 +7,8 @@ import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
 
 import './login-view.scss';
-import { propTypes } from 'react-bootstrap/esm/Image';
+
+import PropTypes from 'prop-types';
 
 const mapStateToProps = (state) => {
   return {
