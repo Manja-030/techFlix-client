@@ -49,6 +49,10 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
           });
   };
 
+  useEffect(() => {
+    document.body.className = 'background-color';
+  }, []);
+
   return (
     <Card className="movieView-card">
       <Card.Body>

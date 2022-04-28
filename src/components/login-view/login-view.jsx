@@ -22,6 +22,10 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
     setUser({ Username: '', Password: '' });
   }, []);
 
+  useEffect(() => {
+    document.body.className = 'background-image';
+  }, []);
+
   const validate = (statusCode = 200) => {
     let isValid = true;
     if (!user.Username) {

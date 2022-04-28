@@ -12,6 +12,14 @@ $red: #DA1212;
   background-repeat: no-repeat;
 }*/
 
+
+.background-image{
+  background-color: $bg-color;
+  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .login-title{
   line-height: 2.5em;
 }
