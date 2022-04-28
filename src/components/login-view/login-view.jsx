@@ -69,9 +69,8 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
           <h3 className="login-title">Done coding for today?</h3>
 
           <p className="intro-text">
-            Grab a beer and some popcorn
-            <br /> and discover my selection
-            <br /> of tech-industry movies.
+            Grab a beer and some popcorn and discover my selection of
+            tech-industry movies.
           </p>
         </Col>
       </Row>
