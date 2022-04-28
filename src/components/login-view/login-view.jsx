@@ -8,8 +8,6 @@ import { connect } from 'react-redux';
 
 import './login-view.scss';
 
-import PropTypes from 'prop-types';
-
 const mapStateToProps = (state) => {
   return {
     user: state.user,
