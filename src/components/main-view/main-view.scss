@@ -23,9 +23,22 @@ $red: #DA1212;
 }
 
 .main-view{
- 
-  /*background-color: #1E2127;*/
+  
+  background-color: $bg-color !important;
+  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+    
+    
+    /*display: block;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    z-index: -1;*/
 }
+
 
 .movie-cards{
   display: flex;
