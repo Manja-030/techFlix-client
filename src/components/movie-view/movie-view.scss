@@ -12,7 +12,9 @@ $red: #DA1212;
 .movieView-card{
   background: $bg-color !important;
   border-color: $red !important;
-  border-width: 1px !important;
+  border-width: 2px !important;
+  border-radius: 5px;
+  box-shadow: 0 0 0.9em $red;
 
 }
 
@@ -54,4 +56,6 @@ $red: #DA1212;
 
 .back-button{
 font-size: $text-size;
+border-radius: 3px;
+box-shadow: 0 0 0.4em $red;
 }
