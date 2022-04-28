@@ -97,8 +97,7 @@ class MainView extends React.Component {
               render={() => {
                 if (!localUser)
                   return (
-                    <div>
-                      <img className="background-image" src={backgroundImage} />
+                    <div className="background-image">
                       <Col>
                         <LoginView
                           onLoggedIn={(user) => this.onLoggedIn(user)}
