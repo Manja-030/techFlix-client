@@ -6,7 +6,9 @@ $text-color: white;
 $bg-color: #1E2127;
 $red: #DA1212;
 
-
+.background-color{
+  background-color: $bg-color;
+}
 .movieView-card{
   background: $bg-color !important;
   border-color: $red !important;

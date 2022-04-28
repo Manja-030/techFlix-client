@@ -29,6 +29,10 @@ function MoviesList(props) {
 
   if (!movies) return <div className="main-view" />;
 
+  useEffect(() => {
+    document.body.className = 'background-color';
+  }, []);
+
   return (
     <>
       <Container className="search-bar-container">
