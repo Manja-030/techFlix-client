@@ -10,30 +10,28 @@ class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
     return (
-      <Link to={`/movies/${movie._id}`} id="button-link">
-        <Card className="movieCard mb-2">
-          <Card.Img
-            className="movieCard-img"
-            variant="top"
-            src={movie.ImagePath}
-            alt={movie.title}
-            crossOrigin="true"
-          />
-          <div className="card-overlay">
-            <div className="card-header">
-              <Card.Title className="cardTitle">{movie.Title}</Card.Title>
-            </div>
-            <Card.Text className="cardText">{movie.Description}</Card.Text>
-            <Card.Footer className="movieCard-footer">
-              <Link to={`/movies/${movie._id}`} id="button-link">
-                <Button id="card-button" variant="link">
-                  More Info
-                </Button>
-              </Link>
-            </Card.Footer>
+      <Card className="movieCard mb-2">
+        <Card.Img
+          className="movieCard-img"
+          variant="top"
+          src={movie.ImagePath}
+          alt={movie.title}
+          crossOrigin="true"
+        />
+        <div className="card-overlay">
+          <div className="card-header">
+            <Card.Title className="cardTitle">{movie.Title}</Card.Title>
           </div>
-        </Card>
-      </Link>
+          <Card.Text className="cardText">{movie.Description}</Card.Text>
+          <Card.Footer className="movieCard-footer">
+            <Link to={`/movies/${movie._id}`} id="button-link">
+              <Button id="card-button" variant="link">
+                More Info
+              </Button>
+            </Link>
+          </Card.Footer>
+        </div>
+      </Card>
     );
   }
 }
