@@ -69,7 +69,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
     <Container className="d-flex justify-content-center">
       <Row>
         <Col xs={12} sm={12} md={8} lg={8} xl={6}>
-          <Card className="login-container">
+          <Card className="login-card">
             <Card.Header>Done coding for today?</Card.Header>
             <Card.Body>
               <p className="intro-text">
