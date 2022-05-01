@@ -44,10 +44,12 @@ $red: #DA1212;
   position: relative;
   display: flex;
   align-items: center;
+  /*text-align: center;*/
   background-color: $bg-color;
   transform: translateY(-100%);
   transition: 0.2s ease-in-out;
   border-radius: 1.5rem;
+  padding: 0.8rem;
 }
 
 .movieCard:hover .card-header{
@@ -56,7 +58,8 @@ $red: #DA1212;
 
 .cardTitle{
   /*min-height: 50px;*/
-  font-size: $title-size;
+  font-size: $text-size;
+  min-height: 2.1em;
 }
 
 .cardText{
