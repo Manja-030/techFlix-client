@@ -14,10 +14,39 @@ $red: #DA1212;
   border: 2px solid $red !important;
   border-radius: 5px;
   box-shadow: 0 0 0.9em $red;
+  position: relative;
   
 }
 .movieCard-img{
   max-height: 350px;
+}
+
+.card-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: $bg-color;
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+}
+
+.movieCard:hover .card-overlay{
+  transform: translateY(0);
+}
+
+.card-header{
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: $bg-color;
+  transform: translateY(-100%);
+  transition: 0.2s ease-in-out;
+}
+
+.movieCard:hover .card-header{
+  transform: translateY(0);
 }
 
 .cardTitle{
@@ -32,11 +61,6 @@ $red: #DA1212;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;  
   overflow: hidden;
-}
-
-.movieCard-body{
-  margin-bottom: 0;
-  padding-bottom: 0 !important;
 }
 
 .movieCard-footer{
