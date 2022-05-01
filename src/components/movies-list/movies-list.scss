@@ -18,6 +18,7 @@ $red: #DA1212;
 .movie-cards{
   display: flex;
   align-items: stretch;
+  max-height: 300px;
 }
 
 #load-button{

@@ -44,12 +44,12 @@ $red: #DA1212;
   position: relative;
   display: flex;
   align-items: center;
-  /*text-align: center;*/
+  text-align: center;
   background-color: $bg-color;
   transform: translateY(-100%);
   transition: 0.2s ease-in-out;
   border-radius: 1.5rem;
-  padding: 0.8rem;
+  padding: 1em;
 }
 
 .movieCard:hover .card-header{
@@ -59,11 +59,11 @@ $red: #DA1212;
 .cardTitle{
   /*min-height: 50px;*/
   font-size: $text-size;
-  min-height: 2.1em;
+  border: none;
 }
 
 .cardText{
-  min-height: 100px;
+  /*min-height: 100px;*/
   margin: 0;
   padding-bottom: 0;
   display: -webkit-box;
@@ -80,6 +80,7 @@ $red: #DA1212;
 #button-link{
   display: block;
   margin: auto;
+  align-items: center;
   //text-align: bottom;
 }
 
