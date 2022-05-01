@@ -77,6 +77,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
               <p className="intro-text">
                 Grab a beer and some popcorn and discover my selection of
                 tech-industry movies.
+                <hr className="divider" />
               </p>
               <p className="intro-text login-request">Please log in:</p>
               <Form>

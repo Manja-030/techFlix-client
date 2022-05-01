@@ -38,12 +38,16 @@ $red: #DA1212;
   border: 2px solid $red; 
   opacity: 0.9;
   box-shadow: 0 0 0.9em $red;
+  border-radius: 1.5rem;
 
 }
 
 .card-header{
   border: none;
   font-size: 1.2rem;
+}
+.divider{
+  width: 80%;
 }
 
 .login-request{
