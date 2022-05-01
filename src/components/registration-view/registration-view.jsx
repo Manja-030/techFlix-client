@@ -93,7 +93,7 @@ function RegistrationView({ user, setUser, validateInput }) {
   };
 
   return (
-    <Container className="fluid">
+    <Container className="d-flex justify-content-center">
       <Row className="justify-content-center">
         <Col xs={12} sm={12} md={8} lg={8} xl={6}>
           <Card className="register-card">
