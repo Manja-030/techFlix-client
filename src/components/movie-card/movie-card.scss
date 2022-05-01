@@ -16,11 +16,14 @@ $red: #DA1212;
   box-shadow: 0 0 0.9em $red;
   position: relative;
   overflow: hidden;
+  height: 100%;
+  min-height: 370px;
+  min-width: 220px;
   
 }
-.movieCard-img{
+/*.movieCard-img{
   max-height: 350px;
-}
+}*/
 
 .card-overlay{
   position: absolute;
@@ -44,6 +47,7 @@ $red: #DA1212;
   background-color: $bg-color;
   transform: translateY(-100%);
   transition: 0.2s ease-in-out;
+  border-radius: 1.5rem;
 }
 
 .movieCard:hover .card-header{
@@ -51,7 +55,8 @@ $red: #DA1212;
 }
 
 .cardTitle{
-  min-height: 50px;
+  /*min-height: 50px;*/
+  font-size: $title-size;
 }
 
 .cardText{
@@ -66,6 +71,7 @@ $red: #DA1212;
 
 .movieCard-footer{
   margin: 0 auto;
+  border: none;
 }
 
 #button-link{
