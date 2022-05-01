@@ -23,12 +23,6 @@ $red: #DA1212;
 .login-title{
   line-height: 2.5em;
 }*/
-
-.intro-text{
-  /*font-size: $text-size;*/
-  text-align: center;
-}
-
 .login-card{
   color: $text-color;
   background-color: $bg-color;
@@ -39,7 +33,11 @@ $red: #DA1212;
   opacity: 0.9;
   box-shadow: 0 0 0.9em $red;
   border-radius: 1.5rem;
+}
 
+.intro-text{
+  /*font-size: $text-size;*/
+  text-align: center;
 }
 
 .card-header{

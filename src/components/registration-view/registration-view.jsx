@@ -95,15 +95,15 @@ function RegistrationView({ user, setUser, validateInput }) {
   return (
     <Container className="d-flex justify-content-center">
       <Row className="justify-content-center">
-        <Col xs={12} sm={12} md={8} lg={8} xl={6}>
+        <Col xs={12} md={'auto'}>
           <Card className="register-card">
             <Card.Header className="text-center register-title">
-              Register for your techFlix account
+              Register at techFlix
             </Card.Header>
             <Card.Body>
-              <Form className="register-form">
-                <Form.Group className="mb-3">
-                  <Form.Label className="register-text">Username:</Form.Label>
+              <Form>
+                <Form.Group className="mb-3" controlId="formUsername">
+                  <Form.Label>Username:</Form.Label>
                   <Form.Control
                     type="text"
                     onChange={(e) => validateInput(e.target.value, 'Username')}
@@ -113,8 +113,8 @@ function RegistrationView({ user, setUser, validateInput }) {
                     {usernameError && <p> {usernameError}</p>}
                   </div>
                 </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="register-text">Password:</Form.Label>
+                <Form.Group className="mb-3" controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
                   <Form.Control
                     type="password"
                     onChange={(e) => validateInput(e.target.value, 'Password')}
@@ -124,8 +124,8 @@ function RegistrationView({ user, setUser, validateInput }) {
                     {passwordError && <p> {passwordError}</p>}
                   </div>
                 </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="register-text">Email:</Form.Label>
+                <Form.Group className="mb-3" controlId="formEmail">
+                  <Form.Label>Email:</Form.Label>
                   <Form.Control
                     type="email"
                     onChange={(e) => validateInput(e.target.value, 'Email')}
@@ -136,8 +136,8 @@ function RegistrationView({ user, setUser, validateInput }) {
                   </div>
                 </Form.Group>
 
-                <Form.Group className="mb-3">
-                  <Form.Label className="register-text">Birthday:</Form.Label>
+                <Form.Group className="mb-3" controlId="formBirthday">
+                  <Form.Label>Birthday:</Form.Label>
                   <Form.Control
                     type="date"
                     onChange={(e) => validateInput(e.target.value, 'Birthday')}
