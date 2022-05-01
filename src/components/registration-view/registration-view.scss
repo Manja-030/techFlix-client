@@ -12,11 +12,20 @@ $red: #DA1212;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .register-title{
+  border: none;
+  font-size: 1.2rem;
   color: $red !important;
 }
 
 .register-text{
   color: $text-color !important;
+}
+
+.register-button{
+  /*font-size: $text-size;*/
+  /*margin-right: 1em;*/
+  /*margin-bottom: 1em;*/
+  display: block;
+  margin: auto;
 }

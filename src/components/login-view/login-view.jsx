@@ -104,7 +104,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
                   {passwordError && <p>{passwordError}</p>}
                 </Form.Group>
                 <Button
-                  className="submit-button"
+                  className="login-button"
                   variant="outline-danger"
                   as="input"
                   type="submit"

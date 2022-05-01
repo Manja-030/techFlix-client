@@ -6,7 +6,7 @@ import { setUser, validateInput } from '../../actions/actions';
 
 import PropTypes from 'prop-types';
 
-import { Form, Button, Container, Col, Row } from 'react-bootstrap';
+import { Form, Button, Container, Col, Row, Card } from 'react-bootstrap';
 import './registration-view.scss';
 
 const mapStateToProps = (state) => {
@@ -94,68 +94,70 @@ function RegistrationView({ user, setUser, validateInput }) {
 
   return (
     <Container className="fluid">
-      <Row>
-        <Col>
-          <h3 className="register-title">Please Register</h3>
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12} md={6}>
-          <Form className="register-form">
-            <Form.Group className="mb-3">
-              <Form.Label className="register-text">Username:</Form.Label>
-              <Form.Control
-                type="text"
-                onChange={(e) => validateInput(e.target.value, 'Username')}
-                placeholder="Enter a username"
-              />
-              <div className="register-text">
-                {usernameError && <p> {usernameError}</p>}
-              </div>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="register-text">Password:</Form.Label>
-              <Form.Control
-                type="password"
-                onChange={(e) => validateInput(e.target.value, 'Password')}
-                placeholder="Enter your password"
-              />
-              <div className="register-text">
-                {passwordError && <p> {passwordError}</p>}
-              </div>
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label className="register-text">Email:</Form.Label>
-              <Form.Control
-                type="email"
-                onChange={(e) => validateInput(e.target.value, 'Email')}
-                placeholder="Enter your email address"
-              />
-              <div className="register-text">
-                {emailError && <p> {emailError}</p>}
-              </div>
-            </Form.Group>
+      <Row className="justify-content-center">
+        <Col xs={12} sm={12} md={8} lg={8} xl={6}>
+          <Card className="register-card">
+            <Card.Header className="text-center register-title">
+              Register for your techFlix account
+            </Card.Header>
+            <Card.Body>
+              <Form className="register-form">
+                <Form.Group className="mb-3">
+                  <Form.Label className="register-text">Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    onChange={(e) => validateInput(e.target.value, 'Username')}
+                    placeholder="Enter a username"
+                  />
+                  <div className="register-text">
+                    {usernameError && <p> {usernameError}</p>}
+                  </div>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="register-text">Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    onChange={(e) => validateInput(e.target.value, 'Password')}
+                    placeholder="Enter your password"
+                  />
+                  <div className="register-text">
+                    {passwordError && <p> {passwordError}</p>}
+                  </div>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="register-text">Email:</Form.Label>
+                  <Form.Control
+                    type="email"
+                    onChange={(e) => validateInput(e.target.value, 'Email')}
+                    placeholder="Enter your email address"
+                  />
+                  <div className="register-text">
+                    {emailError && <p> {emailError}</p>}
+                  </div>
+                </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label className="register-text">Birthday:</Form.Label>
-              <Form.Control
-                type="date"
-                onChange={(e) => validateInput(e.target.value, 'Birthday')}
-              />
-              <div className="register-text">
-                {birthdayError && <p> {birthdayError}</p>}
-              </div>
-            </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="register-text">Birthday:</Form.Label>
+                  <Form.Control
+                    type="date"
+                    onChange={(e) => validateInput(e.target.value, 'Birthday')}
+                  />
+                  <div className="register-text">
+                    {birthdayError && <p> {birthdayError}</p>}
+                  </div>
+                </Form.Group>
 
-            <Button
-              type="Submit"
-              className="register-btn"
-              variant="outline-danger"
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
-          </Form>
+                <Button
+                  type="Submit"
+                  className="register-button"
+                  variant="outline-danger"
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
+              </Form>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>
