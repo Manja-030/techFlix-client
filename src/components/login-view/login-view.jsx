@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { Form, Button, Container, Col, Row } from 'react-bootstrap';
+import { Form, Button, Container, Col, Row, Card } from 'react-bootstrap';
 
 import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
@@ -66,59 +66,58 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
   };
 
   return (
-    <Container className="login-container xs={12} sm={12} md={8} lg={8} xl={6}">
+    <Container className="login-container d-flex justify-content-center">
       <Row>
-        <Col>
-          <h3 className="login-title">Done coding for today?</h3>
-
-          <p className="intro-text">
-            Grab a beer and some popcorn and discover my selection of
-            tech-industry movies.
-          </p>
-        </Col>
-      </Row>
-      <Row>
-        <Col className="mt-1">
-          <h3 className="login-title">Please Login</h3>
-          <Form id="login-form">
-            <Form.Group className="mb-3" controlId="formUsername">
-              <Form.Label>Username:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                onChange={(e) => validateInput(e.target.value, 'Username')}
-                required
-              />
-              {usernameError && <p>{usernameError}</p>}
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formPassword">
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter Password"
-                onChange={(e) => {
-                  validateInput(e.target.value, 'Password');
-                }}
-                required
-              />
-              {passwordError && <p>{passwordError}</p>}
-            </Form.Group>
-            <Button
-              className="submit-button"
-              variant="outline-danger"
-              as="input"
-              type="submit"
-              value="Login"
-              onClick={handleSubmit}
-            />
-            &nbsp;
-            <span>
-              No&nbsp;account?&nbsp;No&nbsp;problem!&nbsp;
-              <a className="link" href={'/register'}>
-                Register&nbsp;here.
-              </a>
-            </span>
-          </Form>
+        <Col xs={12} sm={12} md={8} lg={8} xl={6}>
+          <Card>
+            <Card.Header>Done coding for today?</Card.Header>
+            <Card.Body>
+              <p className="intro-text">
+                Grab a beer and some popcorn and discover my selection of
+                tech-industry movies.
+              </p>
+              <p>Please log in:</p>
+              <Form id="login-form">
+                <Form.Group className="mb-3" controlId="formUsername">
+                  <Form.Label>Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter username"
+                    onChange={(e) => validateInput(e.target.value, 'Username')}
+                    required
+                  />
+                  {usernameError && <p>{usernameError}</p>}
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="formPassword">
+                  <Form.Label>Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Enter Password"
+                    onChange={(e) => {
+                      validateInput(e.target.value, 'Password');
+                    }}
+                    required
+                  />
+                  {passwordError && <p>{passwordError}</p>}
+                </Form.Group>
+                <Button
+                  className="submit-button"
+                  variant="outline-danger"
+                  as="input"
+                  type="submit"
+                  value="Login"
+                  onClick={handleSubmit}
+                />
+                &nbsp;
+                <span>
+                  No&nbsp;account?&nbsp;No&nbsp;problem!&nbsp;
+                  <a className="link" href={'/register'}>
+                    Register&nbsp;here.
+                  </a>
+                </span>
+              </Form>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>
