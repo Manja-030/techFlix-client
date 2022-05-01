@@ -11,7 +11,7 @@ function VisibilityFilterInput(props) {
   return (
     <Form>
       <Form.Group as={Row}>
-        <Form.Label className="form-label">Search Movies: </Form.Label>
+        <Form.Label className="visibility-label">Search Movies: </Form.Label>
         <Col className="search-bar-col">
           <Form.Control
             className="search-bar-input"

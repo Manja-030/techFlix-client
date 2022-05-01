@@ -31,19 +31,16 @@ $red: #DA1212;
 .login-card{
   color: $text-color;
   background-color: $bg-color;
-  padding: 15px;
-  margin: auto;
-  border-radius: 5px;
+  /*padding: 15px;*/
+  /*margin: auto;*/
+  /*border-radius: 5px;*/
   border: 2px solid $red; 
   opacity: 0.9;
   box-shadow: 0 0 0.9em $red;
 
 }
-
-#login-form{
-  /*background-color: $bg-color !important;*/
-  /*font-size: $text-size;*/
-  color: $text-color;
+.reg-request{
+  display: inline-block;
 }
 
 .link{
@@ -52,6 +49,6 @@ $red: #DA1212;
 
 .submit-button{
   /*font-size: $text-size;*/
-  margin-right: 1em;
-  margin-bottom: 1em;
+  /*margin-right: 1em;*/
+  /*margin-bottom: 1em;*/
 }
