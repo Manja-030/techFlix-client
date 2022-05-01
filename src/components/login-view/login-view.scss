@@ -19,16 +19,16 @@ $red: #DA1212;
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+/*
 .login-title{
   line-height: 2.5em;
-}
+}*/
 
 .intro-text{
-  font-size: $text-size;
+  /*font-size: $text-size;*/
 }
 
-.login-container{
+Card{
   color: $text-color;
   background-color: $bg-color;
   padding: 15px;
@@ -42,7 +42,7 @@ $red: #DA1212;
 
 #login-form{
   /*background-color: $bg-color !important;*/
-  font-size: $text-size;
+  /*font-size: $text-size;*/
   color: $text-color;
 }
 
@@ -51,7 +51,7 @@ $red: #DA1212;
 }
 
 .submit-button{
-  font-size: $text-size;
+  /*font-size: $text-size;*/
   margin-right: 1em;
   margin-bottom: 1em;
 }

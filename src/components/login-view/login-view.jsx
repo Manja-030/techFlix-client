@@ -76,7 +76,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
                 Grab a beer and some popcorn and discover my selection of
                 tech-industry movies.
               </p>
-              <p>Please log in:</p>
+              <p className="intro-text">Please log in:</p>
               <Form id="login-form">
                 <Form.Group className="mb-3" controlId="formUsername">
                   <Form.Label>Username:</Form.Label>
