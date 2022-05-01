@@ -94,7 +94,7 @@ function RegistrationView({ user, setUser, validateInput }) {
 
   return (
     <Container fluid>
-      <Row>
+      <Row className="justify-content-center">
         <Col xs={12} sm={12} md={8} lg={8} xl={6}>
           <Card className="register-card">
             <Card.Header className="text-center register-title">
