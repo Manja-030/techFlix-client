@@ -12,9 +12,10 @@ $red: #DA1212;
   background-color: $bg-color !important;
   color: $text-color;
   border: 2px solid $red !important;
-  border-radius: 5px;
+  border-radius: 1.5rem;
   box-shadow: 0 0 0.9em $red;
   position: relative;
+  overflow: hidden;
   
 }
 .movieCard-img{
