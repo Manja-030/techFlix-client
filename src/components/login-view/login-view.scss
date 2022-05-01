@@ -26,6 +26,7 @@ $red: #DA1212;
 
 .intro-text{
   /*font-size: $text-size;*/
+  text-align: center;
 }
 
 .login-card{
@@ -39,8 +40,18 @@ $red: #DA1212;
   box-shadow: 0 0 0.9em $red;
 
 }
+
+.card-header{
+  border: none;
+  font-size: 1.2rem;
+}
+
+.login-request{
+  font-size: 1.2rem;
+}
+
 .reg-request{
-  display: inline-block;
+  
 }
 
 .link{
@@ -51,4 +62,5 @@ $red: #DA1212;
   /*font-size: $text-size;*/
   /*margin-right: 1em;*/
   /*margin-bottom: 1em;*/
+  margin: auto;
 }

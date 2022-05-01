@@ -69,7 +69,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
     <Container className="d-flex justify-content-center">
       <Row className="justify-content-center">
         <Col xs={12} sm={12} md={8} lg={8} xl={6}>
-          <Card className="login-card text-center">
+          <Card className="login-card">
             <Card.Header className="text-center">
               Done coding for today?
             </Card.Header>
@@ -78,7 +78,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
                 Grab a beer and some popcorn and discover my selection of
                 tech-industry movies.
               </p>
-              <p className="intro-text">Please log in:</p>
+              <p className="intro-text login-request">Please log in:</p>
               <Form>
                 <Form.Group className="mb-3" controlId="formUsername">
                   <Form.Label>Username:</Form.Label>
