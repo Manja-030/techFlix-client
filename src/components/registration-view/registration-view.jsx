@@ -93,9 +93,9 @@ function RegistrationView({ user, setUser, validateInput }) {
   };
 
   return (
-    <Container className="d-flex justify-content-center">
-      <Row className="justify-content-center">
-        <Col xs={12} md={'auto'}>
+    <Container fluid>
+      <Row>
+        <Col>
           <Card className="register-card">
             <Card.Header className="text-center register-title">
               Register at techFlix
