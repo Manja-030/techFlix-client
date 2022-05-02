@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { changeFavorites } from '../../actions/actions';
 import PropTypes from 'prop-types';
-import { Card, Row, Col, Button } from 'react-bootstrap';
+import { Container, Card, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import DirectorView from '../director-view/director-view';
