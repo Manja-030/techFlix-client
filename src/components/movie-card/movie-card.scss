@@ -19,11 +19,13 @@ $red: #DA1212;
   /*height: 100%;*/
   min-height: 370px;
   min-width: 220px;
-  
+  /*text-overflow: ellipsis;
+  white-space: nowrap;*/
 }
-/*.movieCard-img{
-  max-height: 350px;
-}*/
+
+.movieCard-img{
+  height: 300px;
+}
 
 .card-overlay{
   position: absolute;

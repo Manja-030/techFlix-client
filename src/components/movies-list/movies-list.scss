@@ -16,10 +16,12 @@ $red: #DA1212;
 }
 
 .movie-cards{
-  display: flex;
+  margin-bottom: 15px;
+  
+  }
+  /*display: flex;
   align-items: stretch;
   /*max-height: 300px;*/
-}
 
 #load-button{
   margin: 15px auto;
