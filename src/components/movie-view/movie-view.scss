@@ -1,4 +1,5 @@
 $text-size: 1em;
+$text-small: 0.8em;
 $title-size: 1.3em;
 $brand-size: 2em;
 $font-style: 400;
@@ -34,15 +35,17 @@ $red: #DA1212;
   font-size: $text-size;
   border-radius: 15px;
   width: 100%;
+  padding-right: 0;
 }
 
 .detail-links{
-  font-size: smaller;
+  font-size: $text-small;
   color: $text-color !important;
   }
 
 .add-fav{
   color: $red !important;
+  text-align: center;
 }
 .fav-icon-button{
   font-size: 2em;
