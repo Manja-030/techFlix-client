@@ -152,27 +152,18 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
 
   return (
     <Container className="mt-3">
-      <Row>
-        <Col>
+      <Row className="mb-2">
+        <Col className="mb-2">
           <Card className="info-card mb-3">
             <Card.Header className="profile-title">My Info</Card.Header>
             <Card.Body>
-              <Row>
-                <Col>
-                  <Card.Text>Username:</Card.Text>
-                  <Card.Text>Email:</Card.Text>
-                  <Card.Text>Birthday:</Card.Text>
-                </Col>
-                <Col>
-                  <Card.Text></Card.Text>
-                  <Card.Text></Card.Text>
-                  <Card.Text></Card.Text>
-                </Col>
-              </Row>
+              <Card.Text>Username:</Card.Text>
+              <Card.Text>Email:</Card.Text>
+              <Card.Text>Birthday:</Card.Text>
             </Card.Body>
           </Card>
         </Col>
-        <Col>
+        <Col className="mb-2">
           <Card className="update-card mb-3">
             <Card.Header className="profile-title">Update My Info</Card.Header>
             <Card.Body>
@@ -255,46 +246,48 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
         </Col>
       </Row>
       <Row>
-        <Card className="fav-card mb-3">
-          <Card.Header className="profile-title">
-            My Favorite Movies
-          </Card.Header>
-          <Card.Body>
-            {' '}
-            {favorites.map((favorites) => (
-              <Col
-                xs={12}
-                sm={6}
-                md={4}
-                lg={3}
-                xl={3}
-                className="p-3 fav-movie"
-                key={favorites._id}
-              >
-                <Figure className="mb-2">
-                  <Figure.Image
-                    className="favMovie-card"
-                    variant="top"
-                    src={favorites.ImagePath}
-                    alt={favorites.Title}
-                    crossOrigin="true"
-                  />
-                </Figure>
+        <Container>
+          <Card className="fav-card mb-3">
+            <Card.Header className="profile-title">
+              My Favorite Movies
+            </Card.Header>
+            <Card.Body>
+              {' '}
+              {favorites.map((favorites) => (
+                <Col
+                  xs={12}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  xl={3}
+                  className="p-3 fav-movie"
+                  key={favorites._id}
+                >
+                  <Figure className="mb-2">
+                    <Figure.Image
+                      className="favMovie-card"
+                      variant="top"
+                      src={favorites.ImagePath}
+                      alt={favorites.Title}
+                      crossOrigin="true"
+                    />
+                  </Figure>
 
-                <div>
-                  <Button
-                    type="submit"
-                    variant="outline-danger"
-                    className="profile-btn"
-                    onClick={() => deleteFav(favorites._id)}
-                  >
-                    Remove
-                  </Button>
-                </div>
-              </Col>
-            ))}
-          </Card.Body>
-        </Card>
+                  <div>
+                    <Button
+                      type="submit"
+                      variant="outline-danger"
+                      className="profile-btn"
+                      onClick={() => deleteFav(favorites._id)}
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                </Col>
+              ))}
+            </Card.Body>
+          </Card>
+        </Container>
       </Row>
     </Container>
   );
