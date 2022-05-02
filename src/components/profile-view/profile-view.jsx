@@ -155,9 +155,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
       <Row className="mb-2">
         <Col>
           <Card className="info-card">
-            <Card.Header>
-              <h3 className="profile-title"> My Info</h3>
-            </Card.Header>
+            <Card.Header className="profile-title">My Info</Card.Header>
             <Card.Body>
               <Row>
                 <Col>
@@ -176,9 +174,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
         </Col>
         <Col>
           <Card className="update-card">
-            <Card.Header>
-              <h3 className="profile-title"> Update My Info</h3>
-            </Card.Header>
+            <Card.Header className="profile-title">Update My Info</Card.Header>
             <Card.Body>
               <Form className="profile-form">
                 <Form.Group className="mb-3">
@@ -260,8 +256,8 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
       </Row>
       <Row>
         <Card className="fav-card">
-          <Card.Header>
-            <h3 className="profile-title"> My Favorite Movies</h3>
+          <Card.Header className="profile-title">
+            My Favorite Movies
           </Card.Header>
           <Card.Body>
             <Container>
@@ -270,22 +266,24 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                 {favorites.map((favorites) => (
                   <Col
                     xs={12}
-                    sm={12}
-                    md={6}
-                    lg={4}
-                    xl={4}
+                    sm={6}
+                    md={4}
+                    lg={3}
+                    xl={3}
                     className="p-3 fav-movie"
                     key={favorites._id}
                   >
-                    <Figure className="mb-2">
-                      <Figure.Image
-                        className="favMovie-card"
-                        variant="top"
-                        src={favorites.ImagePath}
-                        alt={favorites.Title}
-                        crossOrigin="true"
-                      />
-                    </Figure>
+                    <Link to={`/movies/${movie._id}`} id="button-link">
+                      <Figure className="mb-2">
+                        <Figure.Image
+                          className="favMovie-card"
+                          variant="top"
+                          src={favorites.ImagePath}
+                          alt={favorites.Title}
+                          crossOrigin="true"
+                        />
+                      </Figure>
+                    </Link>
                     <div>
                       <Button
                         type="submit"
