@@ -47,7 +47,7 @@ function MoviesList(props) {
               <Col
                 xs={12}
                 sm={12}
-                md={6}
+                md={4}
                 lg={3}
                 key={movie._id}
                 className="movie-cards"
