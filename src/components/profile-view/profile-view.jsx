@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
 
-import { Row, Col, Button, Container, Figure } from 'react-bootstrap';
+import { Row, Col, Button, Container, Figure, Card } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import './profile-view.scss';
 
@@ -153,6 +153,162 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   return (
     <Container>
       <Row>
+        <Col>
+          <Card>
+            <Card.Header>
+              <h3 className="profile-title"> My Info</h3>
+            </Card.Header>
+            <Card.Body>
+              <Row>
+                <Col>
+                  <Card.Text>Username:</Card.Text>
+                  <Card.Text>Email:</Card.Text>
+                  <Card.Text>Birthday:</Card.Text>
+                </Col>
+                <Col>
+                  <Card.Text></Card.Text>
+                  <Card.Text></Card.Text>
+                  <Card.Text></Card.Text>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card>
+            <Card.Header>
+              <h3 className="profile-title"> Update My Info</h3>
+            </Card.Header>
+            <Card.Body>
+              <Form className="profile-form">
+                <Form.Group className="mb-3">
+                  <Form.Label className="profile-text">Username:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter username"
+                    defaultValue={user.Username}
+                    onChange={(e) => validateInput(e.target.value, 'Username')}
+                  />
+                  <div className="profile-text">
+                    {usernameError && <p> {usernameError}</p>}
+                  </div>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="profile-text">Password:</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Enter new password"
+                    value={''}
+                    onChange={(e) => validateInput(e.target.value, 'Password')}
+                  />
+                  <div className="profile-text">
+                    {passwordError && <p> {passwordError}</p>}
+                  </div>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="profile-text">Email:</Form.Label>
+                  <Form.Control
+                    type="email"
+                    defaultValue={user.Email}
+                    onChange={(e) => validateInput(e.target.value, 'Email')}
+                    placeholder="Enter email address"
+                  />
+                  <div className="profile-text">
+                    {emailError && <p> {emailError}</p>}
+                  </div>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="profile-text">Birthday:</Form.Label>
+                  <Form.Control
+                    type="text"
+                    defaultValue={user.Birthday}
+                    placeholder="dd-mm-yyyy"
+                    onChange={(e) => validateInput(e.target.value, 'Birthday')}
+                  />
+                  <div className="profile-text">
+                    {birthdayError && <p> {birthdayError}</p>}
+                  </div>
+                </Form.Group>{' '}
+                <Row>
+                  <Col>
+                    <Link to="/profile">
+                      <Button
+                        type="submit"
+                        className="profile-btn"
+                        variant="outline-danger"
+                        onClick={handleUpdateProfile}
+                      >
+                        Save Changes
+                      </Button>{' '}
+                    </Link>
+                  </Col>
+                  <Col>
+                    <Button
+                      type="Submit"
+                      className="profile-btn"
+                      variant="outline-danger"
+                      onClick={handleProfileDelete}
+                    >
+                      Delete Account
+                    </Button>
+                  </Col>
+                </Row>
+              </Form>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Card>
+          <Card.Header>
+            <h3 className="profile-title"> My Favorite Movies</h3>
+          </Card.Header>
+          <Card.Body>
+            <Container>
+              <Row>
+                {' '}
+                {favorites.map((favorites) => (
+                  <Col
+                    xs={12}
+                    sm={12}
+                    md={6}
+                    lg={4}
+                    xl={4}
+                    className="p-3 fav-movie"
+                    key={favorites._id}
+                  >
+                    <Figure className="mb-2">
+                      <Figure.Image
+                        className="favMovie-card"
+                        variant="top"
+                        src={favorites.ImagePath}
+                        alt={favorites.Title}
+                        crossOrigin="true"
+                      />
+                    </Figure>
+                    <div>
+                      <Button
+                        type="submit"
+                        variant="outline-danger"
+                        className="profile-btn"
+                        onClick={() => deleteFav(favorites._id)}
+                      >
+                        Remove
+                      </Button>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </Container>
+          </Card.Body>
+        </Card>
+      </Row>
+    </Container>
+  );
+
+  return (
+    <Container>
+      <Row>
         {/* This Col contains profile form and Save/Delete buttons: */}
         <Col xs={12} sm={12} md={6} lg={4} xl={4} className="p-3 m-2">
           <h3 className="profile-title"> Update My Profile:</h3>
@@ -233,13 +389,21 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           </Form>
         </Col>
         {/* This Col contains the Favorite Movies: */}
-        <Col className="p-3 m-2" xs={12} sm={12} md={6} lg={8} xl={8}>
+        <Col className="p-3 m-2">
           <h3 className="profile-title"> My Favorite Movies:</h3>
 
           <Row>
             {' '}
             {favorites.map((favorites) => (
-              <Col className="p-3 fav-movie" key={favorites._id}>
+              <Col
+                xs={12}
+                sm={12}
+                md={6}
+                lg={8}
+                xl={8}
+                className="p-3 fav-movie"
+                key={favorites._id}
+              >
                 <Figure className="mb-2">
                   <Figure.Image
                     className="favMovie-card"
