@@ -54,12 +54,13 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
   }, []);
 
   return (
-    <Container className="movieView-card">
+    <>
+    <Container className="movieView-card mb-3">
       <Row>
         <Col>
           <img
             variant="top"
-            className="movie-image"
+            className="movie-image mb-2"
             src={movie.ImagePath}
             alt={movie.Title}
             crossOrigin="true"
@@ -93,7 +94,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
             </Col>
           </Row>
           <Row>
-            <Col className="movie-details">{movie.Description}</Col>
+            <Col className="movie-details mb-3">{movie.Description}</Col>
           </Row>
           <Row className="detail-links">
             <Col>
@@ -110,7 +111,9 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
           </Row>
         </Col>
       </Row>
-      <Row>
+    </Container>
+    <Container>
+    <Row>
         <Col className="text-right">
           <Button
             variant="outline-danger"
@@ -122,8 +125,10 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
           </Button>{' '}
         </Col>
       </Row>
+ 
     </Container>
   );
+  </>
 }
 
 {
