@@ -252,41 +252,42 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
               My Favorite Movies
             </Card.Header>
             <Card.Body>
-              {' '}
-              {favorites.map((favorites) => {
-                return (
-                  <Col
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={3}
-                    xl={3}
-                    className="p-3 fav-movie"
-                    key={favorites._id}
-                  >
-                    <Figure className="mb-2">
-                      <Figure.Image
-                        className="favMovie-card"
-                        variant="top"
-                        src={favorites.ImagePath}
-                        alt={favorites.Title}
-                        crossOrigin="true"
-                      />
-                    </Figure>
+              <Row>
+                {favorites.map((favorites) => {
+                  return (
+                    <Col
+                      xs={12}
+                      sm={6}
+                      md={4}
+                      lg={3}
+                      xl={3}
+                      className="p-3 fav-movie"
+                      key={favorites._id}
+                    >
+                      <Figure className="mb-2">
+                        <Figure.Image
+                          className="favMovie-card"
+                          variant="top"
+                          src={favorites.ImagePath}
+                          alt={favorites.Title}
+                          crossOrigin="true"
+                        />
+                      </Figure>
 
-                    <div>
-                      <Button
-                        type="submit"
-                        variant="outline-danger"
-                        className="profile-btn"
-                        onClick={() => deleteFav(favorites._id)}
-                      >
-                        Remove
-                      </Button>
-                    </div>
-                  </Col>
-                );
-              })}
+                      <div>
+                        <Button
+                          type="submit"
+                          variant="outline-danger"
+                          className="profile-btn"
+                          onClick={() => deleteFav(favorites._id)}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    </Col>
+                  );
+                })}
+              </Row>
             </Card.Body>
           </Card>
         </Container>
