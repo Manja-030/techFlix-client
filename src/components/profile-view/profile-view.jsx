@@ -273,17 +273,16 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                     className="p-3 fav-movie"
                     key={favorites._id}
                   >
-                    <Link to={`/movies/${movie._id}`} id="button-link">
-                      <Figure className="mb-2">
-                        <Figure.Image
-                          className="favMovie-card"
-                          variant="top"
-                          src={favorites.ImagePath}
-                          alt={favorites.Title}
-                          crossOrigin="true"
-                        />
-                      </Figure>
-                    </Link>
+                    <Figure className="mb-2">
+                      <Figure.Image
+                        className="favMovie-card"
+                        variant="top"
+                        src={favorites.ImagePath}
+                        alt={favorites.Title}
+                        crossOrigin="true"
+                      />
+                    </Figure>
+
                     <div>
                       <Button
                         type="submit"

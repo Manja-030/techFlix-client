@@ -19,7 +19,7 @@ class MovieCard extends React.Component {
           crossOrigin="true"
         />
         <div className="card-overlay">
-          <div className="card-header">
+          <div className="movieCard-header">
             <Card.Title className="cardTitle">{movie.Title}</Card.Title>
           </div>
           <Card.Text className="cardText">{movie.Description}</Card.Text>

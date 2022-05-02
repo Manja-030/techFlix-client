@@ -43,7 +43,7 @@ $red: #DA1212;
   transform: translateY(0);
 }
 
-.card-header{
+.movieCard-header{
   position: relative;
   display: flex;
   /*align-items: center;*/
@@ -58,7 +58,7 @@ $red: #DA1212;
   padding-right: 0.8em;
 }
 
-.movieCard:hover .card-header{
+.movieCard:hover .movieCard-header{
   transform: translateY(0);
 }
 
