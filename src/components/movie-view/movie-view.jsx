@@ -57,7 +57,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
     <>
       <Container className="movieView-card mb-3">
         <Row>
-          <Col md="auto">
+          <Col xs={12} md={4}>
             <img
               variant="top"
               className="movie-image mb-2"
@@ -65,7 +65,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
               alt={movie.Title}
               crossOrigin="true"
             />
-            <div className="add-fav">
+            <div className="add-fav mb-2">
               {user.FavMovies.includes(movie._id) ? (
                 <>
                   <Button
@@ -87,7 +87,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
               )}
             </div>
           </Col>
-          <Col md={8}>
+          <Col xs={12} md={8}>
             <Row>
               <Col className="movie-title mb-3">
                 {movie.Title}({movie.ReleaseYear})
