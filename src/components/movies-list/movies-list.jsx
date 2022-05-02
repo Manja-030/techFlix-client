@@ -42,18 +42,20 @@ function MoviesList(props) {
           </Col>
         </Row>
         <Row>
-          {filteredMovies.slice(0, visible).map((movie) => (
-            <Col
-              xs={12}
-              sm={12}
-              md={6}
-              lg={3}
-              key={movie._id}
-              className="movie-cards"
-            >
-              <MovieCard className="mb-3" movie={movie} />
-            </Col>
-          ))}
+          {filteredMovies.slice(0, visible).map((movie) => {
+            return (
+              <Col
+                xs={12}
+                sm={12}
+                md={6}
+                lg={3}
+                key={movie._id}
+                className="movie-cards"
+              >
+                <MovieCard className="mb-3" movie={movie} />
+              </Col>
+            );
+          })}
         </Row>
         <Row>
           <Button
