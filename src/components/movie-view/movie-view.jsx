@@ -55,80 +55,79 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
 
   return (
     <>
-    <Container className="movieView-card mb-3">
-      <Row>
-        <Col>
-          <img
-            variant="top"
-            className="movie-image mb-2"
-            src={movie.ImagePath}
-            alt={movie.Title}
-            crossOrigin="true"
-          />
-          <div className="add-fav text-left">
-            {user.FavMovies.includes(movie._id) ? (
-              <>
-                <Button
-                  onClick={handleFavorites}
-                  variant="outline-danger"
-                  className="text-left button"
-                >
-                  <GiPopcorn className="fav-icon-button" />
-                  <span className="button-text"> Remove from List</span>
-                </Button>
-              </>
-            ) : (
-              <>
-                <Button onClick={handleFavorites} variant="outline-danger">
-                  <GiPopcorn className="fav-icon-button" />
-                  <span> Add to Favorites</span>
-                </Button>
-              </>
-            )}
-          </div>
-        </Col>
-        <Col>
-          <Row>
-            <Col className="movie-title mb-3">
-              {movie.Title}({movie.ReleaseYear})
-            </Col>
-          </Row>
-          <Row>
-            <Col className="movie-details mb-3">{movie.Description}</Col>
-          </Row>
-          <Row className="detail-links">
-            <Col>
-              <div>Director: </div>
-              <DirectorView movie={movie} />
-            </Col>
-            <Col>
-              {' '}
-              <div>Genre:</div>
-              <div>
-                <GenreView genre={movie.Genre} />
-              </div>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Container>
-    <Container>
-    <Row>
-        <Col className="text-right">
-          <Button
-            variant="outline-danger"
-            onClick={() => {
-              onBackClick(null);
-            }}
-          >
-            Back
-          </Button>{' '}
-        </Col>
-      </Row>
- 
-    </Container>
+      <Container className="movieView-card mb-3">
+        <Row>
+          <Col>
+            <img
+              variant="top"
+              className="movie-image mb-2"
+              src={movie.ImagePath}
+              alt={movie.Title}
+              crossOrigin="true"
+            />
+            <div className="add-fav text-left">
+              {user.FavMovies.includes(movie._id) ? (
+                <>
+                  <Button
+                    onClick={handleFavorites}
+                    variant="outline-danger"
+                    className="text-left button"
+                  >
+                    <GiPopcorn className="fav-icon-button" />
+                    <span className="button-text"> Remove from List</span>
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button onClick={handleFavorites} variant="outline-danger">
+                    <GiPopcorn className="fav-icon-button" />
+                    <span> Add to Favorites</span>
+                  </Button>
+                </>
+              )}
+            </div>
+          </Col>
+          <Col>
+            <Row>
+              <Col className="movie-title mb-3">
+                {movie.Title}({movie.ReleaseYear})
+              </Col>
+            </Row>
+            <Row>
+              <Col className="movie-details mb-3">{movie.Description}</Col>
+            </Row>
+            <Row className="detail-links">
+              <Col>
+                <div>Director: </div>
+                <DirectorView movie={movie} />
+              </Col>
+              <Col>
+                {' '}
+                <div>Genre:</div>
+                <div>
+                  <GenreView genre={movie.Genre} />
+                </div>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+      <Container>
+        <Row>
+          <Col className="text-right">
+            <Button
+              variant="outline-danger"
+              onClick={() => {
+                onBackClick(null);
+              }}
+            >
+              Back
+            </Button>{' '}
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
-  </>
 }
 
 {
