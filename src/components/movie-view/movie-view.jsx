@@ -57,7 +57,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
     <>
       <Container className="movieView-card mb-3">
         <Row>
-          <Col className="image-col">
+          <Col md="auto">
             <img
               variant="top"
               className="movie-image mb-2"
@@ -87,7 +87,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
               )}
             </div>
           </Col>
-          <Col>
+          <Col md={8}>
             <Row>
               <Col className="movie-title mb-3">
                 {movie.Title}({movie.ReleaseYear})
