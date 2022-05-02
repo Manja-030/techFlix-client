@@ -1,6 +1,7 @@
-$text-size: 18px;
-$title-size: 23px;
-$brand-size: 35px;
+$text-size: 1em;
+$text-small: 0.8em;
+$title-size: 1.3em;
+$brand-size: 2em;
 $font-style: 400;
 $text-color: white;
 $bg-color: #1E2127;
@@ -22,6 +23,7 @@ height: 100%;
 .profile-title{
   color: $red !important;
   border: none;
+  font-size: $title-size;
 }
 
 .profile-text{
@@ -53,4 +55,8 @@ height: 100%;
   margin-left: auto !important;
   margin-right: auto !important;
   
+}
+
+.profile-btn:hover{
+  text-decoration: none;
 }

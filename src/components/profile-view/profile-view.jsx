@@ -276,6 +276,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
 
                       <div>
                         <Button
+                          size="sm"
                           type="submit"
                           variant="outline-danger"
                           className="profile-btn"
