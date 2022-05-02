@@ -1,6 +1,7 @@
 $text-size: 1em;
 $title-size: 1.3em;
 $brand-size: 2em;
+$text-small: 0.8em;
 $font-style: 400;
 $text-color: white;
 $bg-color: #1E2127;
@@ -8,7 +9,7 @@ $red: #DA1212;
 
 
 .accordion-header{
-  font-size: $text-size !important;
+  font-size: $text-small !important;
 
 }
 
