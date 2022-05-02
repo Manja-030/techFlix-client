@@ -56,7 +56,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
   return (
     <Card className="movieView-card">
       <Card.Img
-        variant="left"
+        variant="top"
         className="movie-image"
         src={movie.ImagePath}
         alt={movie.Title}
