@@ -157,9 +157,18 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           <Card className="info-card mb-3">
             <Card.Header className="profile-title">My Info</Card.Header>
             <Card.Body>
-              <Card.Text>Username:</Card.Text>
-              <Card.Text>Email:</Card.Text>
-              <Card.Text>Birthday:</Card.Text>
+              <Card.Text>
+                <span className="label">Username: </span>
+                <span className="value">{Username}</span>
+              </Card.Text>
+              <Card.Text>
+                <span className="label">Email: </span>
+                <span className="value">{Email}</span>
+              </Card.Text>
+              <Card.Text>
+                <span className="label">Birthday: </span>
+                <span className="value">{Birthday.substring(0, 10)}</span>
+              </Card.Text>
             </Card.Body>
           </Card>
         </Col>
@@ -218,8 +227,9 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                 </Form.Group>{' '}
                 <Row>
                   <Col>
-                    <Link to="/profile">
+                    <Link to="/profile" className="submit-link">
                       <Button
+                        size="sm"
                         type="submit"
                         className="profile-btn"
                         variant="outline-danger"
@@ -231,6 +241,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                   </Col>
                   <Col>
                     <Button
+                      size="sm"
                       type="Submit"
                       className="profile-btn"
                       variant="outline-danger"
@@ -257,10 +268,10 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                   return (
                     <Col
                       xs={12}
-                      sm={6}
-                      md={4}
-                      lg={3}
-                      xl={3}
+                      sm={12}
+                      md={6}
+                      lg={4}
+                      xl={4}
                       className="p-3 fav-movie"
                       key={favorites._id}
                     >
