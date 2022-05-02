@@ -36,26 +36,35 @@ function MoviesList(props) {
   return (
     <>
       <Container className="search-bar-container">
-        <Col className="search-bar">
-          <VisibilityFilterInput visibilityFilter={visibilityFilter} />
-        </Col>
+        <Row>
+          <Col className="search-bar">
+            <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+          </Col>
+        </Row>
+        <Row>
+          {filteredMovies.slice(0, visible).map((movie) => (
+            <Col
+              xs={12}
+              sm={12}
+              md={6}
+              lg={3}
+              key={movie._id}
+              className="movie-cards"
+            >
+              <MovieCard className="mb-3" movie={movie} />
+            </Col>
+          ))}
+        </Row>
+        <Row>
+          <Button
+            id="load-button"
+            variant="outline-danger"
+            onClick={showMoreItems}
+          >
+            Load more movies
+          </Button>
+        </Row>
       </Container>
-
-      {filteredMovies.slice(0, visible).map((movie) => (
-        <Col
-          xs={12}
-          sm={12}
-          md={6}
-          lg={3}
-          key={movie._id}
-          className="movie-cards"
-        >
-          <MovieCard className="mb-3" movie={movie} />
-        </Col>
-      ))}
-      <Button id="load-button" variant="outline-danger" onClick={showMoreItems}>
-        Load more movies
-      </Button>
     </>
   );
 }
