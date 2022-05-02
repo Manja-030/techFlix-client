@@ -154,7 +154,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
     <Container>
       <Row>
         {/* This Col contains profile form and Save/Delete buttons: */}
-        <Col xs={12} sm={8} md={5} lg={4} xl={3} className="p-3 m-2">
+        <Col xs={12} sm={12} md={6} lg={4} xl={4} className="p-3 m-2">
           <h3 className="profile-title"> Update My Profile:</h3>
 
           <Form className="profile-form">
@@ -233,21 +233,13 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           </Form>
         </Col>
         {/* This Col contains the Favorite Movies: */}
-        <Col className="p-3 m-2">
+        <Col className="p-3 m-2" xs={12} sm={12} md={6} lg={8} xl={8}>
           <h3 className="profile-title"> My Favorite Movies:</h3>
 
           <Row>
             {' '}
             {favorites.map((favorites) => (
-              <Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={3}
-                xl={3}
-                className="p-3 fav-movie"
-                key={favorites._id}
-              >
+              <Col className="p-3 fav-movie" key={favorites._id}>
                 <Figure className="mb-2">
                   <Figure.Image
                     className="favMovie-card"
