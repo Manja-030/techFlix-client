@@ -34,7 +34,7 @@ $red: #DA1212;
   background-color: $bg-color;
   transform: translateY(100%);
   transition: 0.2s ease-in-out;
-  padding: 1em;
+  
 }
 
 .movieCard:hover .card-overlay{
@@ -52,7 +52,8 @@ $red: #DA1212;
   transition: 0.2s ease-in-out;
   border: none;
   border-radius: 1.5rem;
-  padding: 1em;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
 }
 
 .movieCard:hover .card-header{
@@ -75,6 +76,7 @@ $red: #DA1212;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;  
   overflow: hidden;
+  font-size: smaller;
 }
 
 .movieCard-footer{

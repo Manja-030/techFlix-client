@@ -12,7 +12,7 @@ class MovieCard extends React.Component {
     return (
       <Card className="movieCard mb-2">
         <Card.Img
-          className="movieCard-img"
+          className="movieCard-img img-fluid"
           variant="top"
           src={movie.ImagePath}
           alt={movie.title}
