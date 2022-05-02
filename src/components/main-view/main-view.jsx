@@ -123,7 +123,7 @@ class MainView extends React.Component {
               render={() => {
                 if (!user) return <Redirect to="/" />;
                 return (
-                  <Col>
+                  <Col md={8}>
                     <ProfileView
                       user={user}
                       movies={movies}
