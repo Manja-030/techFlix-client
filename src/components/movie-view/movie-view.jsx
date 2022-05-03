@@ -113,8 +113,8 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
         </Row>
       </Container>
       <Container>
-        <Row>
-          <Col className="text-right">
+        <Row mb-3>
+          <Col className="text-center">
             <Button
               variant="outline-danger"
               onClick={() => {
