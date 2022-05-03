@@ -151,9 +151,9 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   };
 
   return (
-    <div className="mt-3">
-      <Row className="mb-2">
-        <Col className="mb-2" xs={12} sm={12} md={6} lg={6} xl={6}>
+    <Container className="mt-3 mb-2">
+      <Row className="mb-2" xs={1} sm={1} md={2}>
+        <Col className="mb-2">
           <Card className="info-card mb-3">
             <Card.Header className="profile-title">My Info</Card.Header>
             <Card.Body>
@@ -172,7 +172,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
             </Card.Body>
           </Card>
         </Col>
-        <Col className="mb-2" xs={12} sm={12} md={6} lg={6} xl={6}>
+        <Col className="mb-2">
           <Card className="update-card mb-3">
             <Card.Header className="profile-title">Update My Info</Card.Header>
             <Card.Body>
@@ -309,7 +309,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           </Card>
         </Container>
       </Row>
-    </div>
+    </Container>
   );
 }
 
