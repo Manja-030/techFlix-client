@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-function ProfileView({ user, movies, movie, logOut, setUser, validateInput }) {
+function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
 
@@ -278,7 +278,7 @@ function ProfileView({ user, movies, movie, logOut, setUser, validateInput }) {
                       className="p-3 fav-movie"
                       key={favorites._id}
                     >
-                      <Link to={`/movies/${movie._id}`}>
+                      <Link to={`/movies/${favorites._id}`}>
                         <Figure className="mb-2">
                           <Figure.Image
                             className="fav-card"
