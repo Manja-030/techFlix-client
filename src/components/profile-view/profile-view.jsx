@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { Row, Col, Button, Container, Figure, Card } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
