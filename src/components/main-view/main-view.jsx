@@ -145,7 +145,7 @@ class MainView extends React.Component {
                     </Col>
                   );
                 return (
-                  <Col md={8}>
+                  <Col>
                     <MovieView
                       movie={movies.find(
                         (movie) => movie._id === match.params.movieId
@@ -169,7 +169,7 @@ class MainView extends React.Component {
                   );
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
-                  <Col md={8}>
+                  <Col>
                     <DirectorView
                       director={
                         movies.find(
@@ -194,7 +194,7 @@ class MainView extends React.Component {
                   );
                 if (movies.length === 0) return <div className="main-view" />;
                 return (
-                  <Col md={8}>
+                  <Col>
                     <GenreView
                       genre={
                         movies.find((movie) =>
