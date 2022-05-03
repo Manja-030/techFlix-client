@@ -66,9 +66,9 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
   };
 
   return (
-    <Container className="d-flex justify-content-center">
+    <Container fluid>
       <Row className="justify-content-center">
-        <Col xs={12} sm={12} md={8} lg={8} xl={6}>
+        <Col xs={12} sm={12} md={8} lg={8} xl={8}>
           <Card className="login-card">
             <Card.Header className="text-center login-header">
               Done coding for today?
