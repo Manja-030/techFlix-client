@@ -263,7 +263,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
               My Favorite Movies
             </Card.Header>
             <Card.Body>
-              {FavoriteMovies.length === 0 && (
+              {favorites.length === 0 && (
                 <div className="text-center">
                   There are currently no movies in your favorites list.
                 </div>
