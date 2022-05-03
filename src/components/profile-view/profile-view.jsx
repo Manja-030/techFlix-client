@@ -225,7 +225,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                     {birthdayError && <p> {birthdayError}</p>}
                   </div>
                 </Form.Group>{' '}
-                <Form.Group>
+                <Form.Group className="button-group">
                   <Link to="/profile" className="submit-link">
                     <Button
                       size="sm"

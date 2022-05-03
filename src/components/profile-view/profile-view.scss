@@ -55,12 +55,17 @@ height: 100%;
   box-shadow: 3px 3px 10px black;
 }
 
-.profile-btn{
+.button-group{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+/*.profile-btn{
   display: block !important;
   margin-left: auto !important;
   margin-right: auto !important;
   
-}
+}*/
 
 .submit-link:hover{
   text-decoration: none;
