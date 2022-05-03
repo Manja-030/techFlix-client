@@ -15,10 +15,6 @@ border-radius: 1.5rem;
 box-shadow: 0 0 0.9em $red;
 height: 100%;
 }
-.favMovie-card:hover {
-  transform: scale(1.1);
-  box-shadow: 3px 3px 10px black;
-}
 
 .background-color{
   background-color: $bg-color;
@@ -52,6 +48,11 @@ height: 100%;
     }
   }
 
+}
+
+.fav-card:hover {
+  transform: scale(1.1);
+  box-shadow: 3px 3px 10px black;
 }
 
 .profile-btn{

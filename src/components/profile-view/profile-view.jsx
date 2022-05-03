@@ -258,7 +258,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
       </Row>
       <Row>
         <Container>
-          <Card className="fav-card mb-3">
+          <Card className="favMovie-card mb-3">
             <Card.Header className="profile-title">
               My Favorite Movies
             </Card.Header>
@@ -277,7 +277,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                     >
                       <Figure className="mb-2">
                         <Figure.Image
-                          className="favMovie-card"
+                          className="fav-card"
                           variant="top"
                           src={favorites.ImagePath}
                           alt={favorites.Title}
