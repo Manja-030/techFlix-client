@@ -66,66 +66,64 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
   };
 
   return (
-    <Container fluid>
-      <Row className="justify-content-center">
-        <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-          <Card className="login-card">
-            <Card.Header className="text-center login-header">
-              Done coding for today?
-            </Card.Header>
-            <Card.Body>
-              <p className="intro-text">
-                Grab a beer and some popcorn and discover my selection of
-                tech-industry movies.
-                <hr className="divider" />
-              </p>
-              <p className="intro-text login-request">Please log in:</p>
-              <Form>
-                <Form.Group className="mb-3" controlId="formUsername">
-                  <Form.Label>Username:</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter username"
-                    onChange={(e) => validateInput(e.target.value, 'Username')}
-                    required
-                  />
-                  {usernameError && <p>{usernameError}</p>}
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="formPassword">
-                  <Form.Label>Password:</Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Enter Password"
-                    onChange={(e) => {
-                      validateInput(e.target.value, 'Password');
-                    }}
-                    required
-                  />
-                  {passwordError && <p>{passwordError}</p>}
-                </Form.Group>
-                <Button
-                  className="login-button"
-                  size="sm"
-                  variant="outline-danger"
-                  as="input"
-                  type="submit"
-                  value="Login"
-                  onClick={handleSubmit}
+    <Row className="justify-content-center">
+      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+        <Card className="login-card">
+          <Card.Header className="text-center login-header">
+            Done coding for today?
+          </Card.Header>
+          <Card.Body>
+            <p className="intro-text">
+              Grab a beer and some popcorn and discover my selection of
+              tech-industry movies.
+              <hr className="divider" />
+            </p>
+            <p className="intro-text login-request">Please log in:</p>
+            <Form>
+              <Form.Group className="mb-3" controlId="formUsername">
+                <Form.Label>Username:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter username"
+                  onChange={(e) => validateInput(e.target.value, 'Username')}
+                  required
                 />
-                &nbsp;
-                <div className="reg-request">
-                  No&nbsp;account?&nbsp;No&nbsp;problem!&nbsp;
-                  <br />
-                  <a className="link" href={'/register'}>
-                    Register&nbsp;here.
-                  </a>
-                </div>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+                {usernameError && <p>{usernameError}</p>}
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formPassword">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Enter Password"
+                  onChange={(e) => {
+                    validateInput(e.target.value, 'Password');
+                  }}
+                  required
+                />
+                {passwordError && <p>{passwordError}</p>}
+              </Form.Group>
+              <Button
+                className="login-button"
+                size="sm"
+                variant="outline-danger"
+                as="input"
+                type="submit"
+                value="Login"
+                onClick={handleSubmit}
+              />
+              &nbsp;
+              <div className="reg-request">
+                No&nbsp;account?&nbsp;No&nbsp;problem!&nbsp;
+                <br />
+                <a className="link" href={'/register'}>
+                  Register&nbsp;here.
+                </a>
+              </div>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
   );
 }
 
