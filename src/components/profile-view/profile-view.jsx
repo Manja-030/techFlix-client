@@ -151,7 +151,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   };
 
   return (
-    <Container className="mt-3">
+    <div className="mt-3">
       <Row className="mb-2">
         <Col className="mb-2">
           <Card className="info-card mb-3">
@@ -309,7 +309,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
           </Card>
         </Container>
       </Row>
-    </Container>
+    </div>
   );
 }
 
