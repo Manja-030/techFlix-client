@@ -292,7 +292,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                           size="sm"
                           type="submit"
                           variant="outline-danger"
-                          className="profile-btn"
+                          className="remove-btn"
                           onClick={() => deleteFav(favorites._id)}
                         >
                           Remove
