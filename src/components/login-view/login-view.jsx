@@ -105,6 +105,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
                 </Form.Group>
                 <Button
                   className="login-button"
+                  size="sm"
                   variant="outline-danger"
                   as="input"
                   type="submit"
