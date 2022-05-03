@@ -37,7 +37,7 @@ function MoviesList(props) {
     <>
       <Container className="search-bar-container">
         <Row>
-          <Col className="search-bar">
+          <Col className="search-bar mb-3">
             <VisibilityFilterInput visibilityFilter={visibilityFilter} />
           </Col>
         </Row>
