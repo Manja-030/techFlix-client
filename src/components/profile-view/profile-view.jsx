@@ -159,15 +159,15 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
             <Card.Body>
               <Card.Text>
                 <span className="label">Username: </span>
-                <span className="value">{Username}</span>
+                <span className="value">{user.Username}</span>
               </Card.Text>
               <Card.Text>
                 <span className="label">Email: </span>
-                <span className="value">{Email}</span>
+                <span className="value">{user.Email}</span>
               </Card.Text>
               <Card.Text>
                 <span className="label">Birthday: </span>
-                <span className="value">{Birthday.substring(0, 10)}</span>
+                <span className="value">{user.Birthday.substring(0, 10)}</span>
               </Card.Text>
             </Card.Body>
           </Card>
