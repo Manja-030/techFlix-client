@@ -153,7 +153,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   return (
     <div className="profile-view">
       <Row className="mb-2">
-        <Col className="mb-2">
+        <Col xs={12} md={6} className="mb-2">
           <Card className="info-card">
             <Card.Header className="profile-title">My Info</Card.Header>
             <Card.Body>
@@ -172,7 +172,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
             </Card.Body>
           </Card>
         </Col>
-        <Col className="mb-2">
+        <Col xs={12} md={6} className="mb-2">
           <Card className="update-card mb-3">
             <Card.Header className="profile-title">Update My Info</Card.Header>
             <Card.Body>
