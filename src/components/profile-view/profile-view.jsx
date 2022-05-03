@@ -151,10 +151,10 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
   };
 
   return (
-    <div>
-      <Row>
+    <div className="profile-view">
+      <Row className="mb-2">
         <Col className="mb-2">
-          <Card className="info-card mb-3">
+          <Card className="info-card">
             <Card.Header className="profile-title">My Info</Card.Header>
             <Card.Body>
               <Card.Text>
@@ -225,32 +225,29 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                     {birthdayError && <p> {birthdayError}</p>}
                   </div>
                 </Form.Group>{' '}
-                <Row>
-                  <Col>
-                    <Link to="/profile" className="submit-link">
-                      <Button
-                        size="sm"
-                        type="submit"
-                        className="profile-btn"
-                        variant="outline-danger"
-                        onClick={handleUpdateProfile}
-                      >
-                        Save Changes
-                      </Button>{' '}
-                    </Link>
-                  </Col>
-                  <Col>
+                <Form.Group>
+                  <Link to="/profile" className="submit-link">
                     <Button
                       size="sm"
-                      type="Submit"
+                      type="submit"
                       className="profile-btn"
                       variant="outline-danger"
-                      onClick={handleProfileDelete}
+                      onClick={handleUpdateProfile}
                     >
-                      Delete Account
-                    </Button>
-                  </Col>
-                </Row>
+                      Save Changes
+                    </Button>{' '}
+                  </Link>
+
+                  <Button
+                    size="sm"
+                    type="Submit"
+                    className="profile-btn"
+                    variant="outline-danger"
+                    onClick={handleProfileDelete}
+                  >
+                    Delete Account
+                  </Button>
+                </Form.Group>
               </Form>
             </Card.Body>
           </Card>
