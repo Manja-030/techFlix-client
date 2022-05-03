@@ -127,6 +127,9 @@ class MainView extends React.Component {
                     <ProfileView
                       user={user}
                       movies={movies}
+                      movie={movies.find(
+                        (movie) => movie._id === match.params.movieId
+                      )}
                       logOut={() => this.onLoggedOut()}
                     />
                   </Col>

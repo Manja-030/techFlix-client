@@ -16,7 +16,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-function ProfileView({ user, movies, logOut, setUser, validateInput }) {
+function ProfileView({ user, movies, movie, logOut, setUser, validateInput }) {
   const localUsername = localStorage.getItem('user'); // real username to make axios requests
   const token = localStorage.getItem('token'); // jwt token to make axios requests
 
