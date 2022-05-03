@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { setUser, validateInput } from '../../actions/actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { Row, Col, Button, Container, Figure, Card } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
@@ -264,9 +265,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
             </Card.Header>
             <Card.Body>
               {favorites.length === 0 && (
-                <div className="text-center">
-                  There are currently no movies in your favorites list.
-                </div>
+                <div>There are currently no movies in your favorites list.</div>
               )}
               <Row>
                 {favorites.map((favorites) => {
@@ -280,15 +279,17 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                       className="p-3 fav-movie"
                       key={favorites._id}
                     >
-                      <Figure className="mb-2">
-                        <Figure.Image
-                          className="fav-card"
-                          variant="top"
-                          src={favorites.ImagePath}
-                          alt={favorites.Title}
-                          crossOrigin="true"
-                        />
-                      </Figure>
+                      <Link to={`/movies/${movie._id}`}>
+                        <Figure className="mb-2">
+                          <Figure.Image
+                            className="fav-card"
+                            variant="top"
+                            src={favorites.ImagePath}
+                            alt={favorites.Title}
+                            crossOrigin="true"
+                          />
+                        </Figure>
+                      </Link>
 
                       <div>
                         <Button
