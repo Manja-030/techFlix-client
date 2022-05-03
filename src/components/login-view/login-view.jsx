@@ -67,7 +67,7 @@ function LoginView({ user, setUser, validateInput, onLoggedIn }) {
 
   return (
     <Row className="justify-content-center">
-      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+      <Col>
         <Card className="login-card">
           <Card.Header className="text-center login-header">
             Done coding for today?
