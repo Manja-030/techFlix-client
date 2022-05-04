@@ -25,7 +25,7 @@ class MovieCard extends React.Component {
           <Card.Text className="cardText">{movie.Description}</Card.Text>
           <Card.Footer className="movieCard-footer text-center">
             <Link to={`/movies/${movie._id}`} id="button-link">
-              <Button id="card-button" variant="link">
+              <Button id="card-button" class="mb-3" variant="link">
                 More Info
               </Button>
             </Link>

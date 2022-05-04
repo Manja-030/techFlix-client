@@ -88,6 +88,9 @@ class MainView extends React.Component {
       <Router>
         <Navigation logOut={() => this.onLoggedOut()} />
         <Container>
+          <Spinner animation="border" variant="danger">
+            <span className="visually-hidden">Loading the page</span>
+          </Spinner>
           <Row className="main-view justify-content-center">
             <Route
               exact
