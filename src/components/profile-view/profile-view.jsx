@@ -230,7 +230,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                     <Button
                       size="sm"
                       type="submit"
-                      className="profile-btn"
+                      className="profile-button"
                       variant="outline-danger"
                       onClick={handleUpdateProfile}
                     >
@@ -292,7 +292,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                           size="sm"
                           type="submit"
                           variant="outline-danger"
-                          className="remove-btn"
+                          className="remove-button"
                           onClick={() => deleteFav(favorites._id)}
                         >
                           Remove

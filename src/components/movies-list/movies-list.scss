@@ -26,6 +26,10 @@ $red: #DA1212;
 #load-button{
   margin: 15px auto;
   font-size: $title-size;
-  border-radius: 3px;
+  border-radius: 0.5rem;
   box-shadow: 0 0 0.4em $red;
+}
+
+.fav-icon-button-light{
+  opacity:0.6;
 }

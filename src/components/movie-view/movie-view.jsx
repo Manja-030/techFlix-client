@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { changeFavorites } from '../../actions/actions';
 import PropTypes from 'prop-types';
 import { Container, Card, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 
 import DirectorView from '../director-view/director-view';
 import GenreView from '../genre-view/genre-view';
@@ -60,7 +59,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
           <Col xs={12} md={4}>
             <img
               variant="top"
-              className="movie-image mb-2"
+              className="movie-image mb-3"
               src={movie.ImagePath}
               alt={movie.Title}
               crossOrigin="true"
@@ -71,7 +70,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
                   <Button
                     onClick={handleFavorites}
                     variant="outline-danger"
-                    className="text-left button"
+                    className="text-left button round-button"
                   >
                     <GiPopcorn className="fav-icon-button" />
                     <span className="button-text"> Remove from List</span>
@@ -79,8 +78,12 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
                 </>
               ) : (
                 <>
-                  <Button onClick={handleFavorites} variant="outline-danger">
-                    <GiPopcorn className="fav-icon-button" />
+                  <Button
+                    onClick={handleFavorites}
+                    variant="outline-danger"
+                    className="text-left button round-button"
+                  >
+                    <GiPopcorn className="fav-icon-button-light" />
                     <span> Add to Favorites</span>
                   </Button>
                 </>
@@ -117,6 +120,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
           <Col className="text-center">
             <Button
               variant="outline-danger"
+              className="round-button"
               onClick={() => {
                 onBackClick(null);
               }}

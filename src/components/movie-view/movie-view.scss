@@ -33,7 +33,7 @@ $red: #DA1212;
   background: $bg-color;
   color: $text-color !important;
   font-size: $text-size;
-  border-radius: 15px;
+  border-radius: 0.5rem;
   width: 100%;
   
 }
@@ -50,14 +50,12 @@ $red: #DA1212;
 .fav-icon-button{
   font-size: 2em;
 }
-
+/*
 .link{
   color: $red !important;
-}
+}*/
 
-
-.button{
-font-size: $text-size;
-border-radius: 3px;
+.round-button{
+  border-radius: 0.5rem;
 box-shadow: 0 0 0.4em $red;
 }
