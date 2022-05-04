@@ -120,7 +120,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
           <Col className="text-center">
             <Button
               variant="outline-danger"
-              className="round-button"
+              className="round-button back-button"
               onClick={() => {
                 onBackClick(null);
               }}

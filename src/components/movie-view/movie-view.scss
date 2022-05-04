@@ -14,7 +14,7 @@ $red: #DA1212;
   background: $bg-color !important;
   border-color: $red !important;
   border-width: 2px !important;
-  border-radius: 0.5rem;
+  border-radius: 1.5rem;
   box-shadow: 0 0 0.9em $red;
   padding: 15px;
 }
@@ -49,12 +49,18 @@ $red: #DA1212;
 .button-icon, .button-icon-light{
   font-size: 2em;
 }
+.button-icon-light{
+  opacity: 0.5;
+}
 /*
 .link{
   color: $red !important;
 }*/
 
 .round-button{
-  border-radius: 0.5rem;
+  border-radius: 0.6rem;
   box-shadow: 0 0 0.4em $red;
+}
+.back-button{
+  box-shadow: 0 0 0.6em $red;
 }

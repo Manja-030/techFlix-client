@@ -149,7 +149,6 @@ function RegistrationView({ user, setUser, validateInput }) {
 
                 <Button
                   type="Submit"
-                  size="sm"
                   className="register-button"
                   variant="outline-danger"
                   onClick={handleSubmit}
