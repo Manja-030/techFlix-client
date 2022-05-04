@@ -70,7 +70,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
                   <Button
                     onClick={handleFavorites}
                     variant="outline-danger"
-                    className="text-left button round-button"
+                    className="text-left add-button round-button"
                   >
                     <GiPopcorn className="button-icon" />
                     <span className="button-text"> Remove from List</span>
@@ -81,7 +81,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
                   <Button
                     onClick={handleFavorites}
                     variant="outline-danger"
-                    className="text-left button round-button"
+                    className="text-left remove-button round-button"
                   >
                     <GiPopcorn className="button-icon-light" />
                     <span> Add to Favorites</span>

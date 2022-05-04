@@ -14,7 +14,7 @@ $red: #DA1212;
   background: $bg-color !important;
   border-color: $red !important;
   border-width: 2px !important;
-  border-radius: 5px;
+  border-radius: 0.5rem;
   box-shadow: 0 0 0.9em $red;
   padding: 15px;
 }
@@ -33,7 +33,6 @@ $red: #DA1212;
   background: $bg-color;
   color: $text-color !important;
   font-size: $text-size;
-  border-radius: 0.5rem;
   width: 100%;
   
 }
@@ -47,7 +46,7 @@ $red: #DA1212;
   color: $red !important;
   text-align: center;
 }
-.button-icon, button-icon-light{
+.button-icon, .button-icon-light{
   font-size: 2em;
 }
 /*
