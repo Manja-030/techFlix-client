@@ -72,7 +72,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
                     variant="outline-danger"
                     className="text-left button round-button"
                   >
-                    <GiPopcorn className="fav-icon-button" />
+                    <GiPopcorn className="button-icon" />
                     <span className="button-text"> Remove from List</span>
                   </Button>
                 </>
@@ -83,7 +83,7 @@ function MovieView({ user, movie, onBackClick, changeFavorites }) {
                     variant="outline-danger"
                     className="text-left button round-button"
                   >
-                    <GiPopcorn className="fav-icon-button-light" />
+                    <GiPopcorn className="button-icon-light" />
                     <span> Add to Favorites</span>
                   </Button>
                 </>

@@ -47,7 +47,7 @@ $red: #DA1212;
   color: $red !important;
   text-align: center;
 }
-.fav-icon-button{
+.button-icon, button-icon-light{
   font-size: 2em;
 }
 /*
@@ -57,5 +57,5 @@ $red: #DA1212;
 
 .round-button{
   border-radius: 0.5rem;
-box-shadow: 0 0 0.4em $red;
+  box-shadow: 0 0 0.4em $red;
 }
