@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setMovies, setUser } from '../../actions/actions';
 
-import { Container, Row, Col, Spinner } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import './main-view.scss';
 
 import MoviesList from '../movies-list/movies-list';
@@ -87,9 +87,6 @@ class MainView extends React.Component {
     return (
       <Router>
         <Navigation logOut={() => this.onLoggedOut()} />
-        <Spinner animation="border" variant="danger" role="status">
-          <span className="visually-hidden">Loading the page</span>
-        </Spinner>
         <Container>
           <Row className="main-view justify-content-center">
             <Route
