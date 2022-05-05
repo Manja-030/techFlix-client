@@ -230,7 +230,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                     <Button
                       size="sm"
                       type="submit"
-                      className="profile-button"
+                      className="profile-button mb-2"
                       variant="outline-danger"
                       onClick={handleUpdateProfile}
                     >
@@ -241,7 +241,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                   <Button
                     size="sm"
                     type="Submit"
-                    className="profile-btn"
+                    className="profile-button"
                     variant="outline-danger"
                     onClick={handleProfileDelete}
                   >
@@ -263,7 +263,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
               {favorites.length === 0 && (
                 <div>There are currently no movies in your favorites list.</div>
               )}
-              <Row>
+              <Row className="mb-4">
                 {favorites.map((favorites) => {
                   return (
                     <Col
@@ -287,7 +287,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                         </Figure>
                       </Link>
 
-                      <div>
+                      <div className="text-center">
                         <Button
                           size="sm"
                           type="submit"
