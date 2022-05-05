@@ -225,12 +225,12 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                     {birthdayError && <p> {birthdayError}</p>}
                   </div>
                 </Form.Group>{' '}
-                <Form.Group className="button-group">
+                <Form.Group className="btn-toolbar">
                   <Link to="/profile" className="submit-link">
                     <Button
                       size="sm"
                       type="submit"
-                      className="profile-button mb-2"
+                      className="profile-button mr-2 mb-2"
                       variant="outline-danger"
                       onClick={handleUpdateProfile}
                     >
@@ -241,7 +241,7 @@ function ProfileView({ user, movies, logOut, setUser, validateInput }) {
                   <Button
                     size="sm"
                     type="Submit"
-                    className="profile-button"
+                    className="profile-button mr-2 mb-2"
                     variant="outline-danger"
                     onClick={handleProfileDelete}
                   >
