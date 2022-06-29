@@ -2,9 +2,7 @@
 
 This is the client side application for this [API](https://github.com/Manja-030/movie-app). It showcases several movies. The user can get information about each movie and add movies to a list of favorites.
 
-# MyFlix Application
-
-This is the client side application for this [API](https://github.com/Manja-030/movie-app). It showcases several movies. The user can get information about each movie and add movies to a list of favorites.
+<img width="1427" alt="image" src="https://user-images.githubusercontent.com/80778632/166975245-0a2d86cc-c3e1-4867-ac03-a783f83f85e3.png">
 
 ## Key Features
 
@@ -71,8 +69,8 @@ npm start
 
 ## Build Process
 
-The build is done with [2.0.0-rc.0](https://www.npmjs.com/package/parcel/v/2.0.0-rc.0)
+The build is done with [Parcel version 2.0.0-rc.0](https://www.npmjs.com/package/parcel/v/2.0.0-rc.0)
 
 ## Live Demo
 
-will be added when project is finished
+https://techflix.netlify.app/
