@@ -1,0 +1,66 @@
+$text-size: 1em;
+$text-small: 0.8em;
+$title-size: 1.3em;
+$brand-size: 2em;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+.background-color{
+  background-color: $bg-color;
+}
+.movieView-card{
+  background: $bg-color !important;
+  border-color: $red !important;
+  border-width: 2px !important;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0.9em $red;
+  padding: 15px;
+}
+
+.movie-image{
+  width: 100%;
+}
+
+.movie-title{
+  font-size: $title-size;
+  font-weight: 400;
+  color: $text-color !important;
+}
+
+.movie-details {
+  background: $bg-color;
+  color: $text-color !important;
+  font-size: $text-size;
+  width: 100%;
+  
+}
+
+.detail-links{
+  font-size: $text-size;
+  color: $text-color !important;
+  }
+
+.add-fav{
+  color: $red !important;
+  text-align: center;
+}
+.button-icon, .button-icon-light{
+  font-size: 2em;
+}
+.button-icon-light{
+  opacity: 0.5;
+}
+/*
+.link{
+  color: $red !important;
+}*/
+
+.round-button{
+  border-radius: 0.6rem;
+  box-shadow: 0 0 0.4em $red;
+}
+.back-button{
+  box-shadow: 0 0 0.6em $red;
+}

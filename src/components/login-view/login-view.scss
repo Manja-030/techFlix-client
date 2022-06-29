@@ -1,0 +1,61 @@
+$text-size: 18px;
+$title-size: 21px;
+$brand-size: 40px;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+/*body{
+  background-color: $bg-color !important;
+  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}*/
+
+
+.background-image{
+  background-color: $bg-color;
+  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-card{
+  color: $text-color;
+  background-color: $bg-color;
+  border: 2px solid $red; 
+  opacity: 0.9;
+  box-shadow: 0 0 0.9em $red;
+  border-radius: 1.5rem;
+}
+
+.intro-text{
+  text-align: center;
+}
+
+.login-header{
+  border: none;
+  font-size: 1.2rem;
+}
+.divider{
+  width: 90%;
+  border-top: 1px solid $text-color;
+}
+
+.login-request{
+  font-size: 1.2rem;
+}
+
+.reg-request{
+  text-align: center;
+}
+
+.link{
+  color: red !important;
+}
+
+.login-button{
+  display: block;
+  margin: auto;
+  border-radius: 0.6rem;
+}

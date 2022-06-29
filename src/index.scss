@@ -1,5 +1,27 @@
-$color: steelblue;
+$text-size: 1em;
+$title-size: 1.3em;
+$brand-size: 2em;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
 
-.my-flix {
-  color: $color;
+// Buttons
+
+.btn-outline-danger{
+  color: $red !important;
+  border-color: $red !important;
+  
 }
+
+.btn-outline-danger:hover, btn-outline-danger:focus, btn-outline-danger:active{
+  color: $text-color !important;
+  background-color: $red !important;
+}
+/*
+button{
+  font-size: $text-size;
+  border-radius: 0.5em;
+  box-shadow: 0 0 0.4em $red;
+  }
+  */

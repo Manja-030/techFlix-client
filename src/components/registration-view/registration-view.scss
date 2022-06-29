@@ -1,0 +1,42 @@
+$text-size: 18px;
+$title-size: 23px;
+$brand-size: 35px;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+.background-image{
+  background-color: $bg-color;
+  background-image: linear-gradient(to right, rgba(30, 33, 39, 0.3), rgba(30, 33, 39, 0.6), rgba(30, 33, 39, 0.3)), url('../../assets/background-image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.register-card{
+  color: $text-color;
+  background-color: $bg-color;
+  /*padding: 15px;*/
+  /*margin: auto;*/
+  /*border-radius: 5px;*/
+  border: 2px solid $red; 
+  opacity: 0.9;
+  box-shadow: 0 0 0.9em $red;
+  border-radius: 1.5rem;
+
+}
+.register-title{
+  border: none;
+  font-size: 1.2rem;
+  color: $red !important;
+}
+
+.register-button{
+  border-radius: 0.6rem;
+  margin: auto;
+}
+
+.form-control {
+  background-color: #707070;
+}
+

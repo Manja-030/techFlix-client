@@ -1,0 +1,39 @@
+$text-size: 18px;
+$title-size: 21px;
+$brand-size: 40px;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+#main-nav{
+  color: $red !important;
+  background-color: #13171F !important;
+  border-radius: 5px;
+  box-shadow: 0 0 0.6em #13171F;
+}
+
+#appName{
+  color: $red;
+  font-size: 40px;
+  font-weight: 600;
+}
+
+#appName:hover{
+  color: rgb(223, 70, 70) !important;
+}
+
+.navbar-link{
+  color: #DA1212 !important;
+  font-size: 18px;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.navbar-link:hover{
+  color: rgb(223, 70, 70) !important;
+}
+
+.toggle{
+  color: #DA1212 !important;
+}
+

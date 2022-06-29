@@ -1,0 +1,33 @@
+$text-size: 1em;
+$title-size: 1.3em;
+$brand-size: 2em;
+$text-small: 0.8em;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+
+.accordion-header{
+  font-size: $text-size !important;
+
+}
+
+.accordion-body{
+  font-size: $text-small;
+}
+
+.accordion-button{
+  background-color: $bg-color;
+ color: $text-color;
+ width: 100%;
+ border: none;
+text-align: left;
+}
+/*
+.link{
+  color: $red !important;
+}
+.back-button{
+font-size: $text-size;
+}*/

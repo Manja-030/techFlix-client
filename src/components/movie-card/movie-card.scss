@@ -1,0 +1,102 @@
+
+$text-size: 1em;
+$title-size: 1.3em;
+$brand-size: 2em;
+$font-style: 400;
+$text-color: white;
+$bg-color: #1E2127;
+$red: #DA1212;
+
+
+.movieCard {
+  background-color: $bg-color !important;
+  color: $text-color;
+  border: 1px solid $red !important;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0.9em $red;
+  position: relative;
+  overflow: hidden;
+  /*height: 100%;*/
+  min-height: 370px;
+  min-width: 220px;
+  /*text-overflow: ellipsis;
+  white-space: nowrap;*/
+}
+
+.movieCard-img{
+  height: 300px;
+}
+
+.card-overlay{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: $bg-color;
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+  
+}
+
+.movieCard:hover .card-overlay{
+  transform: translateY(0);
+}
+
+.movieCard-header{
+  position: relative;
+  display: flex;
+  /*align-items: center;*/
+  text-align: center;
+  justify-content: center;
+  background-color: $bg-color;
+  transform: translateY(-100%);
+  transition: 0.2s ease-in-out;
+  border: none;
+  border-radius: 1.5rem;
+  padding-left: 0.8em;
+  padding-right: 0.8em;
+}
+
+.movieCard:hover .movieCard-header{
+  transform: translateY(0);
+}
+
+.cardTitle{
+  /*min-height: 50px;*/
+  font-size: $text-size;
+  border: none;
+}
+
+.cardText{
+  /*min-height: 100px;*/
+  margin: 0;
+  padding-bottom: 0;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  font-size: smaller;
+}
+
+.movieCard-footer{
+  margin: 0 auto;
+  border: none;
+}
+
+#button-link{
+  display: block;
+  margin: auto;
+  align-items: center;
+  //text-align: bottom;
+}
+
+#card-button{
+  color: $red !important;
+  vertical-align: bottom;
+  text-align: center;
+  margin: auto;
+  font-size: $text-size;
+}
