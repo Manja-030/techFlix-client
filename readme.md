@@ -1,4 +1,5 @@
 # MyFlix Application
+https://user-images.githubusercontent.com/80778632/176512660-91a139e9-8bc7-4445-a7fb-b24b8cb99fde.mov
 
 This is the client side application for this [API](https://github.com/Manja-030/movie-app). It showcases several movies. The user can get information about each movie and add movies to a list of favorites.
 
