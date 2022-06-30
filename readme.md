@@ -1,5 +1,5 @@
 
-# MyFlix Application
+# techFlix Application
 <img width="1434" alt="screenshot techFlix_demo" src="https://user-images.githubusercontent.com/80778632/176516087-82a0971c-137d-4ed8-bb18-f02f2a008199.png">
 
 This is the client side application for this [API](https://github.com/Manja-030/movie-app). It showcases several movies. The user can get information about each movie and add movies to a list of favorites.
